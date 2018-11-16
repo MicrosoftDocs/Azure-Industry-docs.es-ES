@@ -1,0 +1,87 @@
+items:
+- name: Docs
+  tocHref: /
+  topicHref: /
+  items:
+  - name: Azure
+    tocHref: /azure/
+    topicHref: /azure/
+    items:
+    - name: Sector
+      tocHref: /Industry/
+      topicHref: /azure/industry/
+      items:
+      - name: Servicios financieros
+        tocHref: /Financial/
+        topicHref: /azure/industry/financial/
+        items:
+        - name: Recursos adicionales
+          items:
+          - name: Documentación de Azure Batch
+            tocHref: /azure/batch
+          - name: Ejemplos de código de Batch
+            tocHref: /resources/samples/?service=batch
+          - name: Repositorio de ejemplos de código de Batch
+            tocHref: https://github.com/Azure/azure-batch-samples
+          - name: Conectividad local
+            tocHref: /azure/networking/networking-overview
+          - name: FFIEC para cargas de trabajo reguladas
+            tocHref: /azure/security/blueprints/financial-services-regulated-workloads
+          - name: Tutorial de integración de AAD con Asset Bank
+            tocHref: /azure/active-directory/active-directory-saas-assetbank-tutorial
+      - name: Ciencias biosanitarias
+        tocHref: /Health & Life Sciences/
+        topicHref: /azure/industry/health/
+        items:
+        - name: Reconocimiento de entidades biomédicas
+          tocHref: /azure/machine-learning/desktop-workbench/scenario-tdsp-biomedical-recognition
+        - name: Cambios de registros de atención sanitaria de FHIR de la organización HL7
+          tocHref: /azure/cosmos-db/change-feed-hl7-fhir-logic-apps
+        - name: Azure Blueprint
+          items:
+          - name: 'Seguridad y cumplimiento de Azure: inteligencia artificial y datos médicos HIPAA/HITRUST'
+            href: /azure/security/blueprints/azure-health
+          - name: 'Seguridad y cumplimiento de Azure: análisis de datos para el Servicio Nacional de Salud del Reino Unido'
+            href: /azure/security/blueprints/uknhs-analytics-overview
+          - name: 'Seguridad y cumplimiento de Azure: análisis de datos para el Servicio Nacional de Salud del Reino Unido'
+            href: /azure/security/blueprints/uknhs-analytics-overview
+          - name: 'Seguridad y cumplimiento de Azure: almacenamiento de datos para el Servicio Nacional de Salud del Reino Unido'
+            href: /azure/security/blueprints/uknhs-datawarehouse-overview
+          - name: 'Seguridad y cumplimiento de Azure: aplicación web IaaS para el Servicio Nacional de Salud del Reino Unido'
+            href: /azure/security/blueprints/uknhs-iaaswa-overview
+          - name: 'Seguridad y cumplimiento de Azure: aplicación web PaaS para el Servicio Nacional de Salud del Reino Unido'
+            href: /azure/security/blueprints/uknhs-paaswa-overview
+        - name: Recursos adicionales
+          items:
+          - name: 'Inicio rápido: el servicio Microsoft Genomics'
+            tocHref: /azure/genomics/quickstart-run-genomics-workflow-portal
+          - name: 'Seguridad: inteligencia artificial y datos sanitarios de HIPAA/HITRUST'
+            tocHref: /azure/security/blueprints/azure-health
+          - name: Introducción a los bots sanitarios
+            tocHref: /azure/healthbot/
+      - name: Fabricación
+        tocHref: /Manufacturing/
+        topicHref: /azure/industry/manufacturing/
+        items:
+        - name: Aprendizaje profundo para escenarios reales de PdM
+          tocHref: /azure/machine-learning/desktop-workbench/scenario-deep-learning-for-predictive-maintenance
+        - name: Recursos adicionales
+          items:
+          - name: Azure Stream Analytics para el procesamiento de datos desde dispositivos de IoT
+            tocHref: /azure/stream-analytics/
+      - name: Minoristas
+        tocHref: /Retail/
+        topicHref: /azure/industry/retail/
+        items:
+        - name: Procesamiento de pagos compatibles con PCI DSS
+          tocHref: /azure/security/blueprints/payment-processing-blueprint
+        - name: Recursos adicionales
+          items:
+          - name: Azure Cosmos DB en minoristas y marketing
+            tocHref: /azure/cosmos-db/use-cases
+ms.openlocfilehash: 100dfd44f54195e97a35a3f726457e4823abb4b3
+ms.sourcegitcommit: 76f2862adbec59311b5888e043a120f89dc862af
+ms.translationtype: HT
+ms.contentlocale: es-ES
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "51654712"
