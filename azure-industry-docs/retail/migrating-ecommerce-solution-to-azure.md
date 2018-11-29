@@ -6,12 +6,12 @@ ms.date: 07/16/2018
 ms.topic: article
 ms.service: industry
 description: En este artículo se explican las fases de migración de la infraestructura de comercio electrónico del entorno local a Azure.
-ms.openlocfilehash: 847950673475f7f59a0c8c8c8bfc821414b2cc77
-ms.sourcegitcommit: 76f2862adbec59311b5888e043a120f89dc862af
+ms.openlocfilehash: a440eabad6a1367ed8219c01424d21d22e441b16
+ms.sourcegitcommit: 20b001b9fb51b944ae82bf55d2d670aa852fa64b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "51654272"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52297958"
 ---
 # <a name="migrating-your-e-commerce-solution-to-azure-overview"></a>Introducción a la migración de una solución de comercio electrónico a Azure
 
