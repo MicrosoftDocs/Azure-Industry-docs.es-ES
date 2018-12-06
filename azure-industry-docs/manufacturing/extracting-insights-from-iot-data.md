@@ -7,12 +7,12 @@ manager: gmarchet
 ms.service: industry
 ms.topic: article
 ms.date: 09/26/2018
-ms.openlocfilehash: 79f6829d80bea2cf05bc11b613476f64dad900ef
-ms.sourcegitcommit: 76f2862adbec59311b5888e043a120f89dc862af
+ms.openlocfilehash: e3a2f19fa584cfefa72a6b8bf3eabfe1c3af3521
+ms.sourcegitcommit: c4eb2665df40d0449bd037e7500222fc38bc53ef
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "51654412"
+ms.lasthandoff: 12/03/2018
+ms.locfileid: "52820773"
 ---
 # <a name="extracting-actionable-insights-from-iot-data"></a>Extracción de información útil de los datos de IoT
 
@@ -119,8 +119,7 @@ La arquitectura lambda aborda este problema mediante la creación de dos rutas d
 -   La capa por lotes se distribuye en una "capa de servicio", que responde a las consultas. La capa por lotes indexa la vista por lotes para realizar consultas eficaces. La capa de velocidad actualiza el nivel de servicios con actualizaciones incrementales en función de los datos más recientes.
 
 La siguiente imagen muestra cinco bloques que representan las fases de transformación. El primer bloque es el flujo de datos, que se distribuye por la capa de velocidad y la capa por lotes en paralelo. Ambas capas se distribuyen por la capa de servicio. La capa de velocidad y la capa de servicio se envían al cliente de análisis.
-
-![Lambda architecture schematic.] (assets/extracting-insights-from-iot/lambda-schematic.png)
+![Arquitectura lambda.](assets/extracting-insights-from-iot/lambda-schematic.png)
 
  La plataforma Azure proporciona diversos servicios que se pueden usar para implementar la arquitectura. El diagrama siguiente muestra cómo se pueden asignar esos servicios con tal fin. La ilustración muestra las cinco fases de transformación, donde cada fase contiene tecnologías pertinentes de Azure. Los cuadros de colores más oscuros representan la disponibilidad de varias opciones para realizar esas tareas.
 
