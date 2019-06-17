@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: cff221055e76d7334793782d19eadd0960712a1f
+ms.sourcegitcommit: 461c520509d53bae1021eebf9733a98edbf71e4d
+ms.translationtype: HT
+ms.contentlocale: es-ES
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66716858"
+---
 # <a name="enabling-the-financial-services-risk-lifecycle-with-azure-and-r"></a>Habilitación del ciclo de vida de riesgos de los servicios financieros con Azure y R
 
 
@@ -15,7 +23,7 @@ A través de estos procesos, hay necesidades comunes en torno al modelado de rie
     Habitualmente, estos analistas trabajan con herramientas de modelado y código populares en sus dominios: R y Python. Muchos programas de estudios universitarios incluyen cursos de R o Python relacionados con las finanzas matemáticas y en cursos de MBA.
     Ambos lenguajes ofrecen una amplia variedad de bibliotecas de código abierto que admiten los cálculos de riesgos populares. Junto con las herramientas adecuadas, los analistas a menudo necesitan acceso a:
 
-     a.  Datos precisos sobre los precios de mercado.
+    a.  Datos precisos sobre los precios de mercado.
 
     b.  Datos de reclamaciones y directivas existentes.
 
@@ -48,7 +56,7 @@ En este ejemplo se evitan las técnicas de modelado cuantitativo complejas para 
 
 3.  Modelar el precio de las acciones mediante un cálculo de Montecarlo (MC) sencillo, que usa el movimiento browniano geométrico (GBM):
 
-     a.  Calcular la devolución μ (mu) y la volatilidad σ (theta) esperadas.
+    a.  Calcular la devolución μ (mu) y la volatilidad σ (theta) esperadas.
 
     b.  Calibrar el modelo según los datos históricos.
 
@@ -56,7 +64,7 @@ En este ejemplo se evitan las técnicas de modelado cuantitativo complejas para 
 
 5.  Trazar max(0,Stock Value) para demostrar el significado de PFE, la diferencia respecto del valor en riesgo (VaR).
 
-     a.  Para aclarar: PFE = precio por acción (T) -- precio K del contrato a plazo
+    a.  Para aclarar: PFE = precio por acción (T) -- precio K del contrato a plazo
 
 6.  Tomar el centil 0,95 para obtener el valor de PFE en cada período o al final del período de simulación
 
@@ -421,9 +429,9 @@ El acceso flexible a la nube a través de una infraestructura de proceso y los s
 ### <a name="tutorials"></a>Tutoriales
 
 
--   Desarrolladores de R: [Ejecución de una simulación de R en paralelo con Azure Batch](https://docs.microsoft.com/azure/batch/tutorial-r-doazureparallel?WT.mc_id=fsiriskmodelr-docs-scseely)
+-   Desarrolladores de R: [Ejecución de una simulación de R paralela con Azure Batch](https://docs.microsoft.com/azure/batch/tutorial-r-doazureparallel?WT.mc_id=fsiriskmodelr-docs-scseely)
 
--   [Basic R commands and RevoScaleR functions: 25 common examples](https://docs.microsoft.com/machine-learning-server/r/tutorial-r-to-revoscaler?WT.mc_id=fsiriskmodelr-docs-scseely) (Comandos básicos de R y funciones de RevoScaleR: 25 ejemplos comunes)
+-   [Comandos básicos de R y funciones de RevoScaleR: 25 ejemplos comunes](https://docs.microsoft.com/machine-learning-server/r/tutorial-r-to-revoscaler?WT.mc_id=fsiriskmodelr-docs-scseely)
 
 -   [Visualize and analyze data using RevoScaleR](https://docs.microsoft.com/machine-learning-server/r/tutorial-revoscaler-data-model-analysis?WT.mc_id=fsiriskmodelr-docs-scseely) (Visualización y análisis de datos mediante RevoScaleR)
 
