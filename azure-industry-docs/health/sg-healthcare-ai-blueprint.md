@@ -1,17 +1,17 @@
 ---
 title: Implementación del plano técnico de Azure para inteligencia artificial
-author: dastarr
+author: dstarr
 ms.author: dastarr
-ms.date: 08/24/2018
+ms.date: 11/07/2019
 ms.topic: article
 ms.service: industry
 description: En este artículo se ofrece orientación para el plano técnico de Microsoft Azure para inteligencia artificial.
-ms.openlocfilehash: f7c9290e6bbc0d500a9f7774c2020f78b5e94aca
-ms.sourcegitcommit: 76f2862adbec59311b5888e043a120f89dc862af
+ms.openlocfilehash: 845ec2a1da335336375d90c789e0fa89bc70d23a
+ms.sourcegitcommit: 385e99900bc20950f02a63c885facc1cf62c49df
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "51654352"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73845628"
 ---
 # <a name="implementing-the-azure-blueprint-for-ai"></a>Implementación del plano técnico de Azure para inteligencia artificial
 
@@ -61,7 +61,7 @@ Los siguientes recursos se encuentran en este repositorio de GitHub.
 
 Los recursos principales son:
 
-1. Scripts de [PowerShell](https://docs.microsoft.com/en-us/powershell/scripting/powershell-scripting?WT.mc_id=ms-docs-dastarr) para la implementación, la configuración y otras tareas.
+1. Scripts de [PowerShell](https://docs.microsoft.com/powershell/scripting/powershell-scripting?WT.mc_id=ms-docs-dastarr) para la implementación, la configuración y otras tareas.
 2. [Instrucciones detalladas para la instalación](https://github.com/Azure/Health-Data-and-AI-Blueprint/blob/master/deployment.md) que incluyen cómo usar el script de instalación.
 3. [Una completa sección de preguntas frecuentes](https://github.com/Azure/Health-Data-and-AI-Blueprint/blob/master/faq.md).
 
@@ -81,7 +81,7 @@ El plano técnico también proporciona scripts y datos adicionales que se utiliz
 
 El plano técnico proporciona una guía e instrucciones excepcionales para el personal técnico, y también incluye artefactos para ayudar a crear una instalación completamente funcional. Entre estos otros artefactos están los siguientes:
 
-1. Un [modelo de amenazas](https://servicetrust.microsoft.com/ViewPage/HIPAABlueprint?command=Download&downloadType=Document&downloadId=01828de2-9555-4bac-a2a0-44e9ed2eeeaf&docTab=d7c399a0-2b92-11e8-9910-13dc07d708f7_Data_Analytics&WT.mc_id=ms-docs-dastarr) para su uso con la herramienta [Microsoft Threat Modeling Tool](https://www.microsoft.com/en-us/download/details.aspx?id=49168&WT.mc_id=ms-docs-dastarr). Este modelo de amenazas muestra los componentes de la solución, los flujos de datos entre ellos y los límites de confianza. La herramienta se puede usar para modelar amenazas por aquellos usuarios que buscan ampliar el plano técnico básico o para aprender sobre la arquitectura del sistema desde una perspectiva de seguridad.
+1. Un [modelo de amenazas](https://servicetrust.microsoft.com/ViewPage/HIPAABlueprint?command=Download&downloadType=Document&downloadId=01828de2-9555-4bac-a2a0-44e9ed2eeeaf&docTab=d7c399a0-2b92-11e8-9910-13dc07d708f7_Data_Analytics&WT.mc_id=ms-docs-dastarr) para su uso con la herramienta [Microsoft Threat Modeling Tool](https://www.microsoft.com/download/details.aspx?id=49168&WT.mc_id=ms-docs-dastarr). Este modelo de amenazas muestra los componentes de la solución, los flujos de datos entre ellos y los límites de confianza. La herramienta se puede usar para modelar amenazas por aquellos usuarios que buscan ampliar el plano técnico básico o para aprender sobre la arquitectura del sistema desde una perspectiva de seguridad.
 
 2. La [matriz de responsabilidades del cliente HITRUST](https://servicetrust.microsoft.com/ViewPage/HIPAABlueprint?command=Download&downloadType=Document&downloadId=eab85244-b9ab-490a-9e2a-611153f7d3af&docTab=d7c399a0-2b92-11e8-9910-13dc07d708f7_Data_Analytics&WT.mc_id=ms-docs-dastarr), en un libro de Excel.  Esto muestra lo que usted (el cliente) debe proporcionar en comparación con lo que ofrece Microsoft para cada requisito de la matriz. En este artículo se incluye más información sobre esta matriz de responsabilidades, en la sección Seguridad y cumplimiento > Matriz de responsabilidades del plano técnico.
 
@@ -123,7 +123,7 @@ El instalador descarga algunos paquetes externos durante la instalación. A vece
 
 1. Ejecutar el script de instalación de nuevo sin realizar ningún cambio. El instalador comprueba si hay recursos ya asignados e instala solo aquellos necesarios. Aunque esta técnica puede funcionar, existe el riesgo de que el script de instalación intente asignar los recursos ya vigentes. Esto puede producir un error y la instalación no se completará.
 
-2. Ejecute de todos modos el script deploy.ps1, pero pase argumentos distintos para desinstalar los servicios del plano técnico. 
+2. Ejecute de todos modos el script deploy.ps1, pero pase argumentos distintos para desinstalar los servicios del plano técnico.
 
 ```powershell
 .\deploy.ps1 -clearDeploymentPrefix <prefix> `
@@ -154,7 +154,7 @@ La persona que instala el plano técnico debe ostentar el rol de Administrador g
 
 ![Instalador del plano técnico](assets/sg-healthcare-ai-blueprint-assets/blueprint-installer.png)
 
-Además, la instalación no está diseñada para funcionar con las suscripciones a MSDN debido a la estrecha integración con AAD. Debe usarse una cuenta de Azure estándar. Si es necesario, [obtenga una evaluación gratuita](https://azure.microsoft.com/en-us/free/?WT.mc_id=ms-docs-dastarr) con crédito para utilizarlo en la instalación de la solución de plano técnico y la ejecución de sus demostraciones.
+Además, la instalación no está diseñada para funcionar con las suscripciones a MSDN debido a la estrecha integración con AAD. Debe usarse una cuenta de Azure estándar. Si es necesario, [obtenga una evaluación gratuita](https://azure.microsoft.com/free/?WT.mc_id=ms-docs-dastarr) con crédito para utilizarlo en la instalación de la solución de plano técnico y la ejecución de sus demostraciones.
 
 ## <a name="adding-other-resources"></a>Adición de otros recursos
 
@@ -162,7 +162,7 @@ La instalación del plano técnico de Azure no incluye más servicios de los nec
 
 Tiene la posibilidad de incorporar nuevos recursos a la solución, como [Cosmos DB](/azure/cosmos-db/introduction?WT.mc_id=ms-docs-dastarr) o una nueva instancia de [Azure Functions](/azure/azure-functions/functions-overview?WT.mc_id=ms-docs-dastarr), a medida que se necesiten nuevas funciones de Azure. Al agregar nuevos recursos o servicios, asegúrese de que están configurados para cumplir las directivas de seguridad y privacidad para mantener la conformidad con las normativas y la directiva.
 
-Los nuevos recursos y servicios pueden crearse con las [API REST de Azure](https://docs.microsoft.com/en-us/rest/api/?view=Azure&WT.mc_id=ms-docs-dastarr), el [scripting de Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/get-started-azureps?view=azurermps-6.6.0&WT.mc_id=ms-docs-dastarr) o mediante [Azure Portal](http://portal.azure.com/?WT.mc_id=ms-docs-dastarr).
+Los nuevos recursos y servicios pueden crearse con las [API REST de Azure](https://docs.microsoft.com/rest/api/?view=Azure&WT.mc_id=ms-docs-dastarr), el [scripting de Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azurermps-6.6.0&WT.mc_id=ms-docs-dastarr) o mediante [Azure Portal](http://portal.azure.com/?WT.mc_id=ms-docs-dastarr).
 
 ## <a name="using-machine-learning-with-the-blueprint"></a>Uso del aprendizaje automático con el plano técnico
 
@@ -176,7 +176,7 @@ Una vez que esté instalado el plano técnico y todos los servicios funcionen ad
 
 El plano técnico incluye un experimento y los datos necesarios para ejecutar un trabajo de aprendizaje automático en Machine Learning Studio (MLS). En el ejemplo se utiliza un modelo entrenado en un experimento para predecir la duración de la estancia del paciente en función de muchas variables.
 
-En este entorno de demostración, los datos ingeridos en la base de datos SQL de Azure no contienen defectos ni carecen de elementos de datos. Estos datos están limpios. A menudo se ingieren datos sucios, que deben "limpiarse" para utilizarlos a fin de alimentar un algoritmo de entrenamiento de aprendizaje automático o antes de usar los datos en un trabajo de aprendizaje automático. Si faltan datos o hay valores incorrectos, los resultados del análisis de aprendizaje automático resultarán afectados negativamente.
+En este entorno de demostración, los datos ingeridos en la base de datos de Azure SQL no contienen defectos ni carecen de elementos de datos. Estos datos están limpios. A menudo se ingieren datos sucios, que deben "limpiarse" para utilizarlos a fin de alimentar un algoritmo de entrenamiento de aprendizaje automático o antes de usar los datos en un trabajo de aprendizaje automático. Si faltan datos o hay valores incorrectos, los resultados del análisis de aprendizaje automático resultarán afectados negativamente.
 
 ## <a name="azure-machine-learning-studio"></a>Azure Machine Learning Studio
 
@@ -318,12 +318,11 @@ Se recomienda encarecidamente que instale el plano técnico en una instancia de 
 
 - Obtenga más información sobre el [plano técnico de inteligencia artificial y datos médicos de Azure](/azure/security/blueprints/azure-health?WT.mc_id=ms-docs-dastarr).
 - Descargue, clone o bifurque [aquí el repositorio de GitHub](https://github.com/Azure/Health-Data-and-AI-Blueprint/blob/master/deployment.md).
-- [Machine Learning Studio](/azure/machine-learning/studio/?WT.mc_id=ms-docs-dastarr) es el área de trabajo y la herramienta que los científicos de datos usan para crear los experimentos de Machine Learning. Permite usar algoritmos integrados, widgets de propósito especial y scripts de Python y R.
+- [Machine Learning Studio](/azure/machine-learning/?WT.mc_id=ms-docs-dastarr) es el área de trabajo y la herramienta que los científicos de datos usan para crear los experimentos de Machine Learning. Permite usar algoritmos integrados, widgets de propósito especial y scripts de Python y R.
 - Los secretos, certificados y otros datos privados se mantienen en [Azure Key Vault](/azure/key-vault/key-vault-whatis?WT.mc_id=ms-docs-dastarr).
 - El lenguaje de scripting PowerShell es fundamental para configurar el proyecto, aunque los comandos necesarios se presentan en las instrucciones de instalación.
-- [Azure AI Gallery](https://docs.microsoft.com/en-us/powershell/scripting/powershell-scripting?WT.mc_id=ms-docs-dastarr) ofrece un recetario de soluciones de inteligencia artificial o aprendizaje automático útiles para los clientes organizadas por sector. Existen varias soluciones publicadas por científicos de datos, junto con otros expertos para el sector sanitario.
+- [Azure AI Gallery](https://gallery.azure.ai/) ofrece un recetario de soluciones de inteligencia artificial o aprendizaje automático útiles para los clientes organizadas por sector. Existen varias soluciones publicadas por científicos de datos, junto con otros expertos para el sector sanitario.
 - [Azure Security Center](/azure/security-center/?WT.mc_id=ms-docs-dastarr) proporciona información sobre el comportamiento, las vulnerabilidades y las técnicas de mitigación de su aplicación.
-- La herramienta [Microsoft Threat Modeling Tool](/azure/security/blueprints/azure-health?WT.mc_id=ms-docs-dastarr) se usa para planear y predecir las amenazas para su entorno de sistema. Se necesita para revisar el modelo de amenazas incluido con el plano técnico.
 
 ## <a name="wrapping-up"></a>Resumen
 
