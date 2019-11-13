@@ -270,6 +270,30 @@
               href: retail/sku-optimization-overview.md
             - name: Guía de soluciones
               href: retail/sku-optimization-solution-guide.md
+        - name: Introducción a la administración de datos en el comercio minorista
+          href: retail/retail-data-management-overview.md
+        - name: Introducción a la migración de una solución de comercio electrónico a Azure
+          href: retail/migrating-ecommerce-solution-to-azure.md
+        - name: Optimización y reutilización de un sistema de recomendaciones existente
+          href: retail/recommendation-engine-optimization.md
+        - name: Introducción a Visual Search
+          href: retail/visual-search-use-case-overview.md
+        - name: Azure AI Gallery (minoristas)
+          href: 'https://gallery.azure.ai/industries/retail'
+        - name: Predicción sobre el abandono de clientes (minoristas)
+          href: 'https://gallery.azure.ai/Tutorial/Retail-Customer-Churn-Prediction-1'
+        - name: Procesamiento de pagos compatibles con PCI DSS
+          href: /azure/governance/blueprints/samples/pci-dss-3.2.1/
+          maintainContext: true
+        - name: Azure Cosmos DB en minoristas y marketing
+          href: '/azure/cosmos-db/use-cases#retail-and-marketing'
+          maintainContext: true
+        - name: Previsión de la demanda y optimización de precios
+          href: 'https://gallery.azure.ai/Solution/Demand-Forecasting-and-Price-Optimization'
+          maintainContext: true
+        - name: Solución de optimización de inventario con inteligencia artificial de Azure
+          href: 'https://blogs.technet.microsoft.com/machinelearning/2018/04/05/inventory-optimization-solution-in-the-azure-ai-gallery'
+          maintainContext: true
         - name: Arquitecturas
           items:
             - name: Guía de arquitectura de datos de Azure
@@ -282,46 +306,18 @@
           items:
             - name: Azure Active Directory
               href: /azure/active-directory/
-            - name: Aceleración de la optimización de SKU con Neal Analytics
-              href: /services/analysis-services
             - name: Azure Blob Storage
-              href: /services/storage/blobs
+              href: /azure/storage/blobs/storage-blobs-introduction
             - name: Azure Databricks
-              href: /services/databricks
+              href: /azure/azure-databricks
             - name: Azure Data Factory
-              href: /services/data-factory
-            - name: Aceleración de la optimización de SKU con Neal Analytics
-              href: /azure/machine-learning/service/overview-what-is-azure-ml
+              href: /azure/data-factory
             - name: Azure Machine Learning Workbench
               href: /azure/machine-learning/service/overview-what-happened-to-workbench
-            - name: Azure SQL Data Warehouse
-              href: /services/sql-data-warehouse
+            - name: Azure Synapse Analytics (anteriormente Azure SQL Data Warehouse)
+              href: /azure/sql-data-warehouse
             - name: HDInsight
-              href: /services/hdinsight
+              href: /azure/hdinsight
             - name: Power BI
               href: 'https://powerbi.microsoft.com/'
               maintainContext: true
-        - name: Azure AI Gallery (minoristas)
-          href: 'https://gallery.azure.ai/industries/retail'
-        - name: Predicción sobre el abandono de clientes (minoristas)
-          href: 'https://gallery.azure.ai/Tutorial/Retail-Customer-Churn-Prediction-1'
-        - name: Introducción a la administración de datos en el comercio minorista
-          href: retail/retail-data-management-overview.md
-        - name: Introducción a la migración de una solución de comercio electrónico a Azure
-          href: retail/migrating-ecommerce-solution-to-azure.md
-        - name: Optimización y reutilización de un sistema de recomendación existente
-          href: retail/recommendation-engine-optimization.md
-        - name: Procesamiento de pagos compatibles con PCI DSS
-          href: /azure/governance/blueprints/samples/pci-dss-3.2.1/
-          maintainContext: true
-        - name: Introducción a Visual Search
-          href: retail/visual-search-use-case-overview.md
-        - name: Azure Cosmos DB en minoristas y marketing
-          href: '/azure/cosmos-db/use-cases#retail-and-marketing'
-          maintainContext: true
-        - name: Previsión de la demanda y optimización de precios
-          href: 'https://gallery.azure.ai/Solution/Demand-Forecasting-and-Price-Optimization'
-          maintainContext: true
-        - name: Solución de optimización de inventario con inteligencia artificial de Azure
-          href: 'https://blogs.technet.microsoft.com/machinelearning/2018/04/05/inventory-optimization-solution-in-the-azure-ai-gallery'
-          maintainContext: true
