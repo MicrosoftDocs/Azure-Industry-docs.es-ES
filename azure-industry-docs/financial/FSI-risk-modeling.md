@@ -1,10 +1,17 @@
 ---
-ms.openlocfilehash: cff221055e76d7334793782d19eadd0960712a1f
-ms.sourcegitcommit: 461c520509d53bae1021eebf9733a98edbf71e4d
+title: Guía de soluciones para el fraude en la banca móvil
+description: Explica cómo se puede detectar una transacción fraudulenta en 2 segundos.
+author: mauiguitar
+ms.author: sihiga
+ms.service: industry
+ms.topic: overview
+ms.date: 10/31/2019
+ms.openlocfilehash: c5ea4384d02548e4d681b1c13fd81066a955d6a2
+ms.sourcegitcommit: f42a60539bec2a7769b42b6574f09eed4d1b6c79
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66716858"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73750529"
 ---
 # <a name="enabling-the-financial-services-risk-lifecycle-with-azure-and-r"></a>Habilitación del ciclo de vida de riesgos de los servicios financieros con Azure y R
 
@@ -19,7 +26,7 @@ Un escenario en una empresa dedicada a los mercados de capitales puede tener el 
 
 A través de estos procesos, hay necesidades comunes en torno al modelado de riesgo que incluyen las siguientes:
 
-1.  La necesidad de una experimentación ad hoc relacionada con los riesgos por parte de los analistas de riesgos, los actuarios de una entidad aseguradora o los analistas cuantitativos de una empresa dedicada a los mercados de capitales.
+1. La necesidad de una experimentación ad hoc relacionada con los riesgos por parte de los analistas de riesgos, los actuarios de una entidad aseguradora o los analistas cuantitativos de una empresa dedicada a los mercados de capitales.
     Habitualmente, estos analistas trabajan con herramientas de modelado y código populares en sus dominios: R y Python. Muchos programas de estudios universitarios incluyen cursos de R o Python relacionados con las finanzas matemáticas y en cursos de MBA.
     Ambos lenguajes ofrecen una amplia variedad de bibliotecas de código abierto que admiten los cálculos de riesgos populares. Junto con las herramientas adecuadas, los analistas a menudo necesitan acceso a:
 
@@ -33,40 +40,40 @@ A través de estos procesos, hay necesidades comunes en torno al modelado de rie
 
     e.  Capacidad informática para permitir investigaciones rápidas de datos interactivos.
 
-2.  También pueden usar algoritmos de aprendizaje automático ad hoc para fijar los precios o determinar la estrategia de mercado.
+2. También pueden usar algoritmos de aprendizaje automático ad-hoc para fijar los precios o determinar la estrategia de mercado.
 
-3.  La necesidad de visualizar y presentar datos para usarlos en el planeamiento de productos, la estrategia comercial y análisis similares.
+3. La necesidad de visualizar y presentar los datos para usarlos en el planeamiento de productos, la estrategia comercial y análisis similares.
 
-4.  La ejecución rápida de los modelos definidos, configurados por los analistas, para precios, valoraciones y riesgo de mercado. Las valoraciones usan una combinación de modelado de riesgos dedicada, herramientas de riesgo de mercado y código personalizado. El análisis se ejecuta en un lote con diversos cálculos nocturnos, semanales, mensuales, trimestrales y anuales que generan picos en las cargas de trabajo.
+4. La ejecución rápida de los modelos definidos, configurados por los analistas, para precios, valoraciones y riesgo de mercado. Las valoraciones usan una combinación de modelado de riesgos dedicada, herramientas de riesgo de mercado y código personalizado. El análisis se ejecuta en un lote con diversos cálculos nocturnos, semanales, mensuales, trimestrales y anuales que generan picos en las cargas de trabajo.
 
-5.  La integración de los datos con otras medidas de riesgo empresarial para informes de riesgo consolidados. En las organizaciones más grandes, las estimaciones de riesgo de menor nivel se pueden transferir a una herramienta de informes y modelado de riesgos empresariales.
+5. La integración de los datos con otras medidas de riesgo empresarial para informes de riesgo consolidados. En las organizaciones más grandes, las estimaciones de riesgo de menor nivel se pueden transferir a una herramienta de informes y modelado de riesgos empresariales.
 
-6.  Los resultados se deben informar en un formato definido en el intervalo necesario para satisfacer los requisitos de inversores y los requisitos reglamentarios.
+6. Los resultados se deben informar con un formato definido en el plazo necesario para satisfacer los requisitos de los inversores y los requisitos reglamentarios.
 
 Microsoft respalda las preocupaciones mencionadas a través de una combinación de servicios de Azure y de ofertas de asociados en [Azure Marketplace](https://azuremarketplace.microsoft.com/?WT.mc_id=fsiriskmodelr-docs-scseely). En este artículo, mostramos ejemplos prácticos de cómo realizar una experimentación ad hoc mediante R. Para empezar, explicaremos cómo ejecutar el experimento en una sola máquina y, luego, se mostrará cómo ejecutar el mismo experimento en [Azure Batch](https://docs.microsoft.com/azure/batch/?WT.mc_id=fsiriskmodelr-docs-scseely) y cerraremos mostrando cómo aprovechar los servicios externos en nuestro modelado. Las opciones y consideraciones para la ejecución de modelos definidos en Azure se describen en estos artículos centrados en la [banca](https://docs.microsoft.com/azure/industry/financial/risk-grid-banking-solution-guide?WT.mc_id=fsiriskmodelr-docs-scseely) y los [seguros](https://docs.microsoft.com/azure/industry/financial/actuarial-risk-analysis-and-financial-modeling-solution-guide?WT.mc_id=fsiriskmodelr-docs-scseely).
 
-## <a name="analyst-modelling-in-r"></a>Modelado de analistas en R 
+## <a name="analyst-modelling-in-r"></a>Modelado de analistas en R
 
 Para empezar, examinemos cómo un analista puede usar R en un escenario de mercados de capitales simplificado y representativo. Para crearlo, haga referencia a una biblioteca existente de R para el cálculo o escriba código desde cero. En el ejemplo, también debemos capturar datos externos relacionados con los precios. Para que este ejemplo sea simple, pero ilustrativo, calculamos la posible exposición futura (PFE) de un contrato a plazo de índices bursátiles.
 En este ejemplo se evitan las técnicas de modelado cuantitativo complejas para instrumentos como derivados complejos y se centra en un factor de riesgo único para concentrarse en el ciclo de vida del riesgo. En el ejemplo se hace lo siguiente:
 
-1.  Seleccionar un instrumento de interés.
+1. Seleccionar un instrumento de interés.
 
-2.  Obtener los precios históricos para el instrumento.
+2. Obtener los precios históricos para el instrumento.
 
-3.  Modelar el precio de las acciones mediante un cálculo de Montecarlo (MC) sencillo, que usa el movimiento browniano geométrico (GBM):
+3. Modelar el precio de las acciones mediante un cálculo de Montecarlo (MC) sencillo, que usa el movimiento browniano geométrico (GBM):
 
     a.  Calcular la devolución μ (mu) y la volatilidad σ (theta) esperadas.
 
     b.  Calibrar el modelo según los datos históricos.
 
-4.  Visualizar las diversas rutas para comunicar los resultados.
+4. Visualizar las diversas rutas para comunicar los resultados.
 
-5.  Trazar max(0,Stock Value) para demostrar el significado de PFE, la diferencia respecto del valor en riesgo (VaR).
+5. Trazar max(0,Stock Value) para demostrar el significado de PFE, la diferencia respecto del valor en riesgo (VaR).
 
     a.  Para aclarar: PFE = precio por acción (T) -- precio K del contrato a plazo
 
-6.  Tomar el centil 0,95 para obtener el valor de PFE en cada período o al final del período de simulación
+6. Tomar el cuantil 0,95 para obtener el valor de PFE en cada período o al final del período de simulación.
 
 Se calculará la posible exposición futura de un contrato de participación a futuro en función de las acciones de MSFT. Como ya se mencionó, para modelar los precios de las acciones, se requieren los precios históricos de las acciones de MSFT para poder calibrar el modelo según los datos históricos. Hay muchas maneras de adquirir los precios históricos de las acciones. En el ejemplo, usamos una versión gratuita de un servicio de cotización bursátil de un proveedor de servicios externo, [Quandl](https://www.quandl.com/).
 
@@ -75,15 +82,15 @@ Se calculará la posible exposición futura de un contrato de participación a f
 
 Para procesar los datos y definir el riesgo asociado con el capital, es necesario hacer lo siguiente:
 
-1.  Recuperar datos históricos relacionados con el capital.
+1. Recuperar datos históricos relacionados con el capital.
 
-2.  Determinar la devolución μ y la volatilidad σ esperadas a partir de los datos históricos.
+2. Determinar la devolución μ y la volatilidad σ esperadas a partir de los datos históricos.
 
-3.  Modelar los precios de acciones subyacentes mediante el uso de alguna simulación.
+3. Modelar los precios de acciones subyacentes mediante el uso de alguna simulación.
 
-4.  Ejecutar el modelo.
+4. Ejecutar el modelo.
 
-5.  Determinar la exposición del capital en el futuro.
+5. Determinar la exposición del capital en el futuro.
 
 Para empezar, recuperamos las acciones a partir del servicio de Quandl y trazamos el historial de cotizaciones de cierre de los últimos 180 días.
 
@@ -254,7 +261,7 @@ Ilustración 3: Posible exposición futura del contrato de participación a futu
 
 ## <a name="using-azure-batch-with-r"></a>Uso de Azure Batch con R 
 
-La solución de R descrita anteriormente se puede conectar a Azure Batch y puede aprovechar la nube para realizar los cálculos de riesgos. Esto conlleva un pequeño esfuerzo adicional para realizar un cálculo en paralelo como el nuestro. El tutorial, [Ejecución de una simulación de R en paralelo con Azure Batch](https://docs.microsoft.com/en-us/azure/batch/tutorial-r-doazureparallel?WT.mc_id=fsiriskmodelr-docs-scseely), brinda información detallada sobre cómo conectar R a Azure Batch. A continuación, se muestra el código y un resumen del proceso para conectar a Azure Batch y cómo aprovechar la extensión a la nube en un cálculo de PFE simplificado.
+La solución de R descrita anteriormente se puede conectar a Azure Batch y puede aprovechar la nube para realizar los cálculos de riesgos. Esto conlleva un pequeño esfuerzo adicional para realizar un cálculo en paralelo como el nuestro. El tutorial, [Ejecución de una simulación de R en paralelo con Azure Batch](https://docs.microsoft.com/azure/batch/tutorial-r-doazureparallel?WT.mc_id=fsiriskmodelr-docs-scseely), brinda información detallada sobre cómo conectar R a Azure Batch. A continuación, se muestra el código y un resumen del proceso para conectar a Azure Batch y cómo aprovechar la extensión a la nube en un cálculo de PFE simplificado.
 
 En este ejemplo se aborda el mismo modelo ya descrito. Tal como vimos anteriormente, este cálculo se puede ejecutar en un equipo. Los aumentos en el número de rutas de Montecarlo o el uso de períodos más pequeños generará tiempos de ejecución mucho más largos. Casi todo el código de R seguirá sin cambios. En esta sección se resaltarán las diferencias.
 
@@ -330,23 +337,23 @@ stopCluster(cluster)
 En los dos primeros ejemplos se muestra cómo usar la infraestructura local y en la nube para desarrollar un modelo de valoración apropiado. Este paradigma ha empezado a cambiar. Del mismo modo en que la infraestructura local se ha transformado en servicios de PaaS e IaaS basados en la nube, el modelado de las cifras de riesgos importantes se transforma en un proceso orientado al servicio.
 Actualmente, los analistas enfrentan dos desafíos importantes:
 
-1.  Los requisitos reglamentarios usan una mayor capacidad de proceso para agregar a los requisitos de modelado. Los reguladores piden cifras de riesgos más frecuentes y actualizadas.
+1. Los requisitos reglamentarios usan una mayor capacidad de proceso para agregar a los requisitos de modelado. Los reguladores piden cifras de riesgos más frecuentes y actualizadas.
 
 2.  La infraestructura de riesgo existente ha crecido de manera orgánica con el tiempo y crea desafíos al implementar requisitos nuevos y modelado de riesgos más avanzado de manera ágil.
 
 Los servicios basados en la nube pueden brindar la funcionalidad necesaria y admiten el análisis de riesgos. Este enfoque presenta algunas ventajas:
 
--   Los cálculos de riesgos más comunes que el regulador requiere los debe implementar cualquier usuario sujeto a la reglamentación. Al usar servicios de un proveedor de servicios especializado, el analista se beneficia de los cálculos de riesgos listos para usar y que cumplen con las reglamentaciones. Dichos servicios pueden incluir los cálculos de riesgo de mercado, los cálculos de riesgo de contraparte, el ajuste del valor X (XVA) e, incluso, los cálculos de la Revisión fundamental de la carrera de negociación (FRTB).
+-  Los cálculos de riesgos más comunes que el regulador requiere los debe implementar cualquier usuario sujeto a la reglamentación. Al usar servicios de un proveedor de servicios especializado, el analista se beneficia de los cálculos de riesgos listos para usar y que cumplen con las reglamentaciones. Dichos servicios pueden incluir los cálculos de riesgo de mercado, los cálculos de riesgo de contraparte, el ajuste del valor X (XVA) e, incluso, los cálculos de la Revisión fundamental de la carrera de negociación (FRTB).
 
--   Estos servicios exponen sus interfaces a través de los servicios web. Estos otros servicios pueden ampliar la infraestructura de riesgo existente.
+- Estos servicios exponen sus interfaces a través de los servicios web. Estos otros servicios pueden ampliar la infraestructura de riesgo existente.
 
 En el ejemplo, queremos invocar un servicio basado en la nube para realizar los cálculos de FRTB. Varios de estos se pueden encontrar en [AppSource](https://appsource.microsoft.com/?WT.mc_id=fsiriskmodelr-docs-scseely). Para este artículo, elegimos una opción de evaluación de [Vector Risk](http://www.vectorrisk.com/). Seguiremos modificando el sistema. Esta vez, usaremos un servicio para calcular la cifra de riesgo de interés. Este proceso consta de los pasos siguientes:
 
-1.  Llamar al servicio de riesgo pertinente con los parámetros adecuados.
+1. Llamar al servicio de riesgo pertinente con los parámetros adecuados.
 
-2.  Esperar hasta que el servicio termine el cálculo.
+2. Esperar hasta que el servicio termine el cálculo.
 
-3.  Recuperar e incorporar los resultados en el análisis de riesgos.
+3. Recuperar e incorporar los resultados en el análisis de riesgos.
 
 Traducido al código de R, el código de R se puede mejorar con la definición de los valores de entrada necesarios a partir de una plantilla de entrada preparada.
 
@@ -428,13 +435,12 @@ El acceso flexible a la nube a través de una infraestructura de proceso y los s
 
 ### <a name="tutorials"></a>Tutoriales
 
+- Desarrolladores de R: [Ejecución de una simulación de R paralela con Azure Batch](https://docs.microsoft.com/azure/batch/tutorial-r-doazureparallel?WT.mc_id=fsiriskmodelr-docs-scseely)
 
--   Desarrolladores de R: [Ejecución de una simulación de R paralela con Azure Batch](https://docs.microsoft.com/azure/batch/tutorial-r-doazureparallel?WT.mc_id=fsiriskmodelr-docs-scseely)
+- [Comandos básicos de R y funciones de RevoScaleR: 25 ejemplos comunes](https://docs.microsoft.com/machine-learning-server/r/tutorial-r-to-revoscaler?WT.mc_id=fsiriskmodelr-docs-scseely)
 
--   [Comandos básicos de R y funciones de RevoScaleR: 25 ejemplos comunes](https://docs.microsoft.com/machine-learning-server/r/tutorial-r-to-revoscaler?WT.mc_id=fsiriskmodelr-docs-scseely)
+- [Visualización y análisis de datos mediante RevoScaleR](https://docs.microsoft.com/machine-learning-server/r/tutorial-revoscaler-data-model-analysis?WT.mc_id=fsiriskmodelr-docs-scseely)
 
--   [Visualize and analyze data using RevoScaleR](https://docs.microsoft.com/machine-learning-server/r/tutorial-revoscaler-data-model-analysis?WT.mc_id=fsiriskmodelr-docs-scseely) (Visualización y análisis de datos mediante RevoScaleR)
-
--   [Introducción a las funcionalidades de ML Services y R de código abierto en HDInsight](https://docs.microsoft.com/azure/hdinsight/r-server/r-server-overview?WT.mc_id=fsiriskmodelr-docs-scseely)
+- [Introducción a las funcionalidades de ML Services y R de código abierto en HDInsight](https://docs.microsoft.com/azure/hdinsight/r-server/r-server-overview?WT.mc_id=fsiriskmodelr-docs-scseely)
 
 _Artículo escrito por el Dr. Darko Mocelj y Rupert Nicolay._

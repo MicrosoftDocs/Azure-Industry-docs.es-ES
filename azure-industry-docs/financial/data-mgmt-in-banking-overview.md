@@ -2,16 +2,16 @@
 title: Introducción a la administración de datos en la banca
 author: dstarr
 ms.author: dastarr
-ms.date: 05/21/2018
+ms.date: 10/30/2019
 ms.topic: article
 ms.service: industry
 description: Describe las técnicas de administración de datos en un entorno bancario regulado mediante Microsoft Azure.
-ms.openlocfilehash: 69b0abfc4908431397e47752bcbe56a440703406
-ms.sourcegitcommit: 76f2862adbec59311b5888e043a120f89dc862af
+ms.openlocfilehash: 1314054018c04e45b6450604febbf0142ead380d
+ms.sourcegitcommit: f42a60539bec2a7769b42b6574f09eed4d1b6c79
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "51654252"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73750535"
 ---
 # <a name="data-management-in-banking-overview"></a>Introducción a la administración de datos en la banca
 
@@ -49,7 +49,7 @@ En este artículo se brindan técnicas recomendadas para garantizar la entrada e
 
 ## <a name="data-ingest"></a>Ingesta de datos
 
-Las instituciones financieras tendrán datos ya recopilados y usados por las aplicaciones actuales. Hay varias opciones para mover estos datos a Azure. En muchos casos, las aplicaciones existentes pueden conectarse a datos en Azure del mismo modo que si estuvieran en el entorno local, con un mínimo de cambios en esas aplicaciones existentes. Esto es especialmente cierto cuando se usa Microsoft [Azure SQL Database](/azure/sql-database/?WT.mc_id=bankdm-docs-dastarr), pero en [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/databases?WT.mc_id=bankdm-docs-dastarr) se pueden encontrar soluciones para Oracle, TeraData MongoDB, etc.
+Las instituciones financieras tendrán datos ya recopilados y usados por las aplicaciones actuales. Hay varias opciones para mover estos datos a Azure. En muchos casos, las aplicaciones existentes pueden conectarse a datos en Azure del mismo modo que si estuvieran en el entorno local, con un mínimo de cambios en esas aplicaciones existentes. Esto es especialmente cierto cuando se usa Microsoft [Azure SQL Database](/azure/sql-database/?WT.mc_id=bankdm-docs-dastarr), pero en [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/databases?WT.mc_id=bankdm-docs-dastarr) se pueden encontrar soluciones para Oracle, TeraData MongoDB, etc.
 
 Existen distintas estrategias de migración de datos para trasladar datos desde el entorno local a Azure con distintos grados de latencia. Todas las técnicas a las que se hace referencia a continuación brindan transparencia de los datos y seguridad confiable.
 
@@ -78,11 +78,11 @@ Hay muchas maneras de transferir datos a Azure de manera segura y rápida. [Cons
 
 ### <a name="azure-database-migration-service"></a>Azure Database Migration Service
 
-Cuando se usa la migración mediante lift-and-shift de bases de datos de SQL Server, se puede usar [Microsoft Azure Database Migration Service](/azure/dms/dms-overview?WT.mc_id=bankdm-docs-dastarr) para mover las bases de datos a Azure. El servicio usa [Data Migration Assistant](https://docs.microsoft.com/en-us/sql/dma/dma-overview?WT.mc_id=bankdm-docs-dastarr) para asegurarse de que la base de datos local sea compatible con las características que se ofrecen en Azure SQL. Cualquier cambio necesario antes de migrar la base de datos depende del usuario. Además, el uso del servicio requiere una conexión a Internet de sitio a sitio entre la red local y Azure.
+Cuando se usa la migración mediante lift-and-shift de bases de datos de SQL Server, se puede usar [Microsoft Azure Database Migration Service](/azure/dms/dms-overview?WT.mc_id=bankdm-docs-dastarr) para mover las bases de datos a Azure. El servicio usa [Data Migration Assistant](https://docs.microsoft.com/sql/dma/dma-overview?WT.mc_id=bankdm-docs-dastarr) para asegurarse de que la base de datos local sea compatible con las características que se ofrecen en Azure SQL. Cualquier cambio necesario antes de migrar la base de datos depende del usuario. Además, el uso del servicio requiere una conexión a Internet de sitio a sitio entre la red local y Azure.
 
 ### <a name="bulk-copy-program-for-sql-server"></a>Programa de copia masiva para SQL Server
 
-Si SQL Server está actualmente en el entorno local y el objetivo es migrar a SQL Azure, otra excelente técnica es usar SQL Server Management Studio [y la utilidad de BCP para migrar datos](https://azure.microsoft.com/en-us/blog/bcp-and-sql-azure/?WT.mc_id=bankdm-docs-dastarr) a SQL Azure. Después del scripting y la creación de bases de datos SQL de Azure a partir del servidor local original, se puede usar BCP para transferir rápidamente datos a SQL Azure.
+Si SQL Server está actualmente en el entorno local y el objetivo es migrar a SQL Azure, otra excelente técnica es usar SQL Server Management Studio [y la utilidad de BCP para migrar datos](https://azure.microsoft.com/blog/bcp-and-sql-azure/?WT.mc_id=bankdm-docs-dastarr) a SQL Azure. Después del scripting y la creación de bases de datos de Azure SQL a partir del servidor local original, se puede usar BCP para transferir rápidamente datos a SQL Azure.
 
 ### <a name="blob-and-file-storage"></a>Blob Storage y Files Storage
 
@@ -116,7 +116,7 @@ Otra ventaja de migrar a Files Storage es centralizar la administración de los 
 
 A menudo, los bancos tendrán terabytes (si no petabytes) de información que traer a Azure. Por suerte, los almacenes de datos en Azure son muy elásticos y altamente escalables.
 
-Un servicio centrado en migran grandes volúmenes de datos a Azure es [Azure Data Box](https://azure.microsoft.com/en-us/services/storage/databox/?WT.mc_id=bankdm-docs-dastarr). Este servicio está diseñado para migrar datos sin transferir los datos ni las copias de seguridad a través de una conexión de Azure. Adecuado para terabytes de datos, Azure Data Box es un dispositivo que se puede pedir en Azure Portal. Se envía a su ubicación, donde lo puede conectar en la red y cargar con datos a través de protocolos NAS estándar y protegido mediante cifrado AES de 256 bits estándar. Una vez que los datos están en el dispositivo, se envían de vuelta al centro de datos de Azure donde los datos se hidrata en Azure.
+Un servicio centrado en migran grandes volúmenes de datos a Azure es [Azure Data Box](https://azure.microsoft.com/services/storage/databox/?WT.mc_id=bankdm-docs-dastarr). Este servicio está diseñado para migrar datos sin transferir los datos ni las copias de seguridad a través de una conexión de Azure. Adecuado para terabytes de datos, Azure Data Box es un dispositivo que se puede pedir en Azure Portal. Se envía a su ubicación, donde lo puede conectar en la red y cargar con datos a través de protocolos NAS estándar y protegido mediante cifrado AES de 256 bits estándar. Una vez que los datos están en el dispositivo, se envían de vuelta al centro de datos de Azure donde los datos se hidrata en Azure.
 Luego, el dispositivo se borra de manera segura.
 
 ## <a name="azure-information-protection"></a>Azure Information Protection
@@ -185,7 +185,7 @@ Aquí, la nube ofrece nuevas oportunidades que no está disponibles actualmente 
 
 Una vez que se familiarice con el modelo de datos nuevo, determine una estrategia para la ingesta de datos. ¿Qué orígenes de datos existen? ¿Dónde residirán los datos en Azure? ¿Cómo y cuándo se migrarán a Azure? Aquí hay varios recursos disponibles para ayudar en la migración según el tipo de contenido, el tamaño, etc. Azure Data Migration Service es ejemplo de aquello.
 
-Una vez que los datos estén hospedados en Azure, cree un plan de purga de datos para los datos que han sobrevivido a su utilidad o duración. Si bien el almacenamiento a largo plazo (en frío) siempre es una excelente opción para el archivado, limpiar los datos expirados disminuye la superficie y los costos de almacenamiento general. La copia de seguridad y archivado de las [arquitecturas de la solución de Azure](https://azure.microsoft.com/en-us/solutions/architecture/?solution=backup-archive?WT.mc_id=bankdm-docs-dastarr) es un recurso ideal para ayudarlo a planear su estrategia global.
+Una vez que los datos estén hospedados en Azure, cree un plan de purga de datos para los datos que han sobrevivido a su utilidad o duración. Si bien el almacenamiento a largo plazo (en frío) siempre es una excelente opción para el archivado, limpiar los datos expirados disminuye la superficie y los costos de almacenamiento general. La copia de seguridad y archivado de las [arquitecturas de la solución de Azure](https://azure.microsoft.com/solutions/architecture/?solution=backup-archive?WT.mc_id=bankdm-docs-dastarr) es un recurso ideal para ayudarlo a planear su estrategia global.
 
 ## <a name="relevant-technologies"></a>Tecnologías relevantes
 
@@ -207,6 +207,6 @@ Azure puede ayudar con los requisitos de ingesta de datos, procesamiento, archiv
 
 Operar y actuar en función de esos datos puede ser algo sencillo con servicios de Azure como Databricks y Data Factory. El almacenamiento de archivo está disponible para el almacenamiento a largo plazo de datos a los que rara vez se accede y se puede eliminar según un ciclo continuo cuando sea necesario.
 
-Visite la biblioteca de soluciones de Azure para información sobre la [copia de seguridad y el almacenamiento de archivo](https://azure.microsoft.com/en-us/solutions/architecture/?solution=backup-archive?WT.mc_id=bankdm-docs-dastarr) con el fin de empezar a diseñar el plan de administración de datos.
+Visite la biblioteca de soluciones de Azure para información sobre la [copia de seguridad y el almacenamiento de archivo](https://azure.microsoft.com/solutions/architecture/?solution=backup-archive?WT.mc_id=bankdm-docs-dastarr) con el fin de empezar a diseñar el plan de administración de datos.
 
-**Artículo de** Howard Bush y David Starr
+**Artículo de**: Howard Bush y David Starr
