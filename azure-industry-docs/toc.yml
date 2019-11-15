@@ -135,14 +135,6 @@
               href: manufacturing/predictive-maintenance-overview.md
             - name: Guía de soluciones
               href: manufacturing/predictive-maintenance-solution.md
-            - name: Recursos adicionales
-              items:
-                - name: Documentación de Azure Machine Learning
-                  href: /azure/machine-learning
-                - name: Arquitectura de solución de Microsoft IoT
-                  href: /azure/iot-suite/iot-suite-what-is-azure-iot
-                - name: Fundamentos de calidad del software
-                  href: /azure/architecture/guide/pillars
         - name: Extracción de información de los datos de IoT
           items:
             - name: Información general
@@ -153,6 +145,12 @@
           items:
             - name: Guía de arquitectura de datos de Azure
               href: /azure/architecture
+            - name: Modelos de diseño en la nube
+              href: /azure/architecture/patterns
+            - name: Informática de alto rendimiento (HPC) en Azure
+              href: /azure/architecture/topics/high-performance-computing
+            - name: Canalización de procesamiento de flujos de datos con Azure Databricks
+              href: /azure/architecture/reference-architectures/data/stream-processing-databricks
         - name: Cursos
           items:
             - name: 'Creación de un flujo de trabajo automatizado, periódico y basado en una programación mediante Azure Logic Apps'
@@ -177,6 +175,12 @@
               href: 'https://microsoft.github.io/PowerBI-JavaScript/demo/v2-demo/index.html'
         - name: Recursos adicionales
           items:
+            - name: Documentación de Azure Machine Learning
+              href: /azure/machine-learning
+            - name: Arquitectura de solución de Microsoft IoT
+              href: /azure/iot-suite/iot-suite-what-is-azure-iot
+            - name: Fundamentos de calidad del software
+              href: /azure/architecture/guide/pillars
             - name: Apache Kafka en HDInsight
               href: /azure/hdinsight/kafka/apache-kafka-introduction
             - name: App Service
