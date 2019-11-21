@@ -1,17 +1,17 @@
 ---
-title: Industria Ciencias biosanitarias
+title: 'Azure para la industria: Ciencias biosanitarias'
 author: dstarr
 ms.author: dastarr
-ms.date: 11/07/2019
+ms.date: 11/20/2019
 ms.topic: article
 ms.service: industry
 description: Casos de uso de la industria Ciencias biosanitarias de Azure Industry Experiences
-ms.openlocfilehash: 1cdb2710de86c07a386728de04836c5813a46566
-ms.sourcegitcommit: 385e99900bc20950f02a63c885facc1cf62c49df
+ms.openlocfilehash: b4bb5036a3d9781f46e7253c037f1c8b2784ef90
+ms.sourcegitcommit: b8f9ccc4e4453d6912b05cdd6cf04276e13d7244
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73845637"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74263469"
 ---
 # <a name="health--life-sciences"></a>Ciencias biosanitarias
 
