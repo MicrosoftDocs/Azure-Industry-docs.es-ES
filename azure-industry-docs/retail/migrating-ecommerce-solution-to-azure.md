@@ -1,17 +1,17 @@
 ---
 title: Introducción a la migración de una solución de comercio electrónico a Azure
 author: scseely
-ms.author: scseely, mazoroto
-ms.date: 07/16/2018
+ms.author: scseely
+ms.date: 11/20/2019
 ms.topic: article
 ms.service: industry
 description: En este artículo se explican las fases de migración de la infraestructura de comercio electrónico del entorno local a Azure.
-ms.openlocfilehash: a440eabad6a1367ed8219c01424d21d22e441b16
-ms.sourcegitcommit: 20b001b9fb51b944ae82bf55d2d670aa852fa64b
+ms.openlocfilehash: e918f1157dc2bc42a6c4d0decfef95a8daa7ccf0
+ms.sourcegitcommit: b8f9ccc4e4453d6912b05cdd6cf04276e13d7244
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52297958"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74263354"
 ---
 # <a name="migrating-your-e-commerce-solution-to-azure-overview"></a>Introducción a la migración de una solución de comercio electrónico a Azure
 
@@ -120,7 +120,7 @@ Luego, eche un vistazo a las ofertas que existen en [Azure Marketplace](https://
 
 Muchos equipos de desarrollo se ven tentados a realizar al mismo tiempo las etapas de rehospedaje y refactorización para abordar la deuda técnica y aprovechar mejor la capacidad. Hay ventajas si se realiza el rehospedaje antes de pasar a los pasos siguientes.  Cualquier problema en la implementación en el entorno nuevo será más fácil de diagnosticar y corregir. A su vez, esto brinda a los equipos de desarrollo y soporte técnico el tiempo necesario para aprender a usar Azure como el entorno nuevo. Cuando empieza a refactorizar y recompilar el sistema, se basa en una aplicación funcional y estable. Esto permite realizar cambios más pequeños y dirigidos y actualizaciones más frecuentes.
 
-Hemos publicado un documento más general sobre la migración a la nube: [Cloud Migration Essentials](https://azure.microsoft.com/resources/cloud-migration-essentials-e-book/?_lrsc=9618a836-9f81-4087-901f-51058783c3a8&WT.mc_id=retailecomm-docs-scseely) (Aspectos fundamentales sobre la migración a la nube). Es un artículo excelente para leer mientras planea la migración.
+Hemos publicado un documento más general sobre la migración a la nube: [Aspectos fundamentales sobre la migración a la nube](https://azure.microsoft.com/resources/cloud-migration-essentials-e-book/?_lrsc=9618a836-9f81-4087-901f-51058783c3a8&WT.mc_id=retailecomm-docs-scseely). Es un artículo excelente para leer mientras planea la migración.
 
 ## <a name="technologies-presented"></a>Tecnologías presentadas
 

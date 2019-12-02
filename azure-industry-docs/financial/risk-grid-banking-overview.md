@@ -1,17 +1,17 @@
 ---
-title: Introducción a la computación en malla de riesgos en la banca
+title: Análisis de riesgos de la computación en malla con Azure Batch y Azure Data Lake
 author: dstarr
 ms.author: dastarr
-ms.date: 04/12/2018
+ms.date: 11/20/2019
 ms.topic: article
 ms.service: industry
 description: Presenta las consideraciones de negocio de la implementación de la computación en malla de riesgos de la banca en Azure.
-ms.openlocfilehash: 49d3d5223bee85689043d84eb5236cca4f53fc03
-ms.sourcegitcommit: 76f2862adbec59311b5888e043a120f89dc862af
+ms.openlocfilehash: 746b93e545aa8ff61a8fab4a021b6c5caa1889bb
+ms.sourcegitcommit: f030566b177715794d2ad857b150317e72d04d64
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "51654182"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74234659"
 ---
 # <a name="risk-grid-computing-in-banking-overview"></a>Introducción a la computación en malla de riesgos en la banca
 
@@ -86,7 +86,7 @@ Junto con un uso eficaz de los recursos, esta organización proporciona otras ve
 
 Para los momentos en que se necesita más capacidad de proceso, como las valoraciones trimestrales, la capacidad adicional también puede provenir del escalado automático de Azure Batch. El escalado automático proporciona elasticidad a la solución de Batch. Al escalar los recursos para que se ajusten a la carga necesaria, Azure proporciona una capacidad significativamente mayor a un costo más bajo que el de poseer el hardware.
 
-La mayoría de los productos comerciales de cuadrícula admiten alguna forma de ráfaga a la nube, lo que permite pruebas de concepto más fáciles para la carga de análisis de riesgos. Por ejemplo, [Microsoft HPC Pack](/azure/virtual-machines/windows/hpcpack-cluster-options?WT.mc_id=gridbank-docs-dastarr) se puede ejecutar en Azure, al igual que los productos de empresas como TIBCO, Univa y otros. Muchas de estas herramientas o sistemas de terceros están disponibles en [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/?WT.mc_id=gridbank-docs-dastarr).
+La mayoría de los productos comerciales de cuadrícula admiten alguna forma de ráfaga a la nube, lo que permite pruebas de concepto más fáciles para la carga de análisis de riesgos. Por ejemplo, [Microsoft HPC Pack](/azure/virtual-machines/windows/hpcpack-cluster-options?WT.mc_id=gridbank-docs-dastarr) se puede ejecutar en Azure, al igual que los productos de empresas como TIBCO, Univa y otros. Muchas de estas herramientas o sistemas de terceros están disponibles en [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/?WT.mc_id=gridbank-docs-dastarr).
 
 ### <a name="migrating-additional-resources-to-the-cloud"></a>Migración de recursos adicionales a la nube
 

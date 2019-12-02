@@ -1,17 +1,17 @@
 ---
-title: Optimización del motor de recomendaciones
+title: Reutilización de los sistemas de recomendación y los algoritmos de R con Azure
 author: kbaroni
 ms.author: kbaroni
-ms.date: 07/18/2018
+ms.date: 11/20/2019
 ms.topic: article
 ms.service: industry
 description: Reutilización y optimización de aplicaciones de recomendaciones escritas con el lenguaje R. Basa Machine Learning Server en una máquina virtual de Azure.
-ms.openlocfilehash: bce6d7df548e7bd80d73495dc0bec642817d8641
-ms.sourcegitcommit: 76f2862adbec59311b5888e043a120f89dc862af
+ms.openlocfilehash: c5c35de681abc52641952f8bc9e95095b9d99d97
+ms.sourcegitcommit: b8f9ccc4e4453d6912b05cdd6cf04276e13d7244
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "51654262"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74263490"
 ---
 # <a name="optimize-and-reuse-an-existing-recommendation-system"></a>Optimización y reutilización de un sistema de recomendaciones existente  
 
@@ -19,8 +19,8 @@ En este documento se describe el proceso de reutilizar y mejorar correctamente u
 
 ## <a name="recommendation-systems-and-r"></a>Sistemas de recomendaciones y R
 
-Para un comerciante minorista, entender las preferencias del consumidor y el historial de compras es una ventaja competitiva. Los minoristas han usado dichos datos durante años, en combinación con el aprendizaje automático, para identificar los productos pertinentes para el consumidor y brindar una experiencia de compra personalizada. El enfoque se denomina **recomendación de productos** y genera un flujo de ingresos importante para los minoristas. Los sistemas de recomendaciones ayudan a responder preguntas tales como: *¿Qué película será la próxima que vea esta persona? ¿En qué servicios adicionales es probable que esté interesado este cliente? ¿Adónde le gustaría ir a este cliente en vacaciones?*
-Recientemente, un cliente quería saber lo siguiente: *¿Los consumidores (suscriptores) renovarán sus contratos?* El cliente tenía un modelo de recomendación existente que podría prever la probabilidad de que un suscriptor renovara un contrato. Una vez que se generaba la previsión, se aplicaba un procesamiento adicional para clasificar una respuesta en sí, no o quizás. Luego, la respuesta del modelo se integraba en un proceso de negocio de un centro de llamadas. Ese proceso habilitada un agente de servicio para entregar una recomendación personalizada al consumidor.  
+Para un comerciante minorista, entender las preferencias del consumidor y el historial de compras es una ventaja competitiva. Los minoristas han usado dichos datos durante años, en combinación con el aprendizaje automático, para identificar los productos pertinentes para el consumidor y brindar una experiencia de compra personalizada. El enfoque se denomina **recomendación de productos** y genera un flujo de ingresos importante para los minoristas. Los sistemas de recomendación ayudan a responder a preguntas como: *¿Qué película verá esta persona a continuación? ¿En qué servicios adicionales es probable que esté interesado este cliente? ¿Adónde le gustaría ir a este cliente en vacaciones?*
+Un cliente reciente quería saber: *¿Renovarán los consumidores (suscriptores) sus contratos?* El cliente tenía un modelo de recomendación existente que podría prever la probabilidad de que un suscriptor renovara un contrato. Una vez que se generaba la previsión, se aplicaba un procesamiento adicional para clasificar una respuesta en sí, no o quizás. Luego, la respuesta del modelo se integraba en un proceso de negocio de un centro de llamadas. Ese proceso habilitada un agente de servicio para entregar una recomendación personalizada al consumidor.  
 Muchos de los primeros productos de análisis de este cliente se crearon en el [lenguaje de programación R](https://docs.microsoft.com/machine-learning-server/rebranding-microsoft-r-server), incluido el modelo de Machine Learning en el centro del sistema de recomendaciones. A medida que ha crecido su base de suscriptores, también lo han hecho los requisitos de datos y proceso. Tanto es así que la carga de trabajo de recomendaciones ahora resulta tremendamente lenta y engorrosa de procesar. Ahora, Python forma cada vez más parte de su estrategia de productos de análisis. Pero, en el corto plazo, necesitan conservar su inversión en R y encontrar un proceso de desarrollo e implementación más eficaz. El desafío era optimizar el enfoque existente mediante las funcionalidades de Azure. Nos embarcamos entonces en una tarea para brindar y validar una pila de tecnología de prueba de concepto para la carga de trabajo de recomendaciones. Este documento resumen un enfoque general que se puede usar para proyectos similares.  
 
 ## <a name="design-goals"></a>Diseño de objetivos
@@ -64,7 +64,7 @@ MLS se implementó en dos máquinas virtuales Linux en Azure: una configurada pa
 
 **[RStudio Server](https://www.rstudio.com/products/rstudio/#Server)** es una aplicación Linux que brinda una interfaz basada en explorador para clientes remotos o portátiles. Se ejecuta en el puerto 8787 y está disponible para las conexiones remotas una vez que se crea una regla de seguridad de red en la máquina virtual de Azure. Para los analistas y los científicos de datos que prefieren el IDE de RStudio, puede ser una opción eficaz para brindar acceso a una máquina virtual con una gran capacidad de memoria y proceso. Está disponible para descarga tanto en su edición de origen como comercial.
 
-### <a name="azure-sql-database"></a>Azure SQL Database
+### <a name="azure-sql-database"></a>Azure SQL Database
 
 Originalmente, los datos de suscriptor se almacenaban en un archivo .csv muy grande con 6 millones de filas de información sobre compras y preferencias de 500 suscriptores únicos. Almacenar los datos en una base de datos significaba un acceso más rápido a los datos desde R y permitía filtrar las lecturas. Ya no sería necesario importar todo el conjunto de datos para entrenamiento o reentrenamiento: los datos se filtrarían por suscriptor en el origen de la base de datos, lo que reduciría considerablemente los recursos necesarios para importar y procesar los datos.  
 Hay varias opciones de bases de datos en la nube administradas en Azure. Se seleccionó [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/) debido a la familiaridad del cliente con SQL Server y, lo que es más importante, a planes a futuros para introducir SQL Server Machine Learning Services en una escala más amplia en Azure SQL Database. [SQL Server Machine Learning Services](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning?view=sql-server-2017) son las funcionalidades en la base de datos para ejecutar cargas de trabajo de R y Python a través de procedimientos almacenados.
@@ -114,7 +114,7 @@ La máquina virtual de desarrollo hospeda el desarrollo, el entrenamiento y el r
 
 ### <a name="operations-vm-mls-930"></a>Máquina virtual de operaciones (MLS 9.3.0)
 
-La máquina virtual de operaciones hospedaba los puntos de conexión y los servicios web del modelo, almacenaba los archivos de Swagger y las versiones serializadas de los modelos de clasificación. La configuración es muy similar al servidor de desarrollo de MLS. Sin embargo, se configura para la operacionalización, lo que significa que se instalan los servicios web necesarios para atender los puntos de conexión REST. Para implementar la máquina virtual de operaciones, hay plantillas de ARM que hacen que la implementación se realice de manera rápida. Consulte: [Configuring Microsoft Machine Learning Server 9.3 to Operationalize Analytics using ARM Templates](https://blogs.msdn.microsoft.com/mlserver/2018/02/27/configuring-microsoft-machine-learning-server-9-3-to-operationalize-analytics-using-arm-templates/) (Configuración de Microsoft Machine Learning Server 9.3 para operacionalizar el análisis mediante plantillas de ARM). Para nuestro proyecto, se implementó una configuración *One-Box* mediante esta [plantilla de ARM](https://github.com/Microsoft/microsoft-r/tree/master/mlserver-arm-templates/one-box-configuration/linux).  
+La máquina virtual de operaciones hospedaba los puntos de conexión y los servicios web del modelo, almacenaba los archivos de Swagger y las versiones serializadas de los modelos de clasificación. La configuración es muy similar al servidor de desarrollo de MLS. Sin embargo, se configura para la operacionalización, lo que significa que se instalan los servicios web necesarios para atender los puntos de conexión REST. Para implementar la máquina virtual de operaciones, hay plantillas de ARM que hacen que la implementación se realice de manera rápida. Consulte: [Configuración de Microsoft Machine Learning Server 9.3 para operacionalizar el análisis mediante plantillas de ARM](https://blogs.msdn.microsoft.com/mlserver/2018/02/27/configuring-microsoft-machine-learning-server-9-3-to-operationalize-analytics-using-arm-templates/). Para nuestro proyecto, se implementó una configuración *One-Box* mediante esta [plantilla de ARM](https://github.com/Microsoft/microsoft-r/tree/master/mlserver-arm-templates/one-box-configuration/linux).  
 Con esto, los componentes de servidor para admitir la canalización del modelo estaban listos para empezar.
 
 ## <a name="model-implementation"></a>Implementación del modelo
@@ -123,7 +123,7 @@ Una decisión clave que influyó en el diseño del modelo final para el proyecto
 
 ### <a name="data-import"></a>Importación de datos
 
-Todos los datos necesarios para la implementación del modelo residían en una instancia de *Azure SQL Database*. Para el entrenamiento y el reentrenamiento del modelo, la importación de datos se realizó en dos etapas:
+Todos los datos necesarios para la implementación del modelo residían en una *base de datos de Azure SQL*. Para el entrenamiento y el reentrenamiento del modelo, la importación de datos se realizó en dos etapas:
 
 1. Se envió una consulta a la base de datos para recuperar datos para un *subscriber_id* específico y se devolvió un conjunto de resultados. Se tomaron en cuenta dos opciones para el acceso de la consulta a la base de datos:
 
@@ -195,7 +195,7 @@ En nuestro escenario, una vez que se crearon los modelos en la máquina virtual 
 }
  ````
 
-Al implementarlos, los modelos se serializan y almacenan en el servidor de operaciones y se pueden consumir a través de servicios web en modo *estándar* o *en tiempo real*. Cada vez que se llama a un servicio web con el modo estándar, con cada llamada se carga y descarga R y cualquier biblioteca necesaria. Por el contrario, con el modo *en tiempo real*, R y las bibliotecas se cargan solo una vez y se vuelven a usar para llamadas subsiguientes de servicio web. Dado que la mayor parte de la sobrecarga con una llamada de servicio web es la carga de R y las bibliotecas, el modo en tiempo real ofrece una latencia mucho menor para la puntuación del modelo y los tiempos de respuesta pueden ser menores a los 10 ms. Consulte [aquí](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services) ejemplos de referencia y documentación sobre las opciones estándar y en tiempo real. El modo en tiempo real se presta bien para predicciones únicas, pero también puede pasar una trama de datos de entrada para la puntuación. Eso se describe en esta referencia: [Asynchronous web service consumption via batch processing with mrsdeploy](https://docs.microsoft.com/machine-learning-server/operationalize/how-to-consume-web-service-asynchronously-batch) (Consumo de servicio web asincrónico a través del procesamiento por lotes con mrsdeploy).
+Al implementarlos, los modelos se serializan y almacenan en el servidor de operaciones y se pueden consumir a través de servicios web en modo *estándar* o *en tiempo real*. Cada vez que se llama a un servicio web con el modo estándar, con cada llamada se carga y descarga R y cualquier biblioteca necesaria. Por el contrario, con el modo *en tiempo real*, R y las bibliotecas se cargan solo una vez y se vuelven a usar para llamadas subsiguientes de servicio web. Dado que la mayor parte de la sobrecarga con una llamada de servicio web es la carga de R y las bibliotecas, el modo en tiempo real ofrece una latencia mucho menor para la puntuación del modelo y los tiempos de respuesta pueden ser menores a los 10 ms. Consulte [aquí](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services) ejemplos de referencia y documentación sobre las opciones estándar y en tiempo real. El modo en tiempo real se presta bien para predicciones únicas, pero también puede pasar una trama de datos de entrada para la puntuación. Se describe en esta referencia: [Consumo de servicio web asincrónico a través del procesamiento por lotes con mrsdeploy](https://docs.microsoft.com/machine-learning-server/operationalize/how-to-consume-web-service-asynchronously-batch).
 
 ## <a name="conclusion"></a>Conclusión
 

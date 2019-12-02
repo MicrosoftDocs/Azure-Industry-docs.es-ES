@@ -1,17 +1,17 @@
 ---
-title: Implementación del plano técnico de Azure para inteligencia artificial
+title: Implementación del plano técnico de inteligencia artificial para el sector sanitario
 author: dstarr
 ms.author: dastarr
-ms.date: 11/07/2019
+ms.date: 11/20/2019
 ms.topic: article
 ms.service: industry
 description: En este artículo se ofrece orientación para el plano técnico de Microsoft Azure para inteligencia artificial.
-ms.openlocfilehash: 845ec2a1da335336375d90c789e0fa89bc70d23a
-ms.sourcegitcommit: 385e99900bc20950f02a63c885facc1cf62c49df
+ms.openlocfilehash: 40919ffde2c2cac11339b40348cba7a5e0e0e16d
+ms.sourcegitcommit: 2714a77488c413f01beb169a18acab45663bcfd7
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73845628"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74308507"
 ---
 # <a name="implementing-the-azure-blueprint-for-ai"></a>Implementación del plano técnico de Azure para inteligencia artificial
 
@@ -162,7 +162,7 @@ La instalación del plano técnico de Azure no incluye más servicios de los nec
 
 Tiene la posibilidad de incorporar nuevos recursos a la solución, como [Cosmos DB](/azure/cosmos-db/introduction?WT.mc_id=ms-docs-dastarr) o una nueva instancia de [Azure Functions](/azure/azure-functions/functions-overview?WT.mc_id=ms-docs-dastarr), a medida que se necesiten nuevas funciones de Azure. Al agregar nuevos recursos o servicios, asegúrese de que están configurados para cumplir las directivas de seguridad y privacidad para mantener la conformidad con las normativas y la directiva.
 
-Los nuevos recursos y servicios pueden crearse con las [API REST de Azure](https://docs.microsoft.com/rest/api/?view=Azure&WT.mc_id=ms-docs-dastarr), el [scripting de Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azurermps-6.6.0&WT.mc_id=ms-docs-dastarr) o mediante [Azure Portal](http://portal.azure.com/?WT.mc_id=ms-docs-dastarr).
+Los nuevos recursos y servicios pueden crearse con las [API REST de Azure](https://docs.microsoft.com/rest/api/?view=Azure&WT.mc_id=ms-docs-dastarr), el [scripting de Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azurermps-6.6.0&WT.mc_id=ms-docs-dastarr) o mediante [Azure Portal](https://portal.azure.com/?WT.mc_id=ms-docs-dastarr).
 
 ## <a name="using-machine-learning-with-the-blueprint"></a>Uso del aprendizaje automático con el plano técnico
 

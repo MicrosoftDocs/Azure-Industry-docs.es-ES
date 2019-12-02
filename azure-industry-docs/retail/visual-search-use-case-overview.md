@@ -1,17 +1,17 @@
 ---
-title: Introducción a Visual Search
+title: Información básica sobre Visual Search en el comercio minorista con CosmosDB
 author: scseely
-ms.author: scseely, mazoroto
-ms.date: 07/16/2018
+ms.author: scseely
+ms.date: 11/20/2019
 ms.topic: article
 ms.service: industry
 description: En este artículo se explican las fases de migración de la infraestructura de comercio electrónico del entorno local a Azure.
-ms.openlocfilehash: 0c80e3068a1b23bf12d2468489fdd0b67c660dfa
-ms.sourcegitcommit: 76f2862adbec59311b5888e043a120f89dc862af
+ms.openlocfilehash: b43ea305e11ac32da58e4d0521d79f90d5c23d85
+ms.sourcegitcommit: 2714a77488c413f01beb169a18acab45663bcfd7
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "51654212"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74308482"
 ---
 # <a name="visual-search-overview"></a>Introducción a Visual Search
 
@@ -42,7 +42,7 @@ La tecnología ya ha arraigado en las principales marcas de comercio electrónic
 
 Afortunadamente, no se necesitan grandes cantidades de potencia de computación para beneficiarse de la búsqueda visual. Cualquier negocio con un catálogo de imágenes puede sacar partido de la experiencia de inteligencia artificial de Microsoft integrada en sus servicios de Azure.
 
-[Bing Visual Search](https://azure.microsoft.com/en-us/services/cognitive-services/bing-visual-search/?WT.mc_id=vsearchgio-article-gmarchet) API proporciona una manera de extraer información de contexto de las imágenes e identificar, por ejemplo, mobiliario para el hogar, moda, varias clases de productos, etc.
+[Bing Visual Search](https://azure.microsoft.com/services/cognitive-services/bing-visual-search/?WT.mc_id=vsearchgio-article-gmarchet) API proporciona una manera de extraer información de contexto de las imágenes e identificar, por ejemplo, mobiliario para el hogar, moda, varias clases de productos, etc.
 
 También devuelve imágenes de su propio catálogo que son visualmente parecidas, productos con orígenes de compra relativos o búsquedas relacionadas. Si bien es interesante, su uso será limitado si la empresa no es uno de esos orígenes.
 
@@ -96,11 +96,11 @@ A medida que recupera imágenes de distintos orígenes o usa modelos de aprendiz
 
 También puede necesitar un número mínimo de puntos de datos útiles (por ejemplo, un identificador o clave de imagen, una SKU de producto, una descripción o un campo de etiqueta).
 
-[Azure Cosmos DB](https://azure.microsoft.com/en-us/services/cosmos-db/?WT.mc_id=vsearchgio-article-gmarchet) ofrece la flexibilidad necesaria, junto con diversos mecanismos de acceso para las aplicaciones basadas en este servicio (lo que ayudará a la búsqueda en el catálogo). Sin embargo, hay que tener cuidado para alcanzar la mejor relación precio/rendimiento. Cosmos DB permite el almacenamiento de los datos adjuntos de los documentos, pero hay un límite total por cuenta y puede ser una propuesta costosa. Una práctica común es almacenar los archivos de imagen reales en blobs e insertar un vínculo a ellos en la base de datos. En el caso de Cosmos DB, esto supone crear un documento que contenga las propiedades del catálogo asociadas a esa imagen (SKU, etiqueta, etc.) y un archivo adjunto que contenga la dirección URL del archivo de imagen (por ejemplo, en Azure Blob Storage, OneDrive, etc.).
+[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/?WT.mc_id=vsearchgio-article-gmarchet) ofrece la flexibilidad necesaria, junto con diversos mecanismos de acceso para las aplicaciones basadas en este servicio (lo que ayudará a la búsqueda en el catálogo). Sin embargo, hay que tener cuidado para alcanzar la mejor relación precio/rendimiento. Cosmos DB permite el almacenamiento de los datos adjuntos de los documentos, pero hay un límite total por cuenta y puede ser una propuesta costosa. Una práctica común es almacenar los archivos de imagen reales en blobs e insertar un vínculo a ellos en la base de datos. En el caso de Cosmos DB, esto supone crear un documento que contenga las propiedades del catálogo asociadas a esa imagen (SKU, etiqueta, etc.) y un archivo adjunto que contenga la dirección URL del archivo de imagen (por ejemplo, en Azure Blob Storage, OneDrive, etc.).
 
  ![](./assets/visual-search-use-case-overview/cosmosdb-data-model.png)
 
-*Figura 3: Modelo jerárquico de recursos de Cosmos DB*
+*Figura 3: Modelo jerárquico de recursos de CosmosDB*
 
 Si tiene previsto aprovechar las ventajas de la distribución global de Cosmos DB, tenga en cuenta que se replicarán los documentos y datos adjuntos, pero no los archivos vinculados. Para ello, puede considerar una red de distribución de contenido.
 
@@ -122,13 +122,13 @@ Como es posible que quiera modificarlas y volverlas a entrenar de modo que gener
 
  ![](./assets/visual-search-use-case-overview/resnet-modifications.png)
 
-*Figura 4: Modificaciones de ResNet para Visual Search (F. Yang et al, 2017)*
+*Ilustración 4: Modificaciones de ResNet para Visual Search (F. Yang et al, 2017)*
 
 Si elige modelos previamente entrenados o prefiere desarrollar los suyos propios, también deberá decidir dónde ejecutar la caracterización o el entrenamiento del modelo propiamente dicho.
 
-Azure ofrece varias opciones: máquinas virtuales, Azure Batch, [Batch AI](https://azure.microsoft.com/en-us/services/batch-ai/?WT.mc_id=vsearchgio-article-gmarchet) o clústeres de Databricks. Sin embargo, en todos los casos, la mejor relación precio/rendimiento viene dada por el uso de GPU.
+Azure ofrece varias opciones: máquinas virtuales, Azure Batch, [Batch AI](https://azure.microsoft.com/services/batch-ai/?WT.mc_id=vsearchgio-article-gmarchet) o clústeres de Databricks. Sin embargo, en todos los casos, la mejor relación precio/rendimiento viene dada por el uso de GPU.
 
-Microsoft ha anunciado recientemente la disponibilidad de matrices de puertas programables, o FPGA, para el cálculo rápido por una mínima parte del costo de GPU (proyecto [Brainwave](https://www.microsoft.com/en-us/research/blog/microsoft-unveils-project-brainwave/?WT.mc_id=vsearchgio-article-gmarchet)). Sin embargo, en el momento de escribir este artículo, esta oferta está limitada a determinadas arquitecturas de red, por lo que deberá evaluar su rendimiento detenidamente.
+Microsoft ha anunciado recientemente la disponibilidad de matrices de puertas programables, o FPGA, para el cálculo rápido por una mínima parte del costo de GPU (proyecto [Brainwave](https://www.microsoft.com/research/blog/microsoft-unveils-project-brainwave/?WT.mc_id=vsearchgio-article-gmarchet)). Sin embargo, en el momento de escribir este artículo, esta oferta está limitada a determinadas arquitecturas de red, por lo que deberá evaluar su rendimiento detenidamente.
 
 ### <a name="similarity-measure-or-distance"></a>Medida o distancia de similitud
 
@@ -144,7 +144,7 @@ La combinación de medida de distancia y tamaño de vector determinará la canti
 
 Una vez que se ha definido la similitud, es necesario idear un método eficaz para recuperar los N elementos más cercanos al que se ha pasado como entrada y, luego, devolver una lista de identificadores. Esto también se conoce como "clasificación de imágenes". En un conjunto de datos grande, el tiempo para calcular cada distancia es prohibitivo, por lo que se usan algoritmos vecinos aproximados. Para ellos existen varias bibliotecas de código abierto, por lo que no tendrá que escribir el código desde cero.
 
-Por último, los requisitos de memoria y cálculo determinarán la elección de la tecnología de implementación para el modelo entrenado, así como la alta disponibilidad. Normalmente, el espacio de búsqueda se particionará y varias instancias del algoritmo de clasificación se ejecutarán en paralelo. Una opción que permite escalabilidad y disponibilidad son los clústeres de [Azure Kubernetes](https://azure.microsoft.com/en-us/services/container-service/kubernetes/?WT.mc_id=vsearchgio-article-gmarchet). En ese caso, es conveniente implementar el modelo de clasificación en varios contenedores (de modo que cada uno controle una partición del espacio de búsqueda) y varios nodos (para lograr una alta disponibilidad).
+Por último, los requisitos de memoria y cálculo determinarán la elección de la tecnología de implementación para el modelo entrenado, así como la alta disponibilidad. Normalmente, el espacio de búsqueda se particionará y varias instancias del algoritmo de clasificación se ejecutarán en paralelo. Una opción que permite escalabilidad y disponibilidad son los clústeres de [Azure Kubernetes](https://azure.microsoft.com/services/container-service/kubernetes/?WT.mc_id=vsearchgio-article-gmarchet). En ese caso, es conveniente implementar el modelo de clasificación en varios contenedores (de modo que cada uno controle una partición del espacio de búsqueda) y varios nodos (para lograr una alta disponibilidad).
 
 ## <a name="next-steps"></a>Pasos siguientes
 
@@ -156,14 +156,14 @@ La implementación de la búsqueda visual no tiene que ser compleja. Puede usar 
 
 ### <a name="develop"></a>Desarrollo
 
-- Para empezar a crear un servicio personalizado, consulte [Introducción a Bing Visual Search API](https://docs.microsoft.com/en-us/azure/cognitive-services/bing-visual-search/overview/?WT.mc_id=vsearchgio-article-gmarchet).
-- Para crear su primera solicitud, consulte las guías de inicio rápido: [C#](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/quickstarts/csharp) | [Java](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/quickstarts/java) | [node.js](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/quickstarts/nodejs) | [Python](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/quickstarts/python)
+- Para empezar a crear un servicio personalizado, consulte [Introducción a Bing Visual Search API](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/overview/?WT.mc_id=vsearchgio-article-gmarchet).
+- Para crear su primera solicitud, consulte las guías de inicio rápido: [C#](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/quickstarts/csharp) | [Java](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/quickstarts/java) | [node.js](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/quickstarts/nodejs) | [Python](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/quickstarts/python).
 - Familiarícese con la [referencia de Visual Search API](https://aka.ms/bingvisualsearchreferencedoc).
 
 ### <a name="background"></a>Fondo
 
-- [Deep Learning Image Segmentation](https://www.microsoft.com/developerblog/2018/04/18/deep-learning-image-segmentation-for-ecommerce-catalogue-visual-search/?WT.mc_id=vsearchgio-article-gmarchet) (Segmentación de imágenes de aprendizaje profundo): documento de Microsoft que describe el proceso de separar las imágenes de los fondos.
-- [Visual Search at Ebay](https://arxiv.org/abs/1706.03154) (Búsqueda visual en Ebay): investigación de la Universidad de Cornell.
+- [Segmentación de imágenes de aprendizaje profundo](https://www.microsoft.com/developerblog/2018/04/18/deep-learning-image-segmentation-for-ecommerce-catalogue-visual-search/?WT.mc_id=vsearchgio-article-gmarchet): documento de Microsoft que describe el proceso de separar las imágenes de los fondos.
+- [Visual Search en eBay](https://arxiv.org/abs/1706.03154): investigación de la Universidad de Cornell
 - [Visual Discovery at Pinterest](https://arxiv.org/abs/1702.04680) (Detección visual en Pinterest): investigación de la Universidad de Cornell.
 - [Semantic Hashing](https://www.cs.utoronto.ca/~rsalakhu/papers/semantic_final.pdf) (Hash semántico): investigación de la Universidad de Toronto.
 

@@ -1,17 +1,17 @@
 ---
-title: Guía de soluciones de la computación en malla de riesgos en la banca
+title: 'Introducción: Análisis de riesgos de la computación en malla con Azure Batch y Azure Data Lake'
 author: dstarr
 ms.author: dastarr
-ms.date: 5/2/2018
+ms.date: 11/20/2019
 ms.topic: article
 ms.service: industry
 description: Presenta los aspectos técnicos de la implementación de Azure Batch para la computación en malla de riesgos en la banca.
-ms.openlocfilehash: d3470a2e546e73f4c0f1478413ca4b1af7433a66
-ms.sourcegitcommit: 76f2862adbec59311b5888e043a120f89dc862af
+ms.openlocfilehash: 542fb820870048ac2ec2cb67c2bbf13988588ea1
+ms.sourcegitcommit: f030566b177715794d2ad857b150317e72d04d64
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "51654302"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74234661"
 ---
 # <a name="risk-grid-computing-in-banking-solution-guide"></a>Guía de soluciones de la computación en malla de riesgos en la banca
 
@@ -45,7 +45,7 @@ La aplicación de trabajo se instala en el nodo de proceso cuando se crea.
 
 ![Grupo, trabajos y tareas](./assets/risk-grid-compute-assets/06-pool-job-logical-model.png)
 
-**Figura 2:** Modelo de concepto de Batch lógico
+**Figura 2:** Modelo conceptual de Batch lógico
 
 Cuando se ejecuta el trabajo, el grupo aprovisiona todas las máquinas virtuales de trabajo necesarias e instala las aplicaciones de trabajo. El trabajo asigna tareas a los nodos de proceso que, a su vez, ejecutan una instrucción de línea de comandos que normalmente llama a las aplicaciones instaladas o scripts.
 Con Batch normalmente sigue un patrón de prototipo, que se describe a continuación:
@@ -65,7 +65,7 @@ En la figura 3 se muestra una ilustración de este proceso.
 
 ![Proceso de ejecución de Batch](./assets/risk-grid-compute-assets/07-batch-run-process.png)
 
-**Figura 3:** Modelo de concepto de Batch lógico
+**Figura 3:** Modelo conceptual de Batch lógico
 
 Una vez que finalizan las tareas, puede ser útil quitar los nodos de proceso para no incurrir en gastos mientras no se usan. Para eliminarlos, mediante código o el portal, se puede eliminar el grupo contenedor, lo que quitará las máquinas virtuales de trabajo.
 
@@ -89,7 +89,7 @@ La implementación del paquete de aplicación también puede administrarse por v
 
 ![Proceso de ejecución de Batch](./assets/risk-grid-compute-assets/08-versioning-worker-applications.png)
 
-**Figura 4:** Control de versiones de las aplicaciones de tarea de nodos de proceso
+**Figura 4**: Control de versiones de las aplicaciones de tarea de nodos de proceso
 
 Un paquete de aplicación se carga en el grupo como un archivo .zip que contiene los binarios de aplicación y los archivos auxiliares que se requieren para que las tareas ejecuten la aplicación. Hay 2 ámbitos para los paquetes de aplicación. Puede designar un paquete de aplicación en el ámbito del grupo o en el ámbito de las tareas.
 
@@ -206,13 +206,13 @@ Hay otras técnicas para llenar el vacío entre Azure y los recursos locales sin
 
 ExpressRoute une su red local o de centro de datos a Azure a través de una conexión privada facilitada por un asociado de conectividad, como su proveedor de servicios de Internet actual (ISP?WT.mc_id=gridbanksg-docs-dastarr). Esto permite que ambas redes se vean entre sí como la misma instancia de red, lo que proporciona acceso sin problemas entre las redes. La integración de las redes es fundamental cuando desea integrar sistemas locales existentes con una red de Azure y ExpressRoute ofrece las velocidades de conexión más rápidas posible.
 
-[Aquí puede encontrar](https://azure.microsoft.com/en-us/pricing/details/expressroute/?WT.mc_id=gridbanksg-docs-dastarr) más información sobre precios de Azure ExpressRoute.
+[Aquí puede encontrar](https://azure.microsoft.com/pricing/details/expressroute/?WT.mc_id=gridbanksg-docs-dastarr) más información sobre precios de Azure ExpressRoute.
 
 ### <a name="vpn-gateway"></a>VPN Gateway
 
 VPN Gateway es otra manera de conectar la red a Azure. La desventaja de este modelo es que el tráfico fluye a través de Internet. El resultado es que la conexión puede ser menos resistente y las velocidades de la red no pueden alcanzar las de ExpressRoute; sin embargo, esto puede no ser una barrera para un escenario de computación en malla de riesgos, ya que la lectura de los archivos de datos suele ser una operación rápida.
 
-[Aquí puede encontrar](https://azure.microsoft.com/en-us/pricing/details/expressroute/?WT.mc_id=gridbanksg-docs-dastarr) más información sobre precios de VPN Gateway.
+[Aquí puede encontrar](https://azure.microsoft.com/pricing/details/expressroute/?WT.mc_id=gridbanksg-docs-dastarr) más información sobre precios de VPN Gateway.
 
 ### <a name="choices-for-connectivity-details"></a>Detalles sobre las opciones de conectividad
 
@@ -251,8 +251,8 @@ Se pueden aplicar varias configuraciones en su situación. Para ayudar con las d
 
 - [Consulte este artículo](/azure/vpn-gateway/vpn-gateway-about-vpngateways?WT.mc_id=gridbanksg-docs-dastarr) para las alternativas de la configuración de VPN Gateway.
 - Información acerca de los [Modelos de conectividad de ExpressRoute](/azure/expressroute/expressroute-connectivity-models?WT.mc_id=gridbanksg-docs-dastarr).
-- Calcule los [precios de ExpressRoute](https://azure.microsoft.com/en-us/pricing/details/expressroute/?WT.mc_id=gridbanksg-docs-dastarr).
-- Calcule los [precios de VPN Gateway](https://azure.microsoft.com/en-us/pricing/details/vpn-gateway/?WT.mc_id=gridbanksg-docs-dastarr).
+- Calcule los [precios de ExpressRoute](https://azure.microsoft.com/pricing/details/expressroute/?WT.mc_id=gridbanksg-docs-dastarr).
+- Calcule los [precios de VPN Gateway](https://azure.microsoft.com/pricing/details/vpn-gateway/?WT.mc_id=gridbanksg-docs-dastarr).
 
 ## <a name="security-considerations"></a>Consideraciones sobre la seguridad
 

@@ -1,17 +1,17 @@
 ---
-title: Guía de soluciones de modelado y análisis de riesgos actuariales
+title: 'Introducción: Guía para el traslado del análisis de riesgos actuariales a Azure'
 author: dstarr
 ms.author: dastarr
-ms.date: 08/29/2018
+ms.date: 11/20/2019
 ms.topic: article
 ms.service: industry
 description: Esta información general presenta cómo un desarrollador actuarial puede trasladar su solución existente más la infraestructura auxiliar a Azure.
-ms.openlocfilehash: b6bfecb27feeecf116e17f6d8eee9f1ab008576c
-ms.sourcegitcommit: 76f2862adbec59311b5888e043a120f89dc862af
+ms.openlocfilehash: cb571d996ab34da9157e9e211f354d7ce3d5f720
+ms.sourcegitcommit: b8f9ccc4e4453d6912b05cdd6cf04276e13d7244
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "51654082"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74263385"
 ---
 # <a name="actuarial-risk-analysis-and-financial-modeling"></a>Análisis de riesgos actuariales y modelado financiero
 

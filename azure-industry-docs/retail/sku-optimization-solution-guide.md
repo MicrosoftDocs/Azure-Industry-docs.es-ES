@@ -1,17 +1,17 @@
 ---
-title: Optimización de SKU para las marcas de consumidor
+title: Optimización de SKU para marcas de consumidor con Azure Machine Learning y análisis
 author: scseely
-ms.author: scseely, mazoroto
-ms.date: 10/10/2018
+ms.author: scseely
+ms.date: 11/20/2019
 ms.topic: article
 ms.service: industry
 description: Optimización del surtido del sector minorista. Optimización de SKU a través de la información de IA y ML.
-ms.openlocfilehash: 2a87425faa322f190cb0b106b5daa2a9c8ef03fe
-ms.sourcegitcommit: 76f2862adbec59311b5888e043a120f89dc862af
+ms.openlocfilehash: 22411776e830bb3c71f8c1277b30ec4331a3ef17
+ms.sourcegitcommit: 2714a77488c413f01beb169a18acab45663bcfd7
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "51654282"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74308497"
 ---
 # <a name="sku-optimization-for-consumer-brands-solution-guide"></a>Guía de soluciones de la optimización de SKU para las marcas de consumidor
 
@@ -63,7 +63,7 @@ La optimización del surtido significa encontrar un subconjunto de los productos
 
 Los **datos de transacción** se recopilan de forma rutinaria con fines financieros. 
 
-Los **datos de surtido** incluyen potencialmente todo lo relacionado con las SKU. Este es un ejemplo de lo que queremos: 
+Los **datos de surtido** incluyen potencialmente todo lo relacionado con las SKU: Este es un ejemplo de lo que queremos: 
 
 - El número de SKU
 - Descripciones de las SKU
@@ -156,7 +156,7 @@ Tenga en cuenta que el cálculo también se puede expresar como una regresión y
 
 Como podemos deducir de la formulación anterior, los modelos de optimización se basan en datos y hacen un uso intensivo de cálculo.
 
-Asociados de Microsoft, como Neal Analytics, han desarrollado arquitecturas sólidas para satisfacer esas condiciones. Consulte [SKU Max](https://appsource.microsoft.com/en-us/product/web-apps/neal_analytics.8066ad01-1e61-40cd-bd33-9b86c65fa73a?tab=Overview?WT.mc_id=invopt-article-gmarchet). Utilizaremos esas arquitecturas como ejemplo y ofreceremos algunas consideraciones.
+Asociados de Microsoft, como Neal Analytics, han desarrollado arquitecturas sólidas para satisfacer esas condiciones. Consulte [SKU Max](https://appsource.microsoft.com/product/web-apps/neal_analytics.8066ad01-1e61-40cd-bd33-9b86c65fa73a?tab=Overview?WT.mc_id=invopt-article-gmarchet). Utilizaremos esas arquitecturas como ejemplo y ofreceremos algunas consideraciones.
 
 - En primer lugar, se basan en (1) una canalización de datos sólida y escalable para alimentar los modelos, etc. y (2) una infraestructura de ejecución sólida y escalable para ejecutarlos.
 - En segundo lugar, los planificadores pueden consumir fácilmente los resultados a través de un panel.
@@ -167,7 +167,7 @@ En la figura 2 se muestra una arquitectura de ejemplo. Incluye cuatro bloques pr
 
 ## <a name="the-data-pipeline"></a>La canalización de datos
 
-La arquitectura destaca la importancia de establecer una canalización de datos para el entrenamiento y las operaciones del modelo. Organizamos las actividades en la canalización utilizando [Azure Data Factory](https://docs.microsoft.com/en-us/azure/data-factory/introduction?WT.mc_id=invopt-article-gmarchet), un servicio administrado de extracción, transformación y carga (ETL) de datos que le permite diseñar y ejecutar los flujos de trabajo de integración.
+La arquitectura destaca la importancia de establecer una canalización de datos para el entrenamiento y las operaciones del modelo. Organizamos las actividades en la canalización utilizando [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction?WT.mc_id=invopt-article-gmarchet), un servicio administrado de extracción, transformación y carga (ETL) de datos que le permite diseñar y ejecutar los flujos de trabajo de integración.
 
 Azure Data Factory es un servicio administrado con componentes denominados “actividades” que consumen y/o generan conjuntos de datos.
 
@@ -180,8 +180,8 @@ El servicio de factoría de datos puede programar, supervisar y administrar los 
 
 En la fase de captura, podemos aprovechar la actividad de copia (integrada en Data Factory) para transferir datos desde numerosos orígenes (tanto locales como en la nube) a Azure SQL Data Warehouse. En la documentación se proporcionan ejemplos de cómo hacerlo:
 
-- [Copia de datos con Azure SQL Data Warehouse como origen o destino mediante Azure Data Factory](https://docs.microsoft.com/en-us/azure/data-factory/connector-azure-sql-data-warehouse?WT.mc_id=invopt-article-gmarchet)
-- [Carga de datos en Azure SQL Data Warehouse mediante Azure Data Factory](https://docs.microsoft.com/en-us/azure/data-factory/load-azure-sql-data-warehouse?WT.mc_id=invopt-article-gmarchet)
+- [Copia de datos con Azure SQL Data Warehouse como origen o destino mediante Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse?WT.mc_id=invopt-article-gmarchet)
+- [Carga de datos en Azure SQL Data Warehouse mediante Azure Data Factory](https://docs.microsoft.com/azure/data-factory/load-azure-sql-data-warehouse?WT.mc_id=invopt-article-gmarchet)
 
 La siguiente figura muestra la definición de una canalización. Consta de tres bloques de igual tamaño seguidos. Los dos primeros son un conjunto de datos y una actividad conectados mediante flechas para indicar los flujos de datos. El tercer bloque tiene la etiqueta “canalización” y simplemente apunta a los dos primeros para indicar la encapsulación. 
 
@@ -198,7 +198,7 @@ Si los orígenes de datos no se expresan en el formato determinado, Data Factory
 
 En la fase de proceso, SQL Data Warehouse es el motor de almacenamiento principal. Por lo tanto, puede que le interese expresar una actividad de transformación como un procedimiento almacenado de SQL, que se puede invocar automáticamente como parte de la canalización. La documentación proporciona instrucciones detalladas:
 
-- [Transformación de datos mediante la actividad de procedimiento almacenado de SQL Server en Azure Data Factory](https://docs.microsoft.com/en-us/azure/data-factory/transform-data-using-stored-procedure?WT.mc_id=invopt-article-gmarchet)
+- [Transformación de datos mediante la actividad de procedimiento almacenado de SQL Server en Azure Data Factory](https://docs.microsoft.com/azure/data-factory/transform-data-using-stored-procedure?WT.mc_id=invopt-article-gmarchet)
 
 Tenga en cuenta que Data Factory no le limita a SQL Data Warehouse y procedimientos almacenados de SQL. De hecho, se integra con diversas plataformas. Por ejemplo, puede optar por usar Databricks y ejecutar un script de Python para la transformación. Esto es una ventaja, ya que puede usar una plataforma para almacenamiento, transformación y entrenamiento de algoritmos de aprendizaje automático en la siguiente fase del “modelo”.
 
@@ -222,17 +222,17 @@ Para tamaños de datos muy grandes (TB), tiene sentido elegir una plataforma don
 - Distribuir el cálculo entre varios núcleos.
 - Ejecutar el cálculo “cerca” del almacenamiento para limitar el movimiento de datos.
 
-Azure [HDInsight](https://azure.microsoft.com/en-us/services/hdinsight/?WT.mc_id=invopt-article-gmarchet) y [Databricks](https://azure.microsoft.com/en-us/services/databricks/?WT.mc_id=invopt-article-gmarchet) cumplen esos requisitos. Además, ambas plataformas de ejecución son compatibles con el editor de Azure Data Factory. Es relativamente sencillo integrar cualquiera de ellas en un flujo de trabajo.
+Azure [HDInsight](https://azure.microsoft.com/services/hdinsight/?WT.mc_id=invopt-article-gmarchet) y [Databricks](https://azure.microsoft.com/services/databricks/?WT.mc_id=invopt-article-gmarchet) cumplen esos requisitos. Además, ambas plataformas de ejecución son compatibles con el editor de Azure Data Factory. Es relativamente sencillo integrar cualquiera de ellas en un flujo de trabajo.
 
 ML Server y sus bibliotecas se pueden implementar sobre HDInsight, pero para aprovechar al máximo las funcionalidades de la plataforma, es interesante implementar el algoritmo de ML que elija mediante SparkML, las bibliotecas de Microsoft ML Spark en Python u otro solucionador de programación lineal especialista, como TFoCS, Spark-LP o SolveDF. 
 
-Iniciar el proceso de entrenamiento se convierte en una cuestión de invocar el cuaderno o el script de pySpark adecuado desde un flujo de trabajo de Data Factory. Esto se admite completamente en el editor gráfico. Para más detalles, consulte [Ejecución de un cuaderno de Databricks con la actividad Notebook de Databricks en Azure Data Factory](https://docs.microsoft.com/en-us/azure/data-factory/transform-data-using-databricks-notebook?WT.mc_id=invopt-article-gmarchet).
+Iniciar el proceso de entrenamiento se convierte en una cuestión de invocar el cuaderno o el script de pySpark adecuado desde un flujo de trabajo de Data Factory. Esto se admite completamente en el editor gráfico. Para más detalles, consulte [Ejecución de un cuaderno de Databricks con la actividad Notebook de Databricks en Azure Data Factory](https://docs.microsoft.com/azure/data-factory/transform-data-using-databricks-notebook?WT.mc_id=invopt-article-gmarchet).
 
 En la siguiente figura se muestra la interfaz de usuario de Data Factory, a la que se accede a través de Azure Portal. Incluye bloques para los distintos procesos del flujo de trabajo. 
 
 ![Interfaz de Data Factory que muestra actividad de cuaderno de Databricks.](assets/sku-optimization-solution-guide/data-factory-pipeline-databricks.png)<center><font size="1">_Figura 5: Ejemplo de canalización de Data Factory con actividad de cuaderno de Databricks_</font></center>.
 
-Asimismo, tenga en cuenta que en nuestra [solución de optimización de inventario](https://gallery.azure.ai/Solution/Inventory-Optimization-3?WT.mc_id=invopt-article-gmarchet) proponemos una implementación basada en contenedor de los solucionadores que se escala a través de [Azure Batch](https://azure.microsoft.com/en-us/services/batch/?WT.mc_id=invopt-article-gmarchet). Las bibliotecas de optimización especialistas, como [pyomo](http://www.pyomo.org/about/), permiten expresar un problema de optimización en el lenguaje de programación Python y, después, invocar solucionadores independientes, como [bonmin](https://projects.coin-or.org/Bonmin) (código abierto) o [gurobi](http://www.gurobi.com/) (comercial) para encontrar una solución.
+Asimismo, tenga en cuenta que en nuestra [solución de optimización de inventario](https://gallery.azure.ai/Solution/Inventory-Optimization-3?WT.mc_id=invopt-article-gmarchet) proponemos una implementación basada en contenedor de los solucionadores que se escala a través de [Azure Batch](https://azure.microsoft.com/services/batch/?WT.mc_id=invopt-article-gmarchet). Las bibliotecas de optimización especialistas, como [pyomo](http://www.pyomo.org/about/), permiten expresar un problema de optimización en el lenguaje de programación Python y, después, invocar solucionadores independientes, como [bonmin](https://projects.coin-or.org/Bonmin) (código abierto) o [gurobi](http://www.gurobi.com/) (comercial) para encontrar una solución.
 
 La documentación de optimización de inventario se ocupa de un problema diferente (cantidades de pedidos) de la optimización del surtido, aunque la implementación de solucionadores en Azure es aplicable de forma similar.
 
@@ -240,24 +240,24 @@ Aunque es más compleja que las sugeridas hasta ahora, esta técnica permite una
 
 ## <a name="running-the-model-operationalize"></a>Ejecución del modelo (puesta en marcha)
 
-Una vez que se ha entrenado el modelo, su ejecución normalmente requiere una infraestructura diferente de la que se utilizó para la implementación. Para que sea fácil de consumir, puede optar por implementarlo como un servicio web con una interfaz de REST. Tanto Azure ML Studio como ML Server automatizan el proceso de creación de tales servicios. En el caso de ML Server, se proporcionan plantillas para la implementación de una infraestructura de soporte. Consulte la [documentación](https://docs.microsoft.com/en-us/machine-learning-server/what-is-operationalization?WT.mc_id=invopt-article-gmarchet) correspondiente.
+Una vez que se ha entrenado el modelo, su ejecución normalmente requiere una infraestructura diferente de la que se utilizó para la implementación. Para que sea fácil de consumir, puede optar por implementarlo como un servicio web con una interfaz de REST. Tanto Azure ML Studio como ML Server automatizan el proceso de creación de tales servicios. En el caso de ML Server, se proporcionan plantillas para la implementación de una infraestructura de soporte. Consulte la [documentación](https://docs.microsoft.com/machine-learning-server/what-is-operationalization?WT.mc_id=invopt-article-gmarchet) correspondiente.
 
 La siguiente figura muestra la arquitectura de la implementación. Incluye las representaciones de los servidores que ejecutan el lenguaje R y Python. Ambos servidores se comunican con una subsección de nodos web que realizan el cálculo. Un almacén de datos de gran tamaño se conecta al bloque de cálculo.
 
 ![Diagrama de implementación de MS Server. Equilibrador de carga antes de varios nodos para su ejecución.](assets/sku-optimization-solution-guide/ml-server-deployment-example.png)<center><font size="1">_Figura 6: Ejemplo de implementación de ML Server_</font></center>
 
 
-Para los modelos creados en HDInsight o Databricks y, por tanto, dependientes del entorno de Spark (bibliotecas, funcionalidades paralelas, etc.), es aconsejable plantearse ejecutarlos en un clúster. Puede ver una guía [aquí](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/spark-model-consumption?WT.mc_id=invopt-article-gmarchet).
+Para los modelos creados en HDInsight o Databricks y, por tanto, dependientes del entorno de Spark (bibliotecas, funcionalidades paralelas, etc.), es aconsejable plantearse ejecutarlos en un clúster. Puede ver una guía [aquí](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/spark-model-consumption?WT.mc_id=invopt-article-gmarchet).
 
 Esto tiene la ventaja de que el modelo operacional se puede invocar a sí mismo a través de una actividad de canalización de Data Factory para la puntuación.
 
-Para utilizar contenedores, puede empaquetar los modelos e implementarlos en Azure Kubernetes Service. El prototipo requerirá el uso de [Azure Data Science VM](https://azure.microsoft.com/en-us/services/virtual-machines/data-science-virtual-machines/?WT.mc_id=invopt-article-gmarchet); también debe instalar las herramientas de la [línea de comandos](https://docs.microsoft.com/en-us/azure/machine-learning/desktop-workbench/model-management-service-deploy?WT.mc_id=invopt-article-gmarchet) de Azure ML en la máquina virtual.
+Para utilizar contenedores, puede empaquetar los modelos e implementarlos en Azure Kubernetes Service. El prototipo requerirá el uso de [Azure Data Science VM](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/?WT.mc_id=invopt-article-gmarchet); también debe instalar las herramientas de la [línea de comandos](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/model-management-service-deploy?WT.mc_id=invopt-article-gmarchet) de Azure ML en la máquina virtual.
 
 ## <a name="data-output-and-reporting"></a>Salida de datos e informes
 
 Una vez implementado, el modelo será capaz de procesar los flujos de trabajo de transacciones financieras y las lecturas de existencias para generar predicciones de surtido óptimas. Por tanto, los datos generados se pueden almacenar en Azure SQL Data Warehouse para su posterior análisis. En concreto, es posible estudiar el rendimiento histórico de los diferentes SKU, identificando los mejores generadores de ingresos y los creadores de pérdidas. A continuación, podrá comparar estos con los surtidos sugeridos por los modelos y evaluar el rendimiento y la necesidad de volver a entrenar.
 
-[Power BI](https://powerbi.microsoft.com/en-us/get-started/?&OCID=AID719832_SEM_uhlWLg3x&lnkd=Google_PowerBI_Brand&gclid=CjwKCAjw5ZPcBRBkEiwA-avvkyOLMJCrhqH8iac84aLX7EcUQIirSSqUCostzGi8y_XntJTCD73ZixoCQ4sQAvD_BwE?WT.mc_id=invopt-article-gmarchet) proporciona una manera de analizar y mostrar los datos generados en el proceso. 
+[Power BI](https://powerbi.microsoft.com/get-started/?&OCID=AID719832_SEM_uhlWLg3x&lnkd=Google_PowerBI_Brand&gclid=CjwKCAjw5ZPcBRBkEiwA-avvkyOLMJCrhqH8iac84aLX7EcUQIirSSqUCostzGi8y_XntJTCD73ZixoCQ4sQAvD_BwE?WT.mc_id=invopt-article-gmarchet) proporciona una manera de analizar y mostrar los datos generados en el proceso. 
 
 La siguiente figura muestra un panel de Power BI típico. Incluye dos gráficos que muestran información de existencias de SKU. 
 
@@ -272,22 +272,22 @@ Una solución que se ocupa de la información confidencial contiene registros fi
 - Todos los servicios mencionados admiten el cifrado en tránsito y en reposo. Si decide almacenar los datos en una instancia de Azure Data Lake, el cifrado se habilita de forma predeterminada. Si usa Azure SQL Data Warehouse, puede habilitar el cifrado de datos transparente (TDE).
 - Todos los servicios mencionados, con la excepción del estudio de ML, admiten la integración con Azure Active Directory para la autenticación y autorización. Si escribe su propio código, debe crear esa integración en la aplicación.
 
-Para más información sobre RGPD, consulte nuestra página de [cumplimiento](https://www.microsoft.com/en-us/trustcenter?WT.mc_id=invopt-article-gmarchet).
+Para más información sobre RGPD, consulte nuestra página de [cumplimiento](https://www.microsoft.com/trustcenter?WT.mc_id=invopt-article-gmarchet).
 
 ## <a name="technologies-mentioned"></a>Tecnologías mencionadas
 
-- [Azure Batch](https://azure.microsoft.com/en-us/services/batch/?WT.mc_id=invopt-article-gmarchet)
-- [Azure Active Directory](https://azure.microsoft.com/en-us/services/active-directory/?&OCID=AID719825_SEM_w1MNAVjn&lnkd=Google_Azure_Brand&gclid=CjwKCAjw5ZPcBRBkEiwA-avvk4bGtyQo11KBY-u2skor1SydsSl1vrYUmhyGhhwyJhDlAYpnMmIcRRoCTfsQAvD_BwE&dclid=CMn6lvfRkd0CFRwBrQYdtIoJOA?WT.mc_id=invopt-article-gmarchet)
-- [Azure Data Factory](https://docs.microsoft.com/en-us/azure/data-factory/introduction?WT.mc_id=invopt-article-gmarchet)
-- [Azure Integration Runtime](https://docs.microsoft.com/en-us/azure/data-factory/concepts-integration-runtime?WT.mc_id=invopt-article-gmarchet)
-- [HDInsight](https://azure.microsoft.com/en-us/services/hdinsight/?WT.mc_id=invopt-article-gmarchet)
-- [Databricks](https://azure.microsoft.com/en-us/services/databricks/?WT.mc_id=invopt-article-gmarchet)
-- [Azure SQL Data Warehouse](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-overview-what-is?WT.mc_id=invopt-article-gmarchet)
+- [Azure Batch](https://azure.microsoft.com/services/batch/?WT.mc_id=invopt-article-gmarchet)
+- [Azure Active Directory](https://azure.microsoft.com/services/active-directory/?&OCID=AID719825_SEM_w1MNAVjn&lnkd=Google_Azure_Brand&gclid=CjwKCAjw5ZPcBRBkEiwA-avvk4bGtyQo11KBY-u2skor1SydsSl1vrYUmhyGhhwyJhDlAYpnMmIcRRoCTfsQAvD_BwE&dclid=CMn6lvfRkd0CFRwBrQYdtIoJOA?WT.mc_id=invopt-article-gmarchet)
+- [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction?WT.mc_id=invopt-article-gmarchet)
+- [Azure Integration Runtime](https://docs.microsoft.com/azure/data-factory/concepts-integration-runtime?WT.mc_id=invopt-article-gmarchet)
+- [HDInsight](https://azure.microsoft.com/services/hdinsight/?WT.mc_id=invopt-article-gmarchet)
+- [Databricks](https://azure.microsoft.com/services/databricks/?WT.mc_id=invopt-article-gmarchet)
+- [Azure SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-overview-what-is?WT.mc_id=invopt-article-gmarchet)
 - [Azure ML Studio](https://studio.azureml.net/?WT.mc_id=invopt-article-gmarchet)
-- [Microsoft ML Server](https://docs.microsoft.com/en-us/machine-learning-server/what-is-machine-learning-server?WT.mc_id=invopt-article-gmarchet)
-- [Azure Data Science VM](https://azure.microsoft.com/en-us/services/virtual-machines/data-science-virtual-machines/?WT.mc_id=invopt-article-gmarchet)
-- [Azure Kubernetes Service](https://azure.microsoft.com/en-us/services/kubernetes-service/?WT.mc_id=invopt-article-gmarchet)
-- [Microsoft PowerBI](https://powerbi.microsoft.com/en-us/?WT.mc_id=invopt-article-gmarchet)
+- [Microsoft ML Server](https://docs.microsoft.com/machine-learning-server/what-is-machine-learning-server?WT.mc_id=invopt-article-gmarchet)
+- [Azure Data Science VM](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/?WT.mc_id=invopt-article-gmarchet)
+- [Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service/?WT.mc_id=invopt-article-gmarchet)
+- [Microsoft PowerBI](https://powerbi.microsoft.com/?WT.mc_id=invopt-article-gmarchet)
 - [Lenguaje de modelado de optimización de Pyomo](http://www.pyomo.org/)
 - [Bonmin Solver](https://projects.coin-or.org/Bonmin)
 - [Solucionador de TFoCS para Spark](https://github.com/databricks/spark-tfocs)

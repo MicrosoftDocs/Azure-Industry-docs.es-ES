@@ -1,17 +1,17 @@
 ---
-title: Guía de soluciones de modelado y análisis de riesgos actuariales
+title: Guía para el traslado del análisis de riesgos actuariales a Azure
 author: scseely
 ms.author: scseely
-ms.date: 08/23/2018
+ms.date: 11/20/2019
 ms.topic: article
 ms.service: industry
-description: En esta guía de soluciones se explica cómo un desarrollador actuarial puede trasladar su solución existente más la infraestructura auxiliar a Azure.
-ms.openlocfilehash: 82cb53d529f6d7524ae1f9c148118b5edddc648b
-ms.sourcegitcommit: 76f2862adbec59311b5888e043a120f89dc862af
+description: Cómo un desarrollador actuarial puede trasladar su solución existente más la infraestructura auxiliar a Azure.
+ms.openlocfilehash: 456c054cf3a6165f160005ba8ea2c155637faa07
+ms.sourcegitcommit: f030566b177715794d2ad857b150317e72d04d64
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "51654292"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74234532"
 ---
 # <a name="actuarial-risk-analysis-and-financial-modeling-solution-guide"></a>Guía de soluciones de modelización financiera y análisis de riesgos actuariales
 
@@ -32,7 +32,7 @@ Ya sea que esté prestando servicios de seguros de vida, propiedad y accidentes,
 Cree en la promesa de la nube: puede ejecutar sus modelos financieros y de riesgo de manera más rápida y sencilla. Para muchas aseguradoras, un cálculo de servilleta muestra el problema: necesitan años, o incluso décadas, de tiempo secuencial para ejecutar estos cálculos de principio a fin. Necesita la tecnología para resolver el problema en tiempo de ejecución. Las estrategias son:
 
 - Preparación de datos: algunos datos cambian lentamente. Una vez que una póliza o contrato de servicio entra en vigor, las reclamaciones se mueven a un ritmo predecible. Puede preparar los datos necesarios para las ejecuciones de modelo a medida que llegan, lo que elimina la necesidad de planear mucho tiempo de preparación y limpieza de datos. También puede usar la agrupación en clústeres para crear sustituciones para datos en serie a través de representaciones ponderadas. Por lo general, menos registros dan lugar a un tiempo de cálculo reducido.
-- Paralelización: si tiene que realizar el mismo análisis para dos o más elementos, puede llevar a cabo el análisis al mismo tiempo.
+- Paralelización: si tiene que realizar el mismo análisis en dos o más elementos, puede llevar a cabo el análisis al mismo tiempo.
 
 Echemos un vistazo a estos elementos individualmente.
 
@@ -76,8 +76,8 @@ La correcta paralelización de los pasos puede reducir drásticamente el tiempo 
 
 Para aprovechar al máximo el sistema, debe comprender el flujo de trabajo del modelo y cómo interactúan los cálculos con la capacidad de escalar horizontalmente. Su software puede tener una noción de trabajos, tareas o algo similar. Use ese conocimiento para diseñar algo que pueda dividir el trabajo. Si tiene algunos pasos personalizados en el modelo, diséñelos para permitir que las entradas se dividan en grupos más pequeños para su procesamiento. A menudo, esto se conoce como un patrón de dispersión-recopilación.
 
-- Dispersión: dividir las entradas a lo largo de líneas naturales y permitir la ejecución de tareas independientes.
-- Recopilación: cuando las tareas se completan, recopilar sus salidas.
+- Dispersión: divide las entradas a lo largo de líneas naturales y permite la ejecución de tareas independientes.
+- Recopilación: cuando las tareas se completan, recopila sus salidas.
 
 Al dividir las cosas, sepa también dónde debe sincronizarse el proceso antes de seguir adelante. Hay algunos lugares comunes donde la gente divide las cosas. Para ejecuciones estocásticas anidadas, puede tener mil bucles externos con un conjunto de puntos de inflexión que ejecutan bucles internos de cien escenarios. Cada bucle externo puede ejecutarse simultáneamente. Detiene en un punto de inflexión y luego ejecuta los bucles internos simultáneamente, recupera la información para ajustar los datos para el bucle externo y sigue avanzando. En la siguiente figura se muestra el flujo de trabajo. Dado el cálculo suficiente, puede ejecutar los 100 000 bucles internos en 100 000 núcleos, lo que reduce el tiempo de procesamiento a la suma de los siguientes tiempos:
 
@@ -109,7 +109,7 @@ Muchos de los datos que se colocan en el sistema deben conservarse para futuras 
 - Instantánea de las salidas finales. Esto incluye los datos utilizados para crear informes que se presentan a los organismos reguladores.
 - Otros resultados intermedios importantes. Un auditor le preguntará por qué su modelo generó algún resultado. Debe conservar la evidencia sobre por qué el modelo tomó ciertas decisiones o presentó números concretos. Muchas aseguradoras optarán por mantener los binarios usados para generar las salidas finales a partir de las entradas originales. Luego, cuando se les pregunte, volverán a ejecutar el modelo para obtener una copia actualizada de los resultados intermedios. Si las salidas coinciden, entonces los archivos intermedios también deben contener las explicaciones que necesitan.
 
-Durante la ejecución del modelo, los actuarios usan mecanismos de entrega de datos que pueden controlar la carga de solicitudes desde la ejecución. Una vez completada la ejecución y que los datos ya no son necesarios, conservan algunos de los datos. Como mínimo, una aseguradora debe conservar las entradas y la configuración del entorno de ejecución para cualquier requisito de reproducibilidad. Las bases de datos se conservan para hacer las copias de seguridad en Azure Blob Storage y los servidores se apagan. Los datos sobre el almacenamiento de alta velocidad también se trasladan a Azure Blob Storage, que es menos costoso. Una vez en Blob Storage, puede elegir el nivel de datos utilizado para cada blob: nivel de acceso frecuente, nivel de acceso esporádico o nivel de acceso de archivo. El almacenamiento de nivel de acceso frecuente funciona bien para archivos a los que se accede frecuente. El almacenamiento de nivel de acceso esporádico está optimizado para el acceso a datos poco frecuente. El almacenamiento de archivos es el mejor para mantener archivos auditables pero el ahorro de precio tiene un costo de latencia: la latencia de datos del nivel de almacenamiento de archivos se mide en horas. Lea [Azure Blob Storage: niveles de almacenamiento de archivo, esporádico, frecuente y premium (versión preliminar)](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers?WT.mc_id=riskmodel-docs-scseely) para comprender completamente los diferentes niveles de almacenamiento. Puede administrar los datos desde la creación hasta la eliminación con la administración del ciclo de vida. Los URI para los blobs permanecen estáticos, pero donde el blob se almacena se vuelve más barato con el paso del tiempo. Esta función ahorrará mucho dinero y quebraderos de cabeza para muchos usuarios de Azure Storage. Puede obtener información sobre los pormenores en [Administración del ciclo de vida de Azure Blob Storage (versión preliminar)](https://docs.microsoft.com/azure/storage/common/storage-lifecycle-managment-concepts?WT.mc_id=riskmodel-docs-scseely). El hecho de que pueda eliminar archivos automáticamente es maravilloso: significa que no expandirá una auditoría accidentalmente al referirse a un archivo que está fuera del ámbito porque el propio archivo puede eliminarse automáticamente.
+Durante la ejecución del modelo, los actuarios usan mecanismos de entrega de datos que pueden controlar la carga de solicitudes desde la ejecución. Una vez completada la ejecución y que los datos ya no son necesarios, conservan algunos de los datos. Como mínimo, una aseguradora debe conservar las entradas y la configuración del entorno de ejecución para cualquier requisito de reproducibilidad. Las bases de datos se conservan para hacer las copias de seguridad en Azure Blob Storage y los servidores se apagan. Los datos sobre el almacenamiento de alta velocidad también se trasladan a Azure Blob Storage, que es menos costoso. Una vez en Blob Storage, puede elegir el nivel de datos utilizado para cada blob: nivel de acceso frecuente, nivel de acceso esporádico o nivel de acceso de archivo. El almacenamiento de nivel de acceso frecuente funciona bien para archivos a los que se accede frecuente. El almacenamiento de nivel de acceso esporádico está optimizado para el acceso a datos poco frecuente. El almacenamiento de archivos es el mejor para mantener archivos auditables pero el ahorro de precio tiene un costo de latencia: la latencia de datos del nivel de almacenamiento de archivos se mide en horas. Consulte [Almacenamiento de blobs de Azure: niveles de almacenamiento de archivo, esporádico, frecuente y premium (versión preliminar)](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers?WT.mc_id=riskmodel-docs-scseely) para comprender completamente los diferentes niveles de almacenamiento. Puede administrar los datos desde la creación hasta la eliminación con la administración del ciclo de vida. Los URI para los blobs permanecen estáticos, pero donde el blob se almacena se vuelve más barato con el paso del tiempo. Esta función ahorrará mucho dinero y quebraderos de cabeza para muchos usuarios de Azure Storage. Puede obtener información sobre los pormenores en [Administración del ciclo de vida de Azure Blob Storage (versión preliminar)](https://docs.microsoft.com/azure/storage/common/storage-lifecycle-managment-concepts?WT.mc_id=riskmodel-docs-scseely). El hecho de que pueda eliminar archivos automáticamente es maravilloso: significa que no expandirá una auditoría accidentalmente al referirse a un archivo que está fuera del ámbito porque el propio archivo puede eliminarse automáticamente.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
@@ -119,9 +119,9 @@ A medida que las cosas mejoren, asegúrese de que también crea algo de sincroni
 
 ### <a name="tutorials"></a>Tutoriales
 
-- Desarrolladores de R: [Ejecución de una simulación de R en paralelo con Azure Batch](https://docs.microsoft.com/azure/batch/tutorial-r-doazureparallel?WT.mc_id=riskmodel-docs-scseely)
+- Desarrolladores de R: [Ejecución de una simulación de R paralela con Azure Batch](https://docs.microsoft.com/azure/batch/tutorial-r-doazureparallel?WT.mc_id=riskmodel-docs-scseely)
 - Tutorial para mostrar cómo usar una instancia de Azure Functions para interactuar con el almacenamiento: [Carga de imágenes en Blob Storage con Azure Functions](https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database?tutorial-step=2&WT.mc_id=riskmodel-docs-scseely)
-- ETL con Databricks: [Extracción, transformación y carga de datos mediante Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/databricks-extract-load-sql-data-warehouse?WT.mc_id=riskmodel-docs-scseely)
-- ETL con HDInsight: [Realización de las operaciones de extracción, transformación y carga mediante Apache Hive en Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-analyze-flight-delay-data-linux?toc=%2Fen-us%2Fazure%2Fhdinsight%2Fhadoop%2FTOC.json&amp;bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json&WT.mc_id=riskmodel-docs-scseely)
+- Extracción, transformación y carga de datos con Databricks: [Extracción, transformación y carga de datos mediante Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/databricks-extract-load-sql-data-warehouse?WT.mc_id=riskmodel-docs-scseely)
+- Extracción, transformación y carga de datos con HDInsight: [Extracción, transformación y carga de datos mediante Apache Hive en Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-analyze-flight-delay-data-linux?toc=%2Fen-us%2Fazure%2Fhdinsight%2Fhadoop%2FTOC.json&amp;bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json&WT.mc_id=riskmodel-docs-scseely)
 - Ciencia de datos con una instancia de Data Science Virtual Machine de Linux en Azure: [https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/linux-dsvm-walkthrough](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/linux-dsvm-walkthrough?WT.mc_id=riskmodel-docs-scseely)
 - Diez cosas que puede hacer en Windows Data Science Virtual Machine: [https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/vm-do-ten-things](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/vm-do-ten-things?WT.mc_id=riskmodel-docs-scseely)

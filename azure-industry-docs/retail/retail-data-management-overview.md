@@ -1,17 +1,17 @@
 ---
-title: Introducción a la administración de datos en el comercio minorista
+title: Información básica para la administración de macrodatos en el sector minorista
 author: dstarr
 ms.author: dastarr
-ms.date: 06/22/2018
+ms.date: 11/20/2019
 ms.topic: article
 ms.service: industry
 description: Los minoristas tienen grandes almacenes de datos con datos sin utilizar de los que pueden obtener información valiosa. En este artículo se describe cómo Microsoft Azure puede ayudar a usar esos datos de forma eficaz.
-ms.openlocfilehash: 8a1a839a509155e67cf8da08d89ea9f7c758bc3b
-ms.sourcegitcommit: 76f2862adbec59311b5888e043a120f89dc862af
+ms.openlocfilehash: 198e0f609889eee86e005c5ee56090006ae2a413
+ms.sourcegitcommit: b8f9ccc4e4453d6912b05cdd6cf04276e13d7244
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "51654192"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74263516"
 ---
 # <a name="data-management-in-retail-overview"></a>Introducción a la administración de datos en el comercio minorista
 

@@ -1,17 +1,17 @@
 ---
-title: Solución de mantenimiento predictivo
+title: Mantenimiento predictivo con Azure Machine Learning e IoT en los procesos de fabricación
 author: ercenk
 ms.author: ercenk
-ms.date: 05/03/2018
+ms.date: 11/20/2019
 ms.topic: article
 ms.service: industry
 description: Descripción de la solución sobre cómo desarrollar el mantenimiento predictivo para los clientes de fabricación en Azure.
-ms.openlocfilehash: 1c7b95e2da21df46465ccaf21827ae97597206a2
-ms.sourcegitcommit: 76f2862adbec59311b5888e043a120f89dc862af
+ms.openlocfilehash: c32893d534279cda35f7c6a142869d2983eaca67
+ms.sourcegitcommit: 2714a77488c413f01beb169a18acab45663bcfd7
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "51654322"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74308487"
 ---
 # <a name="predictive-maintenance-in-manufacturing-solution-guide"></a>Guía de soluciones sobre el mantenimiento predictivo en la fabricación
 
@@ -54,7 +54,7 @@ Tenga también en cuenta si capturamos datos suficientes para registrar estos er
 
 Por naturaleza, el mantenimiento predictivo es un problema dinámico y, como tal, los modelos de Machine Learning asociados deben actualizarse continuamente (o volverse a entrenar). Si se realiza correctamente, el mantenimiento predictivo debe reducir las instancias de errores (esto es bueno, pero da lugar a menos datos del error). Además, las características que afectan al error pueden cambiar la invalidación anterior a los modelos de Machine Learning. Recomendamos el entrenamiento periódico de los modelos con cualquier cambio en las condiciones de error.
 
-“Actualizar” los datos también supone la llegada de nuevas condiciones en el modelo distintas de las usadas anteriormente para entrenar el modelo. Es decir, podemos modelar el error como la función de las variables _x<sub>1</sub>,x<sub>2</sub>,⋯,x<sub>n</sub>, f(x<sub>1</sub>,x<sub>2</sub>,⋯,x<sub>n</sub>)_, pero finalmente podemos descubrir que las variables _x<sub>(n+1)</sub>,⋯,x<sub>(m+n)</sub>_ también influyen en el error, de modo que debemos modificar nuestro entrenamiento del modelo para _f(x<sub>1</sub>,x<sub>2</sub>,⋯,x<sub>(m+n)</sub>)_. Es posible que el modelo no rinda bien a la hora de detectar los errores y que se cree un nuevo modelo incluyendo también puntos de datos de los registros MES de la máquina para la iteración siguiente.
+“Actualizar” los datos también supone la llegada de nuevas condiciones en el modelo distintas de las usadas anteriormente para entrenar el modelo. Es decir, podemos modelar el error como la función de las variables _x<sub>1</sub>,x<sub>2</sub>,⋯,x<sub>n</sub>, f(x<sub>1</sub>,x<sub>2</sub>,⋯,x<sub>n</sub>)_ , pero finalmente podemos descubrir que las variables _x<sub>(n+1)</sub>,⋯,x<sub>(m+n)</sub>_ también influyen en el error, de modo que debemos modificar nuestro entrenamiento del modelo para _f(x<sub>1</sub>,x<sub>2</sub>,⋯,x<sub>(m+n)</sub>)_ . Es posible que el modelo no rinda bien a la hora de detectar los errores y que se cree un nuevo modelo incluyendo también puntos de datos de los registros MES de la máquina para la iteración siguiente.
 
 Incluso sin un entorno de IoT moderno que transmita datos a la nube, es posible que los datos necesarios para entrenar los modelos de Machine Learning se encuentren ya en sus MES, historiadores u otros sistemas de producción. Es solo cuestión de preparar los datos de modo que se puedan usar para entrenar los modelos de Machine Learning.
 
@@ -64,13 +64,13 @@ Entrenar nuevos modelos continuamente e implementarlos da lugar al desafío de a
 
 ![Fases de creación de modelos de ML](assets/pdm-assets/mlmodelbuildingstages.png)
 
-Microsoft ha publicado [una guía detallada](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/cortana-analytics-playbook-predictive-maintenance?WT.mc_id=pdmsolution-docs-ercenk) sobre cómo preparar los datos y entrenar el modelo de Machine Learning. Existen tres preguntas de mantenimiento típicas y los algoritmos de Machine Learning relacionados:
+Microsoft ha publicado [una guía detallada](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/cortana-analytics-playbook-predictive-maintenance?WT.mc_id=pdmsolution-docs-ercenk) sobre cómo preparar los datos y entrenar el modelo de Machine Learning. Existen tres preguntas de mantenimiento típicas y los algoritmos de Machine Learning relacionados:
 
-- _Para el recurso, ¿cuál es la probabilidad de que ocurra un error en las próximas X horas?_ Respuesta: 0-100%
-  - **Clasificación binaria:** la clasificación binaria es un método de Machine Learning que usa datos para determinar la categoría, el tipo o la clase de un elemento o fila de datos, como un miembro de una de las dos clases. Hay varios tipos de algoritmos de clasificación. Microsoft publicó un conjunto de algoritmos disponibles como [módulos de Machine Learning Studio](https://docs.microsoft.com/en-us/azure/machine-learning/studio-module-reference/machine-learning-initialize-model-classification?WT.mc_id=pdmsolution-docs-ercenk).
+- _Para el recurso, ¿cuál es la probabilidad de que ocurra un error en las próximas X horas?_ Respuesta: 0-100 %
+  - **Clasificación binaria:** la clasificación binaria es un método de aprendizaje automático que usa datos para determinar la categoría, el tipo o la clase de un elemento o fila de datos, como un miembro de una de las dos clases. Hay varios tipos de algoritmos de clasificación. Microsoft publicó un conjunto de algoritmos disponibles como [módulos de Machine Learning Studio](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/machine-learning-initialize-model-classification?WT.mc_id=pdmsolution-docs-ercenk).
 - _¿Cuál es la vida útil restante del recurso?_ Respuesta: X horas
-  - **Regresión:** la regresión es una clase de algoritmos de Machine Learning que predice el valor de una variable una vez especificado un conjunto de otras variables. Machine Learning Studio incluye un conjunto de algoritmos de regresión como [módulos](https://docs.microsoft.com/en-us/azure/machine-learning/studio-module-reference/machine-learning-initialize-model-regression?WT.mc_id=pdmsolution-docs-ercenk).
-    - **Memoria a largo y corto plazo (LSTM):** las redes [LSTM](http://colah.github.io/posts/2015-08-Understanding-LSTMs/?WT.mc_id=pdmsolution-docs-ercenk) son un tipo de redes neuronales profundas (DNN). La inspiración de las DNN viene del modelado del comportamiento de las neuronas individuales en el cerebro. Microsoft ha publicado una [guía paso a paso](https://docs.microsoft.com/en-us/azure/machine-learning/desktop-workbench/scenario-deep-learning-for-predictive-maintenance?WT.mc_id=pdmsolution-docs-ercenk) para describir cómo se usa una LSTM para el mantenimiento predictivo
+  - **Regresión:** la regresión es una clase de algoritmos de aprendizaje automático que predice el valor de una variable una vez especificado un conjunto de otras variables. Machine Learning Studio incluye un conjunto de algoritmos de regresión como [módulos](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/machine-learning-initialize-model-regression?WT.mc_id=pdmsolution-docs-ercenk).
+    - **Memoria a corto y largo plazo (LSTM):** las redes [LSTM](https://colah.github.io/posts/2015-08-Understanding-LSTMs/?WT.mc_id=pdmsolution-docs-ercenk) son un tipo de redes neuronales profundas (DNN). La inspiración de las DNN viene del modelado del comportamiento de las neuronas individuales en el cerebro. Microsoft ha publicado una [guía paso a paso](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/scenario-deep-learning-for-predictive-maintenance?WT.mc_id=pdmsolution-docs-ercenk) para describir cómo se usa una LSTM para el mantenimiento predictivo
 - _¿Qué recurso requiere un mantenimiento más urgente?_ Respuesta: Recurso X
   - **Clasificación multiclase:** la clasificación multiclase es un método de Machine Learning que usa datos para determinar la categoría, el tipo o la clase de un elemento o fila de datos, como un miembro de más de dos clases.
 
@@ -80,29 +80,29 @@ Una vez más, la incorporación de los datos puede conllevar el uso de varios ca
 
 Microsoft Azure ofrece numerosos servicios para ingerir y almacenar los datos. Recomendamos los métodos por lotes para obtener los datos transferidos a Azure si aún no están allí. Si puede exportar sus datos como archivos en formatos conocidos como csv, json, xml, etc., estas opciones son buenas. También puede elegir comprimirlos antes de cargarlos y procesarlos adicionalmente en el lado de la nube.
 
-- Cargar mediante [AzCopy](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy?WT.mc_id=pdmsolution-docs-ercenk) en Blob Storage (Windows y Linux)
+- Cargar mediante [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy?WT.mc_id=pdmsolution-docs-ercenk) en Blob Storage (Windows y Linux)
 
-- [Montaje de Blob Storage](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-how-to-mount-container-linux?WT.mc_id=pdmsolution-docs-ercenk) como sistema de archivos en Linux
+- [Montaje de Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-mount-container-linux?WT.mc_id=pdmsolution-docs-ercenk) como sistema de archivos en Linux
 
-- Uso del [servicio Import/Export](https://docs.microsoft.com/en-us/azure/storage/common/storage-import-export-service?WT.mc_id=pdmsolution-docs-ercenk), si el tamaño de los datos es grande y tarda demasiado tiempo en cargarse
+- Uso del [servicio Import/Export](https://docs.microsoft.com/azure/storage/common/storage-import-export-service?WT.mc_id=pdmsolution-docs-ercenk), si el tamaño de los datos es grande y tarda demasiado tiempo en cargarse
 
-- [Montaje de un recurso compartido de archivos de](https://docs.microsoft.com/en-us/azure/storage/files/storage-how-to-use-files-windows?WT.mc_id=pdmsolution-docs-ercenk) Azure en Windows, Linux y MacOS
+- [Montaje de un recurso compartido de archivos de](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows?WT.mc_id=pdmsolution-docs-ercenk) Azure en Windows, Linux y MacOS
 
-Si los datos están en una base de datos de SQL Server, también puede usar [Data Migration Assistant](https://docs.microsoft.com/en-us/sql/dma/dma-overview?WT.mc_id=pdmsolution-docs-ercenk) para cargar los datos en una base de datos Azure SQL Database.
+Si los datos están en una base de datos de SQL Server, también puede usar [Data Migration Assistant](https://docs.microsoft.com/sql/dma/dma-overview?WT.mc_id=pdmsolution-docs-ercenk) para cargar los datos en una base de datos de Azure SQL.
 
-Existe una variedad de herramientas y servicios en la plataforma Azure para las operaciones de extracción, transformación y carga de datos (ETL). El servicio más importante es [Azure Data Factory](https://docs.microsoft.com/en-us/azure/data-factory/?WT.mc_id=pdmsolution-docs-ercenk), que proporciona un conjunto completo de características para manipular los datos. Otras opciones para manipular los datos están presentes en los muchos servicios de ML disponibles en Azure a través de las bibliotecas de código abierto.
+Existe una variedad de herramientas y servicios en la plataforma Azure para las operaciones de extracción, transformación y carga de datos (ETL). El servicio más importante es [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/?WT.mc_id=pdmsolution-docs-ercenk), que proporciona un conjunto completo de características para manipular los datos. Otras opciones para manipular los datos están presentes en los muchos servicios de ML disponibles en Azure a través de las bibliotecas de código abierto.
 
 En cuanto al entrenamiento del modo ML, Microsoft Azure proporciona muchas opciones, las cuales pueden usarse combinadas de distintas formas.
 
-- [Servicios de Azure Machine Learning](https://docs.microsoft.com/en-us/azure/machine-learning/preview/?WT.mc_id=pdmsolution-docs-ercenk)
+- [Servicios de Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/preview/?WT.mc_id=pdmsolution-docs-ercenk)
 
-- [Azure Machine Learning Studio](https://docs.microsoft.com/en-us/azure/machine-learning/studio/?WT.mc_id=pdmsolution-docs-ercenk)
+- [Azure Machine Learning Studio](https://docs.microsoft.com/azure/machine-learning/studio/?WT.mc_id=pdmsolution-docs-ercenk)
 
-- [Data Science Virtual Machine](https://docs.microsoft.com/en-us/azure/machine-learning/data-science-virtual-machine/?WT.mc_id=pdmsolution-docs-ercenk)
+- [Data Science Virtual Machine](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/?WT.mc_id=pdmsolution-docs-ercenk)
 
-- [MLLib de Spark en HDInsight](https://docs.microsoft.com/en-us/azure/hdinsight/spark/apache-spark-machine-learning-mllib-ipython?WT.mc_id=pdmsolution-docs-ercenk)
+- [MLLib de Spark en HDInsight](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-machine-learning-mllib-ipython?WT.mc_id=pdmsolution-docs-ercenk)
 
-- [Servicio de entrenamiento de IA por lotes](https://docs.microsoft.com/en-us/azure/batch-ai/?WT.mc_id=pdmsolution-docs-ercenk)
+- [Servicio de entrenamiento de IA por lotes](https://docs.microsoft.com/azure/batch-ai/?WT.mc_id=pdmsolution-docs-ercenk)
 
 Decidir qué herramienta usar depende de la complejidad de las operaciones, la experiencia del equipo y el tamaño de los datos.
 
@@ -110,7 +110,7 @@ La ecuación de costos de las soluciones en la nube contiene muchas variables, a
 
 Tanto el diseño del proceso para analizar los datos como la publicación del modelo son temas detallados y se diferencian entre sí por las tecnologías usadas. Esos temas se encuentran fuera del ámbito de este artículo. Una serie de artículos donde se explica el proceso y los servicios de Azure que pueden usarse en la generación del modelo se encuentran disponibles. Microsoft también proporciona un enfoque sistemático para crear soluciones que permite a los equipos de científicos de datos colaborar de forma eficaz durante el ciclo de vida de los datos.
 
-La [documentación de Machine Learning](https://docs.microsoft.com/en-us/azure/machine-learning?WT.mc_id=pdmsolution-docs-ercenk) de Microsoft es un buen punto inicial para explorar las opciones para crear, implementar y administrar modelos de ML e IA en la nube.
+La [documentación de Machine Learning](https://docs.microsoft.com/azure/machine-learning?WT.mc_id=pdmsolution-docs-ercenk) de Microsoft es un buen punto inicial para explorar las opciones para crear, implementar y administrar modelos de ML e IA en la nube.
 
 La plataforma de Microsoft Azure ofrece numerosas opciones para procesar datos a escala y crear modelos de ML. La disponibilidad de un proceso escalable y prácticamente infinito, y una potencia de almacenamiento en las plataformas de nube permite la creación de modelos de ML e IA. Por tanto, usar los servicios de Azure para crear los modelos es la opción más lógica para implementar este flujo de datos.
 
@@ -124,13 +124,13 @@ La ingesta de los datos puede llevarse a cabo en línea transmitiendo los datos 
 
 La plataforma de Microsoft Azure ofrece una variedad de servicios para ingerir, procesar y almacenar los datos, por ejemplo:
 
-- [Azure Event Hubs](https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-what-is-event-hubs?WT.mc_id=pdmsolution-docs-ercenk)
+- [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-what-is-event-hubs?WT.mc_id=pdmsolution-docs-ercenk)
 
-- [Azure Service Bus](https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-messaging-overview?WT.mc_id=pdmsolution-docs-ercenk)
+- [Azure Service Bus](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-messaging-overview?WT.mc_id=pdmsolution-docs-ercenk)
 
-- [Azure IoT Hub](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-what-is-iot-hub?WT.mc_id=pdmsolution-docs-ercenk)
+- [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-what-is-iot-hub?WT.mc_id=pdmsolution-docs-ercenk)
 
-- [Apache Kafka para HDInsight](https://docs.microsoft.com/en-us/azure/hdinsight/kafka/apache-kafka-introduction?WT.mc_id=pdmsolution-docs-ercenk)
+- [Apache Kafka para HDInsight](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-introduction?WT.mc_id=pdmsolution-docs-ercenk)
 
 A diferencia del proceso de creación del modelo de ML, su consumo no requiere muchos recursos computacionales. Dependiendo de sus necesidades, el modelo se puede implementar en un servicio en la nube, o bien de forma local en la fábrica.
 
@@ -144,9 +144,9 @@ El modelo de ML se consume localmente, mientras los datos se envían a la nube p
 
 ## <a name="cloud-execution"></a>Ejecución local
 
-La ingesta, el proceso y almacenamiento, y la ejecución del modelo de ML pueden producirse en la nube de Azure. Esta opción puede ser más adecuada en los casos en los que se comparten los resultados de la ejecución del modelo de ML entre varios inquilinos o ubicaciones geográficas (y la latencia no es fundamental). Un componente opcional, conocido a menudo como “puerta de enlace perimetral”, se puede agregar localmente para realizar parte del trabajo (como la agregación y proyección de datos, Stream Analytics, etc., siguiendo un patrón conocido como [patrón “Ambassador”](https://docs.microsoft.com/en-us/azure/architecture/patterns/ambassador?WT.mc_id=pdmsolution-docs-ercenk)).
+La ingesta, el proceso y almacenamiento, y la ejecución del modelo de ML pueden producirse en la nube de Azure. Esta opción puede ser más adecuada en los casos en los que se comparten los resultados de la ejecución del modelo de ML entre varios inquilinos o ubicaciones geográficas (y la latencia no es fundamental). Un componente opcional, conocido a menudo como “puerta de enlace perimetral”, se puede agregar localmente para realizar parte del trabajo (como la agregación y proyección de datos, Stream Analytics, etc., siguiendo un patrón conocido como [patrón “Ambassador”](https://docs.microsoft.com/azure/architecture/patterns/ambassador?WT.mc_id=pdmsolution-docs-ercenk)).
 
-Hay varias formas de usar el modelo en Azure. El [servicio web Azure Machine Learning](https://docs.microsoft.com/en-us/azure/machine-learning/studio/consume-web-services?WT.mc_id=pdmsolution-docs-ercenk) es el más sencillo y usa [Azure Machine Learning Studio](https://docs.microsoft.com/en-us/azure/machine-learning/studio/what-is-ml-studio?WT.mc_id=pdmsolution-docs-ercenk) como opción para crear el modelo. También podría elegirse [Administración de modelos de Azure Machine Learning](https://docs.microsoft.com/en-us/azure/machine-learning/preview/model-management-overview?WT.mc_id=pdmsolution-docs-ercenk), que proporciona un completo conjunto de servicios para administrar modelos, así como puntos de conexión de la API de REST, con características de autenticación, equilibrio de carga, escalabilidad horizontal automática y cifrado. El modelo se puede implementar en una sola máquina (p. ej., Data Science Virtual Machine, un dispositivo IoT o un equipo local) o [Azure Container Service](https://docs.microsoft.com/en-us/azure/aks/intro-kubernetes?WT.mc_id=pdmsolution-docs-ercenk). Una vez expuesto el modelo a través de una API de REST, las posibilidades de usarlo son infinitas, desde aplicaciones personalizadas a la integración de soluciones empresariales.
+Hay varias formas de usar el modelo en Azure. El [servicio web Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/studio/consume-web-services?WT.mc_id=pdmsolution-docs-ercenk) es el más sencillo y usa [Azure Machine Learning Studio](https://docs.microsoft.com/azure/machine-learning/studio/what-is-ml-studio?WT.mc_id=pdmsolution-docs-ercenk) como opción para crear el modelo. También podría elegirse [Administración de modelos de Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/preview/model-management-overview?WT.mc_id=pdmsolution-docs-ercenk), que proporciona un completo conjunto de servicios para administrar modelos, así como puntos de conexión de la API de REST, con características de autenticación, equilibrio de carga, escalabilidad horizontal automática y cifrado. El modelo se puede implementar en una sola máquina (p. ej., Data Science Virtual Machine, un dispositivo IoT o un equipo local) o [Azure Container Service](https://docs.microsoft.com/azure/aks/intro-kubernetes?WT.mc_id=pdmsolution-docs-ercenk). Una vez expuesto el modelo a través de una API de REST, las posibilidades de usarlo son infinitas, desde aplicaciones personalizadas a la integración de soluciones empresariales.
 
 ![Solo en la nube](assets/pdm-assets/cloudonly.png)
 
@@ -156,7 +156,7 @@ Una implementación solo en la nube no conlleva necesariamente que haya solo str
 
 Muchas soluciones de IoT ingieren y almacenan datos como parte de su conjunto de características. Además, como las soluciones de mantenimiento predictivo suelen basarse en datos de IoT, pueden constituir una adición de características natural a las soluciones de IoT. Un punto esencial que se debe resaltar en este contexto es la importancia de tener errores registrados en los datos existentes para entrenar un modelo predictivo para las características.
 
-Algunos casos de uso requieren un procesamiento de datos en tiempo casi real. En estos casos, necesitamos una solución de IoT escalable con funcionalidades de tasa de ingesta de datos elevada. La plataforma de Microsoft Azure ofrece muchos servicios que pueden habilitar soluciones para aquellas necesidades de IoT altamente escalables. La [arquitectura de solución IoT de Microsoft](https://docs.microsoft.com/en-us/azure/iot-suite/iot-suite-what-is-azure-iot?WT.mc_id=pdmsolution-docs-ercenk) de la plataforma Azure cuenta con componentes lógicos a lo largo de tres fases:
+Algunos casos de uso requieren un procesamiento de datos en tiempo casi real. En estos casos, necesitamos una solución de IoT escalable con funcionalidades de tasa de ingesta de datos elevada. La plataforma de Microsoft Azure ofrece muchos servicios que pueden habilitar soluciones para aquellas necesidades de IoT altamente escalables. La [arquitectura de solución IoT de Microsoft](https://docs.microsoft.com/azure/iot-suite/iot-suite-what-is-azure-iot?WT.mc_id=pdmsolution-docs-ercenk) de la plataforma Azure cuenta con componentes lógicos a lo largo de tres fases:
 
 - Conectividad de dispositivos
 
@@ -166,7 +166,7 @@ Algunos casos de uso requieren un procesamiento de datos en tiempo casi real. En
 
 ![Arquitectura de solución IoT](assets/pdm-assets/iot.png)
 
-Los detalles de la arquitectura de solución IoT de Azure están [disponibles en línea](http://download.microsoft.com/download/A/4/D/A4DAD253-BC21-41D3-B9D9-87D2AE6F0719/Microsoft_Azure_IoT_Reference_Architecture.pdf?WT.mc_id=pdmsolution-docs-ercenk).
+Los detalles de la arquitectura de solución IoT de Azure están [disponibles en línea](https://download.microsoft.com/download/A/4/D/A4DAD253-BC21-41D3-B9D9-87D2AE6F0719/Microsoft_Azure_IoT_Reference_Architecture.pdf?WT.mc_id=pdmsolution-docs-ercenk).
 Sin embargo, hay desafíos únicos que pueden aparecer debido al número potencialmente sustancial de dispositivos conectados a los servicios de back-end.
 
 ## <a name="data-ingestion-and-stream-processing"></a>Ingesta de datos y procesamiento de flujos
@@ -180,16 +180,16 @@ Los sistemas distribuidos, por definición, constan de diversos componentes con 
 Insertar un nuevo componente para la ingesta de datos hace que la comunicación resulte más escalable. Este componente debe ser escalable, seguro y muy probablemente accesible a nivel global, con la opción de crear particiones del proceso de ingesta de datos geográficamente. 
 
 Considere que el mantenimiento predictivo es una característica de la solución de IoT. Igual que los flujos de datos a través de la puerta de enlace, debe enrutarse a servicios relacionados con la funcionalidad de mantenimiento predictivo.
-Otro patrón que se debe tener en cuenta es [Enrutamiento de puerta de enlace](https://docs.microsoft.com/en-us/azure/architecture/patterns/gateway-routing?WT.mc_id=pdmsolution-docs-ercenk).
+Otro patrón que se debe tener en cuenta es [Enrutamiento de puerta de enlace](https://docs.microsoft.com/azure/architecture/patterns/gateway-routing?WT.mc_id=pdmsolution-docs-ercenk).
 
-Ambos patrones pueden implementarse mediante el servicio de Azure, [IoT Hub](https://azure.microsoft.com/en-us/services/iot-hub/?WT.mc_id=pdmsolution-docs-ercenk) y [Azure Stream Analytics](https://azure.microsoft.com/en-us/services/stream-analytics/?WT.mc_id=pdmsolution-docs-ercenk).
+Ambos patrones pueden implementarse mediante el servicio de Azure, [IoT Hub](https://azure.microsoft.com/services/iot-hub/?WT.mc_id=pdmsolution-docs-ercenk) y [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/?WT.mc_id=pdmsolution-docs-ercenk).
 
 ## <a name="edge-and-cloud-processing-cooperation"></a>Cooperación de procesamiento perimetral y en la nube
 
 No todos los dispositivos ni todo el equipo pueden tener acceso a Internet de forma directa y coherente.
-A veces, sus datos deben extraerse desde una puerta de enlace común. Por ejemplo, los agentes [MTConnect](http://www.mtconnect.org/) solo proporcionan una interfaz REST para extraer los datos.
+A veces, sus datos deben extraerse desde una puerta de enlace común. Por ejemplo, los agentes [MTConnect](https://www.mtconnect.org/) solo proporcionan una interfaz REST para extraer los datos.
 
-Puede haber otras consideraciones como la latencia, la necesidad de limpiar los datos del dispositivo localmente antes de enviarlos a la nube (casos de multiinquilino) y la necesidad de realizar proyecciones o agregaciones en los datos del dispositivo. El [patrón Ambassador](https://docs.microsoft.com/en-us/azure/architecture/patterns/ambassador?WT.mc_id=pdmsolution-docs-ercenk) es un buen enfoque para abordar estas necesidades. [Microsoft Azure IoT Edge](https://docs.microsoft.com/en-us/azure/iot-edge/how-iot-edge-works?WT.mc_id=pdmsolution-docs-ercenk) es una implementación que puede actuar como proxy para [Microsoft Azure IoT Hub](https://azure.microsoft.com/en-us/services/iot-hub/?WT.mc_id=pdmsolution-docs-ercenk), así como proporcionar funcionalidades de procesamiento local con la administración remota.
+Puede haber otras consideraciones como la latencia, la necesidad de limpiar los datos del dispositivo localmente antes de enviarlos a la nube (casos de multiinquilino) y la necesidad de realizar proyecciones o agregaciones en los datos del dispositivo. El [patrón Ambassador](https://docs.microsoft.com/azure/architecture/patterns/ambassador?WT.mc_id=pdmsolution-docs-ercenk) es un buen enfoque para abordar estas necesidades. [Microsoft Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-iot-edge-works?WT.mc_id=pdmsolution-docs-ercenk) es una implementación que puede actuar como proxy para [Microsoft Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/?WT.mc_id=pdmsolution-docs-ercenk), así como proporcionar funcionalidades de procesamiento local con la administración remota.
 
 Una implementación común puede incluir alertas en tiempo casi real en la tienda, mientras se siguen limpiando y publicando datos en una solución multiinquilino en la nube para el archivado, el entrenamiento del modelo y la creación de informes sin dependencia del tiempo. Con las funcionalidades de Azure IoT Edge e IoT Hub, los clientes pueden controlar las opciones de filtrado de datos en el dispositivo perimetral, así como interactuar con otros sistemas de tienda para entregar alertas.
 
@@ -203,7 +203,7 @@ Como se mencionó anteriormente, es posible que algunos fabricantes o terceros q
 
 La parte que ofrece un servicio debe garantizar que la información confidencial de sus clientes se identifique y se proteja o limpie correctamente. Microsoft Azure proporciona funcionalidades para cifrar los datos dependiendo del servicio de almacenamiento usado.
 
-El modo en que los dispositivos generan y envían datos también debe protegerse, mediante métodos conocidos tales como certificados por dispositivo, habilitación/deshabilitación por dispositivo, seguridad TLS, compatibilidad con X.509, listas blanca y negra de direcciones IP y políticas de acceso compartido. La parte que ofrece un servicio debe garantizar que la información confidencial de los clientes se identifique y se proteja o limpie correctamente. [Azure Data Lake Storage](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-encryption?WT.mc_id=pdmsolution-docs-ercenk), [Azure Storage](https://docs.microsoft.com/en-us/azure/storage/common/storage-service-encryption?WT.mc_id=pdmsolution-docs-ercenk), [Azure Cosmos DB](https://docs.microsoft.com/en-us/azure/cosmos-db/database-encryption-at-rest?WT.mc_id=pdmsolution-docs-ercenk) y [Azure SQL Database](https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql?WT.mc_id=pdmsolution-docs-ercenk) son ejemplos de servicios que se pueden emplear para cifrar los datos en reposo. Los proveedores de soluciones también deben tener en cuenta cómo crear particiones de los datos en el mismo recurso (p. ej., base de datos) o en varios. 
+El modo en que los dispositivos generan y envían datos también debe protegerse, mediante métodos conocidos tales como certificados por dispositivo, habilitación/deshabilitación por dispositivo, seguridad TLS, compatibilidad con X.509, listas blanca y negra de direcciones IP y políticas de acceso compartido. La parte que ofrece un servicio debe garantizar que la información confidencial de los clientes se identifique y se proteja o limpie correctamente. [Azure Data Lake Storage](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-encryption?WT.mc_id=pdmsolution-docs-ercenk), [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-service-encryption?WT.mc_id=pdmsolution-docs-ercenk), [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/database-encryption-at-rest?WT.mc_id=pdmsolution-docs-ercenk) y [Azure SQL Database](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql?WT.mc_id=pdmsolution-docs-ercenk) son ejemplos de servicios que se pueden emplear para cifrar los datos en reposo. Los proveedores de soluciones también deben tener en cuenta cómo crear particiones de los datos en el mismo recurso (p. ej., base de datos) o en varios. 
 
 ### <a name="geographical-considerations"></a>Consideraciones geográficas
 
@@ -223,7 +223,7 @@ El proveedor de servicios debe diseñar métodos para incorporar eficazmente nue
 
 Los sistemas complejos requieren atención adicional más allá del cumplimiento de los requisitos funcionales. Las soluciones correctas en la nube se centran en estos cinco fundamentos: la escalabilidad, la disponibilidad, la resistencia, la administración y la seguridad. Además de los cinco fundamentos, también deseamos destacar la eficacia de la solución en cuanto al costo.
 
-Consulte el artículo [Fundamentos de calidad del software](https://docs.microsoft.com/en-us/azure/architecture/guide/pillars?WT.mc_id=pdmsolution-docs-ercenk) para ver los detalles.
+Consulte el artículo [Fundamentos de calidad del software](https://docs.microsoft.com/azure/architecture/guide/pillars?WT.mc_id=pdmsolution-docs-ercenk) para ver los detalles.
 
 | Fundamento                      |                                                                                                                                                                                                                                                                                                                                                                                                 |
 |-----------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -241,12 +241,12 @@ En este artículo se proporcionó una visión de cómo recopilar datos y entrena
 
 ## <a name="further-reading"></a>Lecturas adicionales
 
-1. [Centrado en el futuro: deje de pensar en el pasado y deje atrás los imprevistos con IoT](https://blogs.microsoft.com/iot/2017/02/28/future-focused-stop-thinking-in-the-past-and-get-ahead-of-the-unexpected-with-iot-2/?WT.mc_id=pdmsolution-docs-ercenk)
+1. [Con la mirada puesta en el futuro: deje de pensar en el pasado y deje atrás los imprevistos con IoT](https://blogs.microsoft.com/iot/2017/02/28/future-focused-stop-thinking-in-the-past-and-get-ahead-of-the-unexpected-with-iot-2/?WT.mc_id=pdmsolution-docs-ercenk)
 
-2. [Aumente la confiabilidad de los equipos con mantenimiento predictivo compatible con IoT](https://www.microsoft.com/en-us/internet-of-things/predictive-maintenance?WT.mc_id=pdmsolution-docs-ercenk)
+2. [Aumente la confiabilidad de los equipos con mantenimiento predictivo compatible con IoT](https://www.microsoft.com/internet-of-things/predictive-maintenance?WT.mc_id=pdmsolution-docs-ercenk)
 
-3. [Capture el valor del Internet de las cosas: cómo enfocar un proyecto de mantenimiento predictivo](http://download.microsoft.com/download/0/7/D/07D394CE-185D-4B96-AC3C-9B61179F7080/Capture_value_from_the_Internet%20of%20Things_with_Predictive_Maintenance.PDF?WT.mc_id=pdmsolution-docs-ercenk)
+3. [Saque el máximo partido al Internet de las cosas: cómo enfocar un proyecto de mantenimiento predictivo](https://download.microsoft.com/download/0/7/D/07D394CE-185D-4B96-AC3C-9B61179F7080/Capture_value_from_the_Internet%20of%20Things_with_Predictive_Maintenance.PDF?WT.mc_id=pdmsolution-docs-ercenk)
 
-4. [Perspectivas de los partners: mantenimiento predictivo en la primera línea](https://blogs.microsoft.com/iot/2017/03/21/partner-perspectives-predictive-maintenance-on-the-frontlines/?WT.mc_id=pdmsolution-docs-ercenk)
+4. [Perspectivas de los asociados: mantenimiento predictivo en la primera línea](https://blogs.microsoft.com/iot/2017/03/21/partner-perspectives-predictive-maintenance-on-the-frontlines/?WT.mc_id=pdmsolution-docs-ercenk)
 
 5. [Desde la mercantilización a la servitización: transformación de su empresa para competir en la nueva era del servicio de campo con IoT](https://blogs.microsoft.com/iot/2016/11/07/from-commodization-to-servitization-transforming-your-business-to-compete-in-the-new-age-of-field-service-with-iot/?WT.mc_id=pdmsolution-docs-ercenk)

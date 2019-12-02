@@ -1,17 +1,17 @@
 ---
-title: Introducción a la administración de datos en la banca
+title: 'Introducción: Administración de patrimonios de datos para bancos mediante servicios de Azure'
 author: dstarr
 ms.author: dastarr
-ms.date: 10/30/2019
+ms.date: 11/20/2019
 ms.topic: article
 ms.service: industry
 description: Describe las técnicas de administración de datos en un entorno bancario regulado mediante Microsoft Azure.
-ms.openlocfilehash: 1314054018c04e45b6450604febbf0142ead380d
-ms.sourcegitcommit: f42a60539bec2a7769b42b6574f09eed4d1b6c79
+ms.openlocfilehash: cfafd5242b6da994def2fe1470db9fd86b2675e7
+ms.sourcegitcommit: f030566b177715794d2ad857b150317e72d04d64
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73750535"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74234634"
 ---
 # <a name="data-management-in-banking-overview"></a>Introducción a la administración de datos en la banca
 
