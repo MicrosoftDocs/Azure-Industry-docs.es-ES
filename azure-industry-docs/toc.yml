@@ -57,7 +57,7 @@
           href: retail/retail-data-management-overview.md
         - name: Introducción a la migración de una solución de comercio electrónico a Azure
           href: retail/migrating-ecommerce-solution-to-azure.md
-        - name: Optimización y reutilización de un sistema de recomendación existente
+        - name: Optimización y reutilización de un sistema de recomendaciones existente
           href: retail/recommendation-engine-optimization.md
         - name: Procesamiento de pagos compatibles con PCI DSS
           href: /azure/security/blueprints/payment-processing-blueprint

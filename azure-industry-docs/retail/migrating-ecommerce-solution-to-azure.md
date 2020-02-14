@@ -7,11 +7,11 @@ ms.topic: article
 ms.service: industry
 description: En este artículo se explican las fases de migración de la infraestructura de comercio electrónico del entorno local a Azure.
 ms.openlocfilehash: e918f1157dc2bc42a6c4d0decfef95a8daa7ccf0
-ms.sourcegitcommit: b8f9ccc4e4453d6912b05cdd6cf04276e13d7244
-ms.translationtype: HT
+ms.sourcegitcommit: 3b175d73a82160c4cacec1ce00c6d804a93c765d
+ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74263354"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77054191"
 ---
 # <a name="migrating-your-e-commerce-solution-to-azure-overview"></a>Introducción a la migración de una solución de comercio electrónico a Azure
 
@@ -45,7 +45,7 @@ Hay tres fases para el rehospedaje en Azure:
 - **Migración**: migre cada subsistema desde el entorno local a Azure. En esta etapa, usará Azure como una extensión del centro de datos con aplicaciones que siguen comunicándose.
 - **Optimización**: a medida que los sistemas se migran a Azure, asegúrese de que las cosas tienen el tamaño adecuado. Si el entorno muestra que hay asignados demasiados recursos a algunas máquinas virtuales, cambie el tipo de máquina virtual a uno que tenga una combinación más adecuada de CPU, memoria y almacenamiento local.
 
-### <a name="analyze"></a>Análisis
+### <a name="analyze"></a>Analizar
 
 Haga lo siguiente:
 
@@ -76,7 +76,7 @@ Empiece a migrar los datos, las aplicaciones y los servidores relacionados a Azu
 
 Una vez que se migra un subsistema a Azure, haga una prueba para asegurarse de que todo funciona según lo previsto. Una vez solucionados todos los problemas, migre las cargas de trabajo a Azure.
 
-### <a name="optimize"></a>Optimizar
+### <a name="optimize"></a>Optimización
 
 En este momento, el usuario seguirá supervisando el entorno y cambiará las opciones de proceso subyacentes para ajustarse a las cargas de trabajo a medida que cambia el entorno. Quienquiera que supervise el estado del entorno debe vigilar cuánto se usa cada recurso. El objetivo debe ser tener una utilización de entre el 75 % y el 90 % en la mayoría de las máquinas virtuales. En el caso de las máquinas virtuales con una utilización excepcionalmente baja, considere la posibilidad de empaquetarlas con más aplicaciones o migrarlas a las máquinas virtuales de menor costo en Azure que conservan el nivel adecuado de rendimiento.
 
@@ -94,11 +94,11 @@ Si bien muchos se pueden usar muchos de los servicios de Azure, nos centraremos 
 
 Los contenedores ofrecen una forma de empaquetar las aplicaciones. Debido al modo en que un contenedor virtualiza el sistema operativo, puede empaquetar varios contenedores en una sola máquina virtual. Puede mover una aplicación a un contenedor con pocos cambios o ningún cambio. Es posible que necesite cambios de configuración. Este trabajo también lleva a escribir scripts que empaquetan aplicaciones en un contenedor. Los equipos de desarrollo dedicarán su tiempo de refactorización a escribir y probar estos scripts. Azure admite la inclusión en contenedores mediante los servicios [Azure Kubernetes Service](/azure/aks/?WT.mc_id=retailecomm-docs-scseely) (AKS) y [Azure Container Registry](https://azure.microsoft.com/services/container-registry/?WT.mc_id=retailecomm-docs-scseely) que puede usar para administrar las imágenes de contenedor.
 
-En el caso de los servicios de aplicación, puede aprovechar varios servicios de Azure. Por ejemplo, la infraestructura existente puede controlar un pedido de cliente mediante la colocación de mensajes en una cola como [RabbitMQ](https://www.rabbitmq.com/). (Por ejemplo, un mensaje es para cobrarle al cliente y el segundo mensaje, para enviar el pedido). Al momento de realizar el rehospedaje, RabbitMQ se coloca en una máquina virtual independiente. Durante la refactorización, se agrega una cola o tema de [Service Bus](/azure/service-bus-messaging/service-bus-queues-topics-subscriptions?WT.mc_id=retailecomm-docs-scseely) a la solución, se reescribe el código de RabbitMQ y se dejan de usar las máquinas virtuales que atendieron la funcionalidad de puesta en cola. Con este cambio se reemplaza un conjunto de máquinas virtuales por un servicio de cola de mensajes siempre activo a un costo inferior. Puede encontrar otros servicios de aplicación en Azure Portal.
+En el caso de los servicios de aplicación, puede aprovechar varios servicios de Azure. Por ejemplo, la infraestructura existente puede controlar un pedido de cliente mediante la colocación de mensajes en una cola como [RabbitMQ](https://www.rabbitmq.com/). (Por ejemplo, un mensaje es cargar el cliente, un segundo es enviar el pedido). Al volver a hospedar, se coloca RabbitMQ en una máquina virtual independiente. Durante la refactorización, se agrega una cola o tema de [Service Bus](/azure/service-bus-messaging/service-bus-queues-topics-subscriptions?WT.mc_id=retailecomm-docs-scseely) a la solución, se reescribe el código de RabbitMQ y se dejan de usar las máquinas virtuales que atendieron la funcionalidad de puesta en cola. Con este cambio se reemplaza un conjunto de máquinas virtuales por un servicio de cola de mensajes siempre activo a un costo inferior. Puede encontrar otros servicios de aplicación en Azure Portal.
 
 En el caso de las bases de datos, puede migrar una base de datos desde una máquina virtual a un servicio. Azure admite cargas de trabajo de SQL Server con [Azure SQL Database](/azure/sql-database/sql-database-cloud-migrate?WT.mc_id=retailecomm-docs-scseely) e [Instancia administrada de Azure SQL Database](/azure/sql-database/sql-database-managed-instance?WT.mc_id=retailecomm-docs-scseely). [Data Migration Service](https://azure.microsoft.com/services/database-migration/?WT.mc_id=retailecomm-docs-scseely) evalúa la base de datos, informa sobre el trabajo que se debe realizar antes de la migración y, luego, migra la base de datos desde la máquina virtual al servicio. Azure admite también [MySQL](https://azure.microsoft.com/services/mysql/?WT.mc_id=retailecomm-docs-scseely), [PostgreSQL](https://azure.microsoft.com/services/postgresql/?WT.mc_id=retailecomm-docs-scseely) y otros servicios de motor de [base de datos](https://azure.microsoft.com/services/#databases?WT.mc_id=retailecomm-docs-scseely).
 
-## <a name="rebuild"></a>Recompilación
+## <a name="rebuild"></a>Volver a generar
 
 Hasta este momento, hemos intentado minimizar los cambios en los sistemas de comercio electrónico y no hemos hablado de los sistemas funcionales. Ahora veamos cómo aprovechar realmente la nube. Esta etapa significa revisar la aplicación existente mediante la adopción de manera agresiva de la arquitectura y los servicios de PaaS o, incluso, SaaS. El proceso abarca revisiones sustanciales para agregar funcionalidad nueva o rediseñar la aplicación para la nube.  Las _API administradas_ son un nuevo concepto que aprovecha los sistemas de nube. Mediante la creación de API para la comunicación entre servicios, podemos facilitar la actualización del sistema.  Una segunda ventaja es la capacidad de obtener información sobre los datos existentes. Para ello, migramos a una arquitectura de _microservicio más API_ y usamos el aprendizaje automático y otras herramientas para analizar los datos.
 
@@ -120,7 +120,7 @@ Luego, eche un vistazo a las ofertas que existen en [Azure Marketplace](https://
 
 Muchos equipos de desarrollo se ven tentados a realizar al mismo tiempo las etapas de rehospedaje y refactorización para abordar la deuda técnica y aprovechar mejor la capacidad. Hay ventajas si se realiza el rehospedaje antes de pasar a los pasos siguientes.  Cualquier problema en la implementación en el entorno nuevo será más fácil de diagnosticar y corregir. A su vez, esto brinda a los equipos de desarrollo y soporte técnico el tiempo necesario para aprender a usar Azure como el entorno nuevo. Cuando empieza a refactorizar y recompilar el sistema, se basa en una aplicación funcional y estable. Esto permite realizar cambios más pequeños y dirigidos y actualizaciones más frecuentes.
 
-Hemos publicado un documento más general sobre la migración a la nube: [Aspectos fundamentales sobre la migración a la nube](https://azure.microsoft.com/resources/cloud-migration-essentials-e-book/?_lrsc=9618a836-9f81-4087-901f-51058783c3a8&WT.mc_id=retailecomm-docs-scseely). Es un artículo excelente para leer mientras planea la migración.
+Hemos publicado un documento más general sobre la migración a la nube: [Cloud Migration Essentials](https://azure.microsoft.com/resources/cloud-migration-essentials-e-book/?_lrsc=9618a836-9f81-4087-901f-51058783c3a8&WT.mc_id=retailecomm-docs-scseely) (Aspectos fundamentales sobre la migración a la nube). Es un artículo excelente para leer mientras planea la migración.
 
 ## <a name="technologies-presented"></a>Tecnologías presentadas
 

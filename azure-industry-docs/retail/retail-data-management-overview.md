@@ -7,11 +7,11 @@ ms.topic: article
 ms.service: industry
 description: Los minoristas tienen grandes almacenes de datos con datos sin utilizar de los que pueden obtener información valiosa. En este artículo se describe cómo Microsoft Azure puede ayudar a usar esos datos de forma eficaz.
 ms.openlocfilehash: 198e0f609889eee86e005c5ee56090006ae2a413
-ms.sourcegitcommit: b8f9ccc4e4453d6912b05cdd6cf04276e13d7244
-ms.translationtype: HT
+ms.sourcegitcommit: 3b175d73a82160c4cacec1ce00c6d804a93c765d
+ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74263516"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77054123"
 ---
 # <a name="data-management-in-retail-overview"></a>Introducción a la administración de datos en el comercio minorista
 
@@ -90,7 +90,7 @@ El servicio Azure Data Lake también permite consultas por lotes e interactivas,
 
 Otros almacenes de datos, como las bases de datos relacionales, el almacenamiento de blobs, almacenamiento de Azure Files y el almacenamiento de documentos de Cosmos DB también pueden contener datos limpios preparados para el análisis de bajada en la canalización de administración de datos. No hay ningún requisito excepto el uso de una instancia de Data Lake.
 
-## <a name="analyze"></a>Análisis
+## <a name="analyze"></a>Analizar
 
 En caso de problemas, como la reducción del costo del inventario, los minoristas pueden usar el análisis realizado por un proceso de Machine Learning.
 
@@ -106,7 +106,7 @@ En primer lugar, los datos se limpian y se forman correctamente. Luego, se proce
 
 Después de entrenar el modelo y ejecutar un proceso de análisis de datos, los datos derivados del análisis de aprendizaje automático se pueden almacenar en un almacenamiento de datos o en bases de datos de almacenamiento normalizadas para datos analíticos. Microsoft proporciona [Power BI](/power-bi/?WT.mc_id=retaildm-docs-dastarr), una completa herramienta de análisis de datos, para un análisis profundo de los datos en el almacenamiento de datos.
 
-## <a name="action"></a>.
+## <a name="action"></a>Acción
 
 Los datos del comercio minorista se mueven constantemente, y los sistemas que los gestionan deben hacerlo también de forma oportuna. Por ejemplo, los datos de compradores de comercio electrónico deben procesarse rápidamente. Así, los artículos del carro de la compra de un comprador se pueden usar para ofrecer servicios adicionales o artículos complementarios durante el proceso de finalización de la compra. Esta forma de tratamiento y análisis de los datos se debe producir casi inmediatamente y normalmente la llevan a cabo sistemas que ejecutan transacciones en "microlotes". Es decir, los datos se analizan en un sistema que tiene acceso a datos ya procesados y se ejecutan mediante un modelo.
 

@@ -7,11 +7,11 @@ ms.topic: article
 ms.service: industry
 description: Información general sobre el proceso de alta potencia necesario en la industria de fabricación.
 ms.openlocfilehash: fe5200a726b2a65efaed2bc7a8de01e97766d425
-ms.sourcegitcommit: 2714a77488c413f01beb169a18acab45663bcfd7
-ms.translationtype: HT
+ms.sourcegitcommit: 3b175d73a82160c4cacec1ce00c6d804a93c765d
+ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74308516"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77052542"
 ---
 # <a name="on-demand-scalable-high-power-compute"></a>Proceso de alta potencia, a petición y escalable
 
@@ -31,7 +31,7 @@ A medida que las soluciones en la nube comenzaron a ganar más popularidad y nue
 
 ### <a name="remote-desktop-protocol"></a>Protocolo de escritorio remoto
 
-El protocolo de escritorio remoto (RDP) de Microsoft ha admitido únicamente TCP durante mucho tiempo. TCP presenta más sobrecarga que UDP. A partir de RDP 8.0, UDP está disponible para los servidores que ejecutan los Servicios de Escritorio remoto de Microsoft. Para que sea útil, una máquina virtual debe tener suficientes recursos de hardware, es decir: CPU, memoria y, lo que es más importante, la unidad de procesamiento de gráficos (GPU). (Podría decirse que la GPU es el componente más importante de una estación de trabajo en la nube de alto rendimiento). Windows Server 2016 ofrece varias opciones para acceder a las funcionalidades gráficas subyacente. La solución de GPU de RDS predeterminada, también conocida como Windows Advanced Rasterization Platform (WARP), es una solución adecuada para los escenarios de trabajador del conocimiento, pero proporciona recursos inadecuados para los escenarios de estación de trabajo en la nube. vGPU de RemoteFX es una característica de RemoteFX que se introdujo para las conexiones remotas, que se proporciona para escenarios con altas densidades de usuarios por servidor, lo que permite la utilización de GPU de ráfaga elevada. Sin embargo, cuando llega el momento de usar la potencia de la GPU, se necesita la asignación de dispositivos discretos (DDA) para utilizarla plenamente.
+El protocolo de escritorio remoto (RDP) de Microsoft ha admitido únicamente TCP durante mucho tiempo. TCP presenta más sobrecarga que UDP. A partir de RDP 8.0, UDP está disponible para los servidores que ejecutan los Servicios de Escritorio remoto de Microsoft. Para que pueda usarse, una máquina virtual (VM) debe tener suficientes recursos de hardware, a saber: CPU, memoria y, principalmente, unidad de procesamiento gráfico (GPU). (La GPU es posiblemente el componente más importante de una estación de trabajo en la nube de alto rendimiento). Windows Server 2016 proporciona varias opciones para obtener acceso a las capacidades de gráficos subyacentes. La solución de GPU de RDS predeterminada, también conocida como Windows Advanced Rasterization Platform (WARP), es una solución adecuada para los escenarios de trabajador del conocimiento, pero proporciona recursos inadecuados para los escenarios de estación de trabajo en la nube. vGPU de RemoteFX es una característica de RemoteFX que se introdujo para las conexiones remotas, que se proporciona para escenarios con altas densidades de usuarios por servidor, lo que permite la utilización de GPU de ráfaga elevada. Sin embargo, cuando llega el momento de usar la potencia de la GPU, se necesita la asignación de dispositivos discretos (DDA) para utilizarla plenamente.
 
 Las máquinas virtuales de la serie NV están disponibles con una o varias GPU NVDIA como parte de la oferta de la serie N de Azure. Estas máquinas virtuales están optimizadas para escenarios de visualización remota y VDI mediante plataformas como OpenGL y DirectX. Si se aumenta a 4 GPU, es posible aprovisionar estaciones de trabajo que aprovechan por completo las ventajas de la GPU mediante DDA en Azure.
 
@@ -43,9 +43,9 @@ El análisis y simulación de los sistemas físicos en equipos se conoce desde h
 Es importante que el código de solución de problemas se pueda ejecutar en paralelo, a fin de aprovechar la escalabilidad de los recursos.
 
 La solución de problemas de simulación requiere recursos de computación a gran escala. La informática de alto rendimiento (HPC) es una clase de computación a gran escala. HPC requiere baja latencia de red de back-end, con funcionalidades de acceso directo a memoria remota (RDMA) para realizar cálculos paralelos rápidos. La plataforma Azure ofrece máquinas virtuales creadas para informática de alto rendimiento. Cuentan con procesadores especializados emparejados con memoria DDR4, y permiten que las soluciones de proceso intensivo se ejecuten de forma eficaz, tanto en instalaciones Windows como Linux. Y están disponibles en varios tamaños. Consulte [Tamaños de máquina virtual de procesos de alto rendimiento](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json?WT.mc_id=computeinmanufacturing-docs-ercenk).
-Para ver cómo Azure admite HPC de otras maneras, consulte Big Compute: [HPC y Batch](https://azure.microsoft.com/solutions/big-compute/?WT.mc_id=computeinmanufacturing-docs-ercenk).
+Para ver cómo Azure admite HPC de otras maneras, consulte [Big Compute: HPC y Batch](https://azure.microsoft.com/solutions/big-compute/?WT.mc_id=computeinmanufacturing-docs-ercenk).
 
-La plataforma Azure permite escalar vertical y horizontalmente las soluciones. Uno de los paquetes de software más conocidos para la simulación es STAR-CCM +, de CD-adapco. [En un estudio publicado](https://azure.microsoft.com/blog/availability-of-star-ccm-on-microsoft-azure/?WT.mc_id=computeinmanufacturing-docs-ercenk) que demuestra STAR-CCM + mediante la ejecución del modelo de dinámica de fluidos computacional (CDF), "Le Mans 100 million cell", se proporciona una perspectiva de la escalabilidad de la plataforma. El siguiente gráfico muestra la escalabilidad observada cuando se agregan más núcleos al ejecutar la simulación:
+La plataforma Azure permite que las soluciones escalen vertical y horizontalmente. Uno de los paquetes de software conocidos normalmente para la simulación es STAR-CCM +, desde el CD-adapco. [En un estudio publicado](https://azure.microsoft.com/blog/availability-of-star-ccm-on-microsoft-azure/?WT.mc_id=computeinmanufacturing-docs-ercenk) que demuestra STAR-CCM + mediante la ejecución del modelo de dinámica de fluidos computacional (CDF), "Le Mans 100 million cell", se proporciona una perspectiva de la escalabilidad de la plataforma. El siguiente gráfico muestra la escalabilidad observada cuando se agregan más núcleos al ejecutar la simulación:
 
 ![https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/34f1873b-4db5-4c62-b963-8bdf3966cf60.png](assets/bigcompute-assets/starccm.png)
 

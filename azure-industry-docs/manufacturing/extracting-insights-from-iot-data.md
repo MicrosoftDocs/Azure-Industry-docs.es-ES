@@ -8,11 +8,11 @@ ms.service: industry
 ms.topic: article
 ms.date: 11/28/2019
 ms.openlocfilehash: c08e6bbb1da47084122dae1ed6a9e1cea0b59473
-ms.sourcegitcommit: db3bee67c1467884af223a48a895715afba8e08c
-ms.translationtype: HT
+ms.sourcegitcommit: 3b175d73a82160c4cacec1ce00c6d804a93c765d
+ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 12/11/2019
-ms.locfileid: "75005314"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77053409"
 ---
 # <a name="extracting-actionable-insights-from-iot-data"></a>Extracción de información útil de los datos de IoT
 
@@ -85,7 +85,7 @@ Si los datos están disponibles externamente y son accesibles desde Internet, pu
 - Código personalizado implementado en varios servicios de proceso de Azure, como [App Service](/azure/app-service/?WT.mc_id=iotinsightssoln-docs-ercenk), [Azure Kubernetes Service](/azure/aks/?WT.mc_id=iotinsightssoln-docs-ercenk) (AKS), [Container Instances](/azure/container-instances/?WT.mc_id=iotinsightssoln-docs-ercenk) o [Service Fabric](/azure/service-fabric/service-fabric-overview?WT.mc_id=iotinsightssoln-docs-ercenk).
 - [Azure Logic Apps](/azure/logic-apps/?WT.mc_id=iotinsightssoln-docs-ercenk)
 - [Canalizaciones y actividades en Azure Data Factory](/azure/data-factory/copy-activity-overview/?WT.mc_id=iotinsightssoln-docs-ercenk)
-- [Azure Functions](/azure/azure-functions/functions-overview)
+- [Funciones de Azure](/azure/azure-functions/functions-overview)
 - [BizTalk Services](https://azure.microsoft.com/services/biztalk-services/)
 
 Cada uno de los servicios anteriores tiene sus propias ventajas y costos, según el escenario. Por ejemplo, Logic Apps proporciona un medio para [transformar documentos XML](/azure/logic-apps/logic-apps-enterprise-integration-transform?WT.mc_id=iotinsightssoln-docs-ercenk). Sin embargo, los datos pueden ser un documento XML excesivamente complejo, por lo que puede no resultar práctico desarrollar un script XSLT de gran volumen para transformar los datos. En este caso, es posible desarrollar una solución híbrida con varios microservicios desde diferentes servicios de Azure. Por ejemplo, un microservicio, implementado en Azure Logic Apps, puede sondear un punto de conexión HTTP, almacenar temporalmente el resultado sin formato y hacérselo llegar a otro microservicio. El otro microservicio —que transforma el mensaje— puede ser código personalizado hospedado en un [host de Azure Functions](https://github.com/Azure/azure-functions-host).  
@@ -98,7 +98,7 @@ Los mensajes pueden recibir la marca de tiempo en la recepción, o bien pueden c
 ## <a name="ingesting-the-data-stream"></a>Ingesta de flujo de datos
 
 Para analizar los datos como una secuencia, podemos realizar consultas sobre los datos basadas en ventanas temporales para identificar patrones y relaciones. Hay varios servicios en la plataforma Azure que pueden ingerir datos con un elevado rendimiento.
-La elección entre los siguientes servicios depende de las necesidades del proyecto, como la administración de dispositivos, la compatibilidad con los protocolos, la escalabilidad, las preferencias del equipo del modelo de programación, etc. Por ejemplo, el equipo puede preferir el uso de Kafka debido a su experiencia, o a la necesidad de tener un agente de Kafka para la solución. O bien, en otro caso, el proyecto puede necesitar que el sistema de ingesta de datos aproveche la [atestación de clave de TPM de IoT Hub Device Provisioning](/azure/iot-dps/?WT.mc_id=iotinsightssoln-docs-ercenk) para asegurar el acceso de los dispositivos al punto de ingesta.
+La elección entre los servicios siguientes depende de las necesidades del proyecto, como la administración de dispositivos, la compatibilidad con protocolos, la escalabilidad, la preferencia del equipo del modelo de programación, etc. Por ejemplo, es posible que el equipo tenga la preferencia de usar Kafka debido a su experiencia, o la necesidad de tener un agente de Kafka para la solución. O bien, en otro caso, el proyecto puede necesitar que el sistema de ingesta de datos aproveche la [atestación de clave de TPM de IoT Hub Device Provisioning](/azure/iot-dps/?WT.mc_id=iotinsightssoln-docs-ercenk) para asegurar el acceso de los dispositivos al punto de ingesta.
 
 - [Azure IoT Hub](/azure/iot-hub/?WT.mc_id=iotinsightssoln-docs-ercenk) es un centro de la comunicación bidireccional entre las aplicaciones de IoT y los dispositivos. Es un servicio escalable que proporciona completas soluciones de IoT por medio de comunicaciones seguras, enrutamiento de mensajes, integración con otros servicios de Azure y funciones de administración para controlar y configurar los dispositivos.
 
@@ -216,7 +216,7 @@ Hemos tratado muchos conceptos y nos gustaría brindar al lector un conjunto de 
   - [Uso de varios enlaces en Azure Functions](/azure/azure-functions/functions-triggers-bindings?WT.mc_id=iotinsightssoln-docs-ercenk)
 
 - Ruta de acceso activa
-  - Tutoriales exhaustivos que demuestran el uso de Event Hubs, Azure Stream Analytics y Power BI. Vea [Tutorial: Visualización de anomalías de datos](/azure/event-hubs/event-hubs-tutorial-visualize-anomalies?WT.mc_id=iotinsightssoln-docs-ercenk) de eventos en tiempo real enviados a Azure Event Hubs y [Creación de un trabajo de Stream Analytics para analizar los datos de llamadas de teléfono](/azure/stream-analytics/stream-analytics-manage-job?WT.mc_id=iotinsightssoln-docs-ercenk) y visualizar los resultados en un panel de Power BI.
+  - Tutoriales exhaustivos que demuestran el uso de Event Hubs, Azure Stream Analytics y Power BI. Consulte [Tutorial: Visualización de anomalías de datos](/azure/event-hubs/event-hubs-tutorial-visualize-anomalies?WT.mc_id=iotinsightssoln-docs-ercenk) de eventos en tiempo real enviados a Azure Event Hubs y [Creación de un trabajo de Stream Analytics para analizar los datos de llamadas de teléfono](/azure/stream-analytics/stream-analytics-manage-job?WT.mc_id=iotinsightssoln-docs-ercenk) y visualizar los resultados en un panel de Power BI.
   -[Uso de Azure Cosmos DB con .NET](/azure/cosmos-db/sql-api-get-started?WT.mc_id=iotinsightssoln-docs-ercenk)
 - Ruta de acceso inactiva
   - [Transformación de datos en la nube mediante una actividad de Spark en Azure Data Factory](/azure/data-factory/tutorial-transform-data-spark-portal?WT.mc_id=iotinsightssoln-docs-ercenk)
@@ -227,9 +227,9 @@ Hemos tratado muchos conceptos y nos gustaría brindar al lector un conjunto de 
   - [Exploración de la biblioteca de cliente JavaScript de Time Series Insights](/azure/time-series-insights/tutorial-explore-js-client-lib?WT.mc_id=iotinsightssoln-docs-ercenk)
   - Consulte la [demostración de TSI](https://insights.timeseries.azure.com/demo) y la [demostración de Power BI](https://microsoft.github.io/PowerBI-JavaScript/demo/v2-demo/index.html).
 
-## <a name="appendix-pillars-of-software-quality-posq"></a>Apéndice: Fundamentos de calidad del software (PoSQ)
+## <a name="appendix-pillars-of-software-quality-posq"></a>Anexo: Fundamentos de calidad del software
 
-Una buena aplicación en la nube se crea sobre estos cinco [fundamentos de calidad del software](/azure/architecture/guide/pillars?WT.mc_id=iotinsightssoln-docs-ercenk): Escalabilidad, disponibilidad, resistencia, administración y seguridad. En esta sección, trataremos brevemente los fundamentos para cada componente según sea necesario. No trataremos la disponibilidad, la resistencia, la administración y DevOps, ya que se abordan principalmente en el nivel de implementación, y queremos mencionar que la plataforma Azure proporciona varios medios para lograrlos por medio de API, herramientas, diagnóstico y registro. Además de los fundamentos mencionados, también se mencionará la rentabilidad.
+Una aplicación correcta en la nube se basará en estos [fundamentos de calidad del software](/azure/architecture/guide/pillars?WT.mc_id=iotinsightssoln-docs-ercenk): la escalabilidad, la disponibilidad, la resistencia, la administración y la seguridad. En esta sección, trataremos brevemente los fundamentos para cada componente según sea necesario. No trataremos la disponibilidad, la resistencia, la administración y DevOps, ya que se abordan principalmente en el nivel de implementación, y queremos mencionar que la plataforma Azure proporciona varios medios para lograrlos por medio de API, herramientas, diagnóstico y registro. Además de los fundamentos mencionados, también se mencionará la rentabilidad.
 
 Vamos a revisarlos rápidamente:
 
@@ -239,7 +239,7 @@ Vamos a revisarlos rápidamente:
 - **DevOps y administración**. Este fundamento abarca los procesos de las operaciones que mantienen a una aplicación ejecutándose en producción. Las implementaciones deben ser confiables y predecibles. Se deben automatizar para reducir la posibilidad de que ocurran errores humanos. Deben ser un proceso rápido y rutinario, de manera que no ralenticen la publicación de nuevas características o correcciones de errores. Igualmente importante, debe ser capaz de revertir o poner al día la aplicación rápidamente en caso de que tenga problemas.
 - La **seguridad** debe ser un punto de atención prioritario durante todo el ciclo de vida de una solución, desde su diseño e implementación hasta la implementación y las operaciones. La administración de identidades, la protección de su infraestructura, la seguridad de la aplicación, la autorización, la soberanía y el cifrado de datos y la auditoría son áreas amplias que deben abordarse.
 
-## <a name="posq-converting-the-data-to-a-stream"></a>Fundamentos de calidad del software: Conversión de los datos a una secuencia
+## <a name="posq-converting-the-data-to-a-stream"></a>Fundamentos de calidad del software: conversión de los datos en una secuencia
 
 **Escalabilidad**: la escalabilidad se puede enfocar desde dos perspectivas. En primer lugar, desde la perspectiva del componente; en segundo lugar, desde la perspectiva del sistema que proporciona los datos de origen.
 
@@ -247,25 +247,25 @@ Cada servicio de Azure proporciona opciones para el escalado vertical y horizont
 
 En cuanto a los sistemas que proporcionan los datos de origen, debemos tener cuidado de no sobrecargar el sistema y, básicamente, provocar un ataque de denegación de servicio (DoS) en este al consultarlo con demasiada frecuencia. Si está sondeando el sistema, debe tener en cuenta que ajustar la frecuencia de sondeo tiene dos efectos: la granularidad de los datos (cuanto más a menudo consulte, más se acercará al tiempo real) y la carga creada en el sistema remoto.
 
-**Seguridad**: si se accede al sistema remoto mediante claves simétricas o asimétricas, se recomienda que los secretos se conserven en [Azure Key Vault](/azure/key-vault/?WT.mc_id=iotinsightssoln-docs-ercenk).
+**Seguridad**: si se accede al sistema remoto por claves simétricas o asimétricas, se recomienda que los secretos se conserven en [Azure Key Vault](/azure/key-vault/?WT.mc_id=iotinsightssoln-docs-ercenk).
 
-## <a name="posq-warm-path"></a>Fundamentos de calidad del software: Ruta de acceso activa
+## <a name="posq-warm-path"></a>Fundamentos de calidad del software: ruta de acceso activa
 
-**Escalabilidad**: si se utiliza Azure Event Hubs en el subsistema de ingesta, el mecanismo principal de escalabilidad lo constituyen las [unidades de procesamiento](/azure/event-hubs/event-hubs-features#throughput-units?WT.mc_id=iotinsightssoln-docs-ercenk). Event Hubs ofrece la capacidad de establecer las unidades de rendimiento estáticamente o a través de la [característica de inflado automático](/azure/event-hubs/event-hubs-auto-inflate?WT.mc_id=iotinsightssoln-docs-ercenk).
+**Escalabilidad**: si se utiliza Azure Event Hubs en el subsistema de ingesta, el mecanismo principal de escalabilidad es las [unidades de rendimiento](/azure/event-hubs/event-hubs-features#throughput-units?WT.mc_id=iotinsightssoln-docs-ercenk). Event Hubs ofrece la capacidad de establecer las unidades de rendimiento estáticamente o a través de la [característica de inflado automático](/azure/event-hubs/event-hubs-auto-inflate?WT.mc_id=iotinsightssoln-docs-ercenk).
 
 Las [unidades de streaming](/azure/stream-analytics/stream-analytics-streaming-unit-consumption?WT.mc_id=iotinsightssoln-docs-ercenk) en Stream Analytics representan los recursos informáticos que se asignan para ejecutar un trabajo. Cuanto mayor sea el número de unidades de streaming, más recursos de CPU y memoria se asignarán al trabajo. Esta función le permite centrarse en la lógica de consulta y abstrae la necesidad de administrar el hardware para ejecutar el trabajo de Stream Analytics de manera oportuna. Además de las unidades de streaming, es crucial hacer un uso eficiente de estas a través de [la paralelización adecuada de las consultas ](/azure/stream-analytics/stream-analytics-scale-jobs?WT.mc_id=iotinsightssoln-docs-ercenk).
 
 Las implementaciones de Azure Cosmos DB se deben aprovisionar con los parámetros de rendimiento adecuados y el diseño de la partición pertinente. El aprovisionamiento del rendimiento está disponible en el contenedor o en el nivel de la base de datos, y se expresa en [unidades de solicitud ](/azure/cosmos-db/request-units?WT.mc_id=iotinsightssoln-docs-ercenk). Cosmos DB proporciona una herramienta para calcular las unidades de solicitud. Además de aprovisionar el rendimiento, es fundamental [crear particiones eficientes de la base de datos](/azure/cosmos-db/partition-data?WT.mc_id=iotinsightssoln-docs-ercenk).
 
-**Seguridad**: el acceso a Azure Event Hubs mediante clientes se realiza a través de una combinación de tokens de firma de acceso compartido (SAS) y publicadores de eventos para la autenticación de clientes. La seguridad para aplicaciones de back-end sigue los mismos conceptos que los temas de Service Bus. Para obtener una descripción detallada del modelo de seguridad de Event Hubs, consulte [Introducción al modelo de autenticación y seguridad de Event Hubs](/azure/event-hubs/event-hubs-authentication-and-security-model-overview?WT.mc_id=iotinsightssoln-docs-ercenk).
+**Seguridad**: el acceso a Azure Event Hubs por los clientes se realiza mediante una combinación de tokens de firma de acceso compartido (SAS) y publicadores de eventos para la autenticación del cliente. La seguridad para aplicaciones de back-end sigue los mismos conceptos que los temas de Service Bus. Para obtener una descripción detallada del modelo de seguridad de Event Hubs, consulte [Introducción al modelo de autenticación y seguridad de Event Hubs](/azure/event-hubs/event-hubs-authentication-and-security-model-overview?WT.mc_id=iotinsightssoln-docs-ercenk).
 
 La protección de las bases de datos de Cosmos DB proporciona acceso controlado a los datos y cifrado en reposo. Para más información, consulte [Seguridad de base de datos de Azure Cosmos DB](/azure/cosmos-db/database-security?WT.mc_id=iotinsightssoln-docs-ercenk).
 
-**Rentabilidad**: el precio de Event Hubs depende de la SKU (estándar o premium) y los millones de eventos recibidos, más las unidades de procesamiento. La combinación óptima se puede lograr mediante la observación de la tasa de ingesta de datos que dictan los mensajes entrantes.
+**Rentabilidad**: el precio de Event Hubs es una función de SKU (estándar o premium) y los millones de eventos recibidos, más las unidades de procesamiento. La combinación óptima se puede lograr mediante la observación de la tasa de ingesta de datos que dictan los mensajes entrantes.
 
 Al usar Cosmos DB, recomendamos observar el uso más óptimo del almacén a través de la utilización de unidades de solicitud. Cosmos DB también tiene una característica para controlar la retención de datos; como se mencionó anteriormente, recomendamos usarla para controlar el tiempo que permanecen los registros en la base de datos, controlando así su tamaño.
 
-## <a name="posq-cold-path"></a>Fundamentos de calidad del software: Ruta de acceso inactiva
+## <a name="posq-cold-path"></a>Fundamentos de calidad del software: ruta de acceso inactiva
 
 **Escalabilidad**: Azure Time Series Insights (TSI) se escala con una métrica denominada "capacidad", que es un multiplicador aplicado a la velocidad de entrada, la capacidad de almacenamiento y el costo asociado con la SKU. 
 
@@ -275,10 +275,10 @@ Los objetivos de escalabilidad de las cuentas de almacenamiento se documentan en
 
 Azure SQL Database presenta muchas opciones para administrar la escalabilidad, tanto vertical como horizontalmente, según el modelo de compra ([basado en DTU](/azure/sql-database/sql-database-service-tiers-dtu?WT.mc_id=iotinsightssoln-docs-ercenk) y el núcleo virtual). Se recomienda emprender una mayor investigación para encontrar la mejor opción para una solución futura siguiendo la [documentación de SQL Database](/azure/sql-database/sql-database-scale-resources?WT.mc_id=iotinsightssoln-docs-ercenk) sobre el tema.
 
-**Seguridad**: los entornos TSI proporcionan [directivas de acceso](/azure/time-series-insights/time-series-insights-data-access?WT.mc_id=iotinsightssoln-docs-ercenk) para el acceso de administración y el acceso a datos independientes entre sí. No hay una forma directa de agregar datos a un entorno TSI que no sean los orígenes de datos definidos. Las directivas de acceso de administración conceden permisos relacionados con la configuración del entorno. Las directivas de acceso a datos conceden permisos para emitir consultas de datos, manipular datos de referencia en el entorno y compartir consultas guardadas y perspectivas asociadas con el entorno.
+**Seguridad**: los entornos TSI proporcionan [directivas de acceso](/azure/time-series-insights/time-series-insights-data-access?WT.mc_id=iotinsightssoln-docs-ercenk) para el acceso de administración y el acceso de datos independientes entre sí. No hay una forma directa de agregar datos a un entorno TSI que no sean los orígenes de datos definidos. Las directivas de acceso de administración conceden permisos relacionados con la configuración del entorno. Las directivas de acceso a datos conceden permisos para emitir consultas de datos, manipular datos de referencia en el entorno y compartir consultas guardadas y perspectivas asociadas con el entorno.
 
 El servicio Azure Data Factory proporciona varios métodos para proteger las credenciales del almacén de datos, ya sea en su almacén administrado o en Azure Key Vault. El cifrado de datos en tránsito depende de transporte del almacén de datos (por ejemplo, HTTPS o TLS). El cifrado de datos en reposo también depende de los almacenes de datos. Consulte [Consideraciones de seguridad para el movimiento de datos en Azure Data Factory](/azure/data-factory/data-movement-security-considerations?WT.mc_id=iotinsightssoln-docs-ercenk) para obtener más información.
 
 SQL Database proporciona un amplio conjunto de características de seguridad para el acceso a datos, la supervisión y la auditoría, así como el cifrado de datos en reposo. Para obtener más información, consulte [Centro de seguridad para el Motor de base de datos de SQL Server y Azure SQL Database](/sql/relational-databases/security/security-center-for-sql-server-database-engine-and-azure-sql-database?WT.mc_id=iotinsightssoln-docs-ercenk).
 
-**Rentabilidad**: en el centro de cualquier solución de análisis se encuentra el almacenamiento. Los motores de análisis necesitan velocidad, eficiencia, seguridad y rendimiento para procesar volúmenes de datos en tiempos razonables. El diseño de mecanismos para aprovechar al máximo la plataforma subyacente, mediante la agregación y el resumen de datos, y el uso eficiente de los almacenes políglotas son los medios para administrar los costos de manera eficiente. Como Azure es una plataforma en la nube, existen métodos para retirar, reponer y cambiar el tamaño de los recursos mediante programación. Por ejemplo, la [operación de creación o actualización](/rest/api/sql/databases/createorupdate?WT.mc_id=iotinsightssoln-docs-ercenk) proporciona una manera de cambiar el tamaño de la base de datos de Azure SQL Database.
+**Rentabilidad**: en el centro de cualquier solución de análisis reside el almacenamiento. Los motores de análisis necesitan velocidad, eficiencia, seguridad y rendimiento para procesar volúmenes de datos en tiempos razonables. El diseño de mecanismos para aprovechar al máximo la plataforma subyacente, mediante la agregación y el resumen de datos, y el uso eficiente de los almacenes políglotas son los medios para administrar los costos de manera eficiente. Como Azure es una plataforma en la nube, existen métodos para retirar, reponer y cambiar el tamaño de los recursos mediante programación. Por ejemplo, la [operación de creación o actualización](/rest/api/sql/databases/createorupdate?WT.mc_id=iotinsightssoln-docs-ercenk) proporciona una manera de cambiar el tamaño de la base de datos de Azure SQL Database.

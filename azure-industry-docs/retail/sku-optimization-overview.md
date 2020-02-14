@@ -7,11 +7,11 @@ ms.topic: article
 ms.service: industry
 description: Una información general sobre la guía de soluciones de optimización de SKU
 ms.openlocfilehash: 68ade19b44cc7ec422a778f1d1c111f546db824a
-ms.sourcegitcommit: b8f9ccc4e4453d6912b05cdd6cf04276e13d7244
-ms.translationtype: HT
+ms.sourcegitcommit: 3b175d73a82160c4cacec1ce00c6d804a93c765d
+ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74263451"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77054276"
 ---
 # <a name="sku-optimization-solution-guide"></a>Guía de soluciones de la optimización de SKU
 

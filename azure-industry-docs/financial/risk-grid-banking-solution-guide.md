@@ -7,11 +7,11 @@ ms.topic: article
 ms.service: industry
 description: Presenta los aspectos técnicos de la implementación de Azure Batch para la computación en malla de riesgos en la banca.
 ms.openlocfilehash: 542fb820870048ac2ec2cb67c2bbf13988588ea1
-ms.sourcegitcommit: f030566b177715794d2ad857b150317e72d04d64
-ms.translationtype: HT
+ms.sourcegitcommit: 3b175d73a82160c4cacec1ce00c6d804a93c765d
+ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74234661"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77053188"
 ---
 # <a name="risk-grid-computing-in-banking-solution-guide"></a>Guía de soluciones de la computación en malla de riesgos en la banca
 
@@ -45,7 +45,7 @@ La aplicación de trabajo se instala en el nodo de proceso cuando se crea.
 
 ![Grupo, trabajos y tareas](./assets/risk-grid-compute-assets/06-pool-job-logical-model.png)
 
-**Figura 2:** Modelo conceptual de Batch lógico
+**Figura 2:** Modelo de concepto de Batch lógico
 
 Cuando se ejecuta el trabajo, el grupo aprovisiona todas las máquinas virtuales de trabajo necesarias e instala las aplicaciones de trabajo. El trabajo asigna tareas a los nodos de proceso que, a su vez, ejecutan una instrucción de línea de comandos que normalmente llama a las aplicaciones instaladas o scripts.
 Con Batch normalmente sigue un patrón de prototipo, que se describe a continuación:
@@ -65,7 +65,7 @@ En la figura 3 se muestra una ilustración de este proceso.
 
 ![Proceso de ejecución de Batch](./assets/risk-grid-compute-assets/07-batch-run-process.png)
 
-**Figura 3:** Modelo conceptual de Batch lógico
+**Figura 3:** Modelo de concepto de Batch lógico
 
 Una vez que finalizan las tareas, puede ser útil quitar los nodos de proceso para no incurrir en gastos mientras no se usan. Para eliminarlos, mediante código o el portal, se puede eliminar el grupo contenedor, lo que quitará las máquinas virtuales de trabajo.
 
@@ -89,7 +89,7 @@ La implementación del paquete de aplicación también puede administrarse por v
 
 ![Proceso de ejecución de Batch](./assets/risk-grid-compute-assets/08-versioning-worker-applications.png)
 
-**Figura 4**: Control de versiones de las aplicaciones de tarea de nodos de proceso
+**Figura 4:** Control de versiones de las aplicaciones de tarea de nodos de proceso
 
 Un paquete de aplicación se carga en el grupo como un archivo .zip que contiene los binarios de aplicación y los archivos auxiliares que se requieren para que las tareas ejecuten la aplicación. Hay 2 ámbitos para los paquetes de aplicación. Puede designar un paquete de aplicación en el ámbito del grupo o en el ámbito de las tareas.
 
@@ -182,7 +182,7 @@ Hay una alternativa al uso del controlador y las aplicaciones de nodo de proceso
 
 El registro de diagnóstico de Batch proporciona una cantidad significativa de datos para ayudar a solucionar problemas y optimizar las ejecuciones de Batch. Horas de inicio y finalización del trabajo y las tareas, número de núcleos, número de nodos total y muchas otras métricas.
 
-El registro de Batch requiere un destino de almacenamiento para los registros emitidos, almacenar los eventos que la ejecución de Batch genera, como la creación de grupos, la ejecución de trabajos, la ejecución de tareas, etc. Además de almacenar los eventos de registro de diagnóstico en una cuenta de Azure Storage, los eventos del registro del servicio Batch se pueden transmitir a un [centro de eventos de Azure](/azure/event-hubs/event-hubs-what-is-event-hubs?WT.mc_id=gridbanksg-docs-dastarr) y enviarse a [Azure Log Analytics](/azure/log-analytics/log-analytics-overview?WT.mc_id=gridbanksg-docs-dastarr).
+El registro por lotes requiere un destino de almacenamiento para los registros emitidos, que almacena los eventos generados por la ejecución por lotes, como la creación de grupos, la ejecución de trabajos, la ejecución de tareas, etc. Además de almacenar los eventos de registro de diagnóstico en una cuenta de Azure Storage, los eventos de registro del servicio batch se pueden transmitir a un [centro de eventos de Azure](/azure/event-hubs/event-hubs-what-is-event-hubs?WT.mc_id=gridbanksg-docs-dastarr)y enviarse a [Azure log Analytics](/azure/log-analytics/log-analytics-overview?WT.mc_id=gridbanksg-docs-dastarr).
 
 Con estos datos, se pueden optimizar la computación principal y las aplicaciones de nodo principal. Esto puede reducir los costos debido a situaciones como el desaprovisionamiento más rápido de máquinas virtuales de trabajo cuando ya no se necesitan, en lugar de esperar a que la ejecución de Batch termine.
 

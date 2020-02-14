@@ -7,11 +7,11 @@ ms.topic: article
 ms.service: industry
 description: Optimización del surtido del sector minorista. Optimización de SKU a través de la información de IA y ML.
 ms.openlocfilehash: 22411776e830bb3c71f8c1277b30ec4331a3ef17
-ms.sourcegitcommit: 2714a77488c413f01beb169a18acab45663bcfd7
-ms.translationtype: HT
+ms.sourcegitcommit: 3b175d73a82160c4cacec1ce00c6d804a93c765d
+ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74308497"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77054378"
 ---
 # <a name="sku-optimization-for-consumer-brands-solution-guide"></a>Guía de soluciones de la optimización de SKU para las marcas de consumidor
 
@@ -43,7 +43,7 @@ Una solución de surtido de SKU debe controlar millones de SKU mediante la segme
 
 ## <a name="descriptive-analytics"></a>Análisis descriptivo
 
-Los modelos descriptivos agregan puntos de datos y exploran las relaciones entre los factores que pueden influir en las ventas de productos. La información se puede ampliar con algunos puntos de datos externos, como la ubicación, el clima, datos del censo, etc. Las visualizaciones ayudan a una persona a obtener conclusiones mediante la interpretación de los datos. Sin embargo, al hacerlo, la persona se limita a comprender qué ha ocurrido durante el ciclo de ventas anterior o, posiblemente, lo que sucede en el período actual (según la frecuencia con la que se actualicen los datos).
+Los modelos descriptivos agregan puntos de datos y exploran las relaciones entre los factores que pueden influir en las ventas de productos. La información se puede aumentar con algunos puntos de datos externos, como la ubicación, el tiempo, los datos del censo, etc. Las visualizaciones ayudan a una persona a obtener información mediante la interpretación de los datos. Sin embargo, al hacerlo, la persona se limita a comprender qué ha ocurrido durante el ciclo de ventas anterior o, posiblemente, lo que sucede en el período actual (según la frecuencia con la que se actualicen los datos).
 
 En este caso, un enfoque de informes y almacenamiento de datos tradicional es suficiente para comprender, por ejemplo, qué SKU se han comportado mejor y peor durante un período de tiempo.
 
@@ -63,7 +63,7 @@ La optimización del surtido significa encontrar un subconjunto de los productos
 
 Los **datos de transacción** se recopilan de forma rutinaria con fines financieros. 
 
-Los **datos de surtido** incluyen potencialmente todo lo relacionado con las SKU: Este es un ejemplo de lo que queremos: 
+Los **datos de surtido** incluyen potencialmente todo lo relacionado con las SKU. Este es un ejemplo de lo que queremos: 
 
 - El número de SKU
 - Descripciones de las SKU

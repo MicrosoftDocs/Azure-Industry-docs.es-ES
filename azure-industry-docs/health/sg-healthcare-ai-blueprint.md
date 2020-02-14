@@ -7,11 +7,11 @@ ms.topic: article
 ms.service: industry
 description: En este artículo se ofrece orientación para el plano técnico de Microsoft Azure para inteligencia artificial.
 ms.openlocfilehash: 40919ffde2c2cac11339b40348cba7a5e0e0e16d
-ms.sourcegitcommit: 2714a77488c413f01beb169a18acab45663bcfd7
-ms.translationtype: HT
+ms.sourcegitcommit: 3b175d73a82160c4cacec1ce00c6d804a93c765d
+ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74308507"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77052644"
 ---
 # <a name="implementing-the-azure-blueprint-for-ai"></a>Implementación del plano técnico de Azure para inteligencia artificial
 

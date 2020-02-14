@@ -7,11 +7,11 @@ ms.topic: article
 ms.service: industry
 description: Descripción de la solución sobre cómo desarrollar el mantenimiento predictivo para los clientes de fabricación en Azure.
 ms.openlocfilehash: c32893d534279cda35f7c6a142869d2983eaca67
-ms.sourcegitcommit: 2714a77488c413f01beb169a18acab45663bcfd7
-ms.translationtype: HT
+ms.sourcegitcommit: 3b175d73a82160c4cacec1ce00c6d804a93c765d
+ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74308487"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77053851"
 ---
 # <a name="predictive-maintenance-in-manufacturing-solution-guide"></a>Guía de soluciones sobre el mantenimiento predictivo en la fabricación
 
@@ -66,11 +66,11 @@ Entrenar nuevos modelos continuamente e implementarlos da lugar al desafío de a
 
 Microsoft ha publicado [una guía detallada](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/cortana-analytics-playbook-predictive-maintenance?WT.mc_id=pdmsolution-docs-ercenk) sobre cómo preparar los datos y entrenar el modelo de Machine Learning. Existen tres preguntas de mantenimiento típicas y los algoritmos de Machine Learning relacionados:
 
-- _Para el recurso, ¿cuál es la probabilidad de que ocurra un error en las próximas X horas?_ Respuesta: 0-100 %
-  - **Clasificación binaria:** la clasificación binaria es un método de aprendizaje automático que usa datos para determinar la categoría, el tipo o la clase de un elemento o fila de datos, como un miembro de una de las dos clases. Hay varios tipos de algoritmos de clasificación. Microsoft publicó un conjunto de algoritmos disponibles como [módulos de Machine Learning Studio](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/machine-learning-initialize-model-classification?WT.mc_id=pdmsolution-docs-ercenk).
+- _Para el recurso, ¿cuál es la probabilidad de que ocurra un error en las próximas X horas?_ Respuesta: 0-100%
+  - **Clasificación binaria:** la clasificación binaria es un método de Machine Learning que usa datos para determinar la categoría, el tipo o la clase de un elemento o fila de datos, como un miembro de una de las dos clases. Hay varios tipos de algoritmos de clasificación. Microsoft publicó un conjunto de algoritmos disponibles como [módulos de Machine Learning Studio](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/machine-learning-initialize-model-classification?WT.mc_id=pdmsolution-docs-ercenk).
 - _¿Cuál es la vida útil restante del recurso?_ Respuesta: X horas
-  - **Regresión:** la regresión es una clase de algoritmos de aprendizaje automático que predice el valor de una variable una vez especificado un conjunto de otras variables. Machine Learning Studio incluye un conjunto de algoritmos de regresión como [módulos](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/machine-learning-initialize-model-regression?WT.mc_id=pdmsolution-docs-ercenk).
-    - **Memoria a corto y largo plazo (LSTM):** las redes [LSTM](https://colah.github.io/posts/2015-08-Understanding-LSTMs/?WT.mc_id=pdmsolution-docs-ercenk) son un tipo de redes neuronales profundas (DNN). La inspiración de las DNN viene del modelado del comportamiento de las neuronas individuales en el cerebro. Microsoft ha publicado una [guía paso a paso](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/scenario-deep-learning-for-predictive-maintenance?WT.mc_id=pdmsolution-docs-ercenk) para describir cómo se usa una LSTM para el mantenimiento predictivo
+  - **Regresión:** la regresión es una clase de algoritmos de Machine Learning que predice el valor de una variable una vez especificado un conjunto de otras variables. Machine Learning Studio incluye un conjunto de algoritmos de regresión como [módulos](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/machine-learning-initialize-model-regression?WT.mc_id=pdmsolution-docs-ercenk).
+    - **Memoria a corto plazo (LSTM):** las redes [LSTMs](https://colah.github.io/posts/2015-08-Understanding-LSTMs/?WT.mc_id=pdmsolution-docs-ercenk) son un tipo de redes neuronal profundas (DNN). La inspiración de las DNN viene del modelado del comportamiento de las neuronas individuales en el cerebro. Microsoft ha publicado una [guía paso a paso](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/scenario-deep-learning-for-predictive-maintenance?WT.mc_id=pdmsolution-docs-ercenk) para describir cómo se usa una LSTM para el mantenimiento predictivo
 - _¿Qué recurso requiere un mantenimiento más urgente?_ Respuesta: Recurso X
   - **Clasificación multiclase:** la clasificación multiclase es un método de Machine Learning que usa datos para determinar la categoría, el tipo o la clase de un elemento o fila de datos, como un miembro de más de dos clases.
 
@@ -106,7 +106,7 @@ En cuanto al entrenamiento del modo ML, Microsoft Azure proporciona muchas opcio
 
 Decidir qué herramienta usar depende de la complejidad de las operaciones, la experiencia del equipo y el tamaño de los datos.
 
-La ecuación de costos de las soluciones en la nube contiene muchas variables, además de los costos de los servicios en la nube, como, por ejemplo, ingeniería, administración o transferencias de datos adicionales, etc. Use estas variables al evaluar el costo y tome una decisión informada. Los servicios solo no constituyen la ecuación de costos totales.
+La ecuación de costo en las soluciones en la nube contiene muchas variables, además de los costos del servicio en la nube, como la ingeniería, la administración, las transferencias de datos, etc. adicionales. Use estas variables al evaluar el costo y tome una decisión informada. Los servicios solo no constituyen la ecuación de costos totales.
 
 Tanto el diseño del proceso para analizar los datos como la publicación del modelo son temas detallados y se diferencian entre sí por las tecnologías usadas. Esos temas se encuentran fuera del ámbito de este artículo. Una serie de artículos donde se explica el proceso y los servicios de Azure que pueden usarse en la generación del modelo se encuentran disponibles. Microsoft también proporciona un enfoque sistemático para crear soluciones que permite a los equipos de científicos de datos colaborar de forma eficaz durante el ciclo de vida de los datos.
 
@@ -201,9 +201,9 @@ Como se mencionó anteriormente, es posible que algunos fabricantes o terceros q
 
 ### <a name="data-security-and-isolation"></a>Aislamiento y seguridad de los datos
 
-La parte que ofrece un servicio debe garantizar que la información confidencial de sus clientes se identifique y se proteja o limpie correctamente. Microsoft Azure proporciona funcionalidades para cifrar los datos dependiendo del servicio de almacenamiento usado.
+La entidad que proporciona un servicio debe garantizar que la información confidencial de sus clientes se identifica y se protege o limpia adecuadamente. Microsoft Azure proporciona funciones para cifrar los datos en función del servicio de almacenamiento utilizado.
 
-El modo en que los dispositivos generan y envían datos también debe protegerse, mediante métodos conocidos tales como certificados por dispositivo, habilitación/deshabilitación por dispositivo, seguridad TLS, compatibilidad con X.509, listas blanca y negra de direcciones IP y políticas de acceso compartido. La parte que ofrece un servicio debe garantizar que la información confidencial de los clientes se identifique y se proteja o limpie correctamente. [Azure Data Lake Storage](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-encryption?WT.mc_id=pdmsolution-docs-ercenk), [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-service-encryption?WT.mc_id=pdmsolution-docs-ercenk), [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/database-encryption-at-rest?WT.mc_id=pdmsolution-docs-ercenk) y [Azure SQL Database](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql?WT.mc_id=pdmsolution-docs-ercenk) son ejemplos de servicios que se pueden emplear para cifrar los datos en reposo. Los proveedores de soluciones también deben tener en cuenta cómo crear particiones de los datos en el mismo recurso (p. ej., base de datos) o en varios. 
+El modo en que los dispositivos generan y envían datos también debe protegerse, mediante métodos conocidos tales como certificados por dispositivo, habilitación/deshabilitación por dispositivo, seguridad TLS, compatibilidad con X.509, listas blanca y negra de direcciones IP y políticas de acceso compartido. La entidad que proporciona un servicio debe garantizar que la información confidencial de los clientes se identifica y se protege o limpia adecuadamente. [Azure Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-encryption?WT.mc_id=pdmsolution-docs-ercenk), [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-service-encryption?WT.mc_id=pdmsolution-docs-ercenk), [Azure Cosmos dB](https://docs.microsoft.com/azure/cosmos-db/database-encryption-at-rest?WT.mc_id=pdmsolution-docs-ercenk)y [Azure SQL Database](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql?WT.mc_id=pdmsolution-docs-ercenk) son ejemplos de servicios que se pueden usar para cifrar los datos en reposo. Los proveedores de soluciones también deben tener en cuenta cómo crear particiones de los datos en el mismo recurso (p. ej., base de datos) o en varios. 
 
 ### <a name="geographical-considerations"></a>Consideraciones geográficas
 
@@ -241,12 +241,12 @@ En este artículo se proporcionó una visión de cómo recopilar datos y entrena
 
 ## <a name="further-reading"></a>Lecturas adicionales
 
-1. [Con la mirada puesta en el futuro: deje de pensar en el pasado y deje atrás los imprevistos con IoT](https://blogs.microsoft.com/iot/2017/02/28/future-focused-stop-thinking-in-the-past-and-get-ahead-of-the-unexpected-with-iot-2/?WT.mc_id=pdmsolution-docs-ercenk)
+1. [Centrado en el futuro: deje de pensar en el pasado y deje atrás los imprevistos con IoT](https://blogs.microsoft.com/iot/2017/02/28/future-focused-stop-thinking-in-the-past-and-get-ahead-of-the-unexpected-with-iot-2/?WT.mc_id=pdmsolution-docs-ercenk)
 
 2. [Aumente la confiabilidad de los equipos con mantenimiento predictivo compatible con IoT](https://www.microsoft.com/internet-of-things/predictive-maintenance?WT.mc_id=pdmsolution-docs-ercenk)
 
-3. [Saque el máximo partido al Internet de las cosas: cómo enfocar un proyecto de mantenimiento predictivo](https://download.microsoft.com/download/0/7/D/07D394CE-185D-4B96-AC3C-9B61179F7080/Capture_value_from_the_Internet%20of%20Things_with_Predictive_Maintenance.PDF?WT.mc_id=pdmsolution-docs-ercenk)
+3. [Capture el valor del Internet de las cosas: cómo enfocar un proyecto de mantenimiento predictivo](https://download.microsoft.com/download/0/7/D/07D394CE-185D-4B96-AC3C-9B61179F7080/Capture_value_from_the_Internet%20of%20Things_with_Predictive_Maintenance.PDF?WT.mc_id=pdmsolution-docs-ercenk)
 
-4. [Perspectivas de los asociados: mantenimiento predictivo en la primera línea](https://blogs.microsoft.com/iot/2017/03/21/partner-perspectives-predictive-maintenance-on-the-frontlines/?WT.mc_id=pdmsolution-docs-ercenk)
+4. [Perspectivas de los partners: mantenimiento predictivo en la primera línea](https://blogs.microsoft.com/iot/2017/03/21/partner-perspectives-predictive-maintenance-on-the-frontlines/?WT.mc_id=pdmsolution-docs-ercenk)
 
 5. [Desde la mercantilización a la servitización: transformación de su empresa para competir en la nueva era del servicio de campo con IoT](https://blogs.microsoft.com/iot/2016/11/07/from-commodization-to-servitization-transforming-your-business-to-compete-in-the-new-age-of-field-service-with-iot/?WT.mc_id=pdmsolution-docs-ercenk)

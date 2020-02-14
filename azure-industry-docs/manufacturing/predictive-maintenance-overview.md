@@ -7,11 +7,11 @@ ms.topic: article
 ms.service: industry
 description: Información general sobre cómo desarrollar el mantenimiento predictivo para los clientes de fabricación en Azure.
 ms.openlocfilehash: 14ef249685c9ee90846dbfeba993742f7502037b
-ms.sourcegitcommit: 2714a77488c413f01beb169a18acab45663bcfd7
-ms.translationtype: HT
+ms.sourcegitcommit: 3b175d73a82160c4cacec1ce00c6d804a93c765d
+ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74308454"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77053834"
 ---
 # <a name="predictive-maintenance-in-manufacturing-overview"></a>Introducción al mantenimiento predictivo en la fabricación
 
@@ -31,7 +31,7 @@ A lo largo de la historia de la industria de fabricación, surgieron varias estr
 
 El mantenimiento reactivo encarna la mentalidad de &quot;si algo no está roto, no hay que arreglarlo&quot;. Dé servicio al recurso solo cuando se produzca un error. Por ejemplo, el motor del centro de mecanizado CNC de 5 ejes solo recibe mantenimiento cuando deja de funcionar. El mantenimiento reactivo maximiza la duración del componente que finalmente produce un error. El mantenimiento reactivo también introduce cantidades desconocidas de tiempo de inactividad, daños colaterales inesperados a los componentes dañados por el componente defectuoso y otros problemas.
 
-El mantenimiento preventivo requiere que el usuario realice el mantenimiento del recurso a intervalos predeterminados. El intervalo se basa normalmente en el historial de frecuencia de errores experimentados para el recurso. Estos intervalos se basan en el rendimiento histórico, las simulaciones o el modelado estadístico, entre otros. La ventaja de esta estrategia es que aumenta el tiempo de actividad, da lugar a menos errores y permite planificar el mantenimiento. La desventaja en muchos casos es que es posible que el componente reemplazado en el recurso pudiera haber durado más. Esto da como resultado un exceso de mantenimiento y desperdicio. Por otro lado, algunas piezas pueden seguir dando un error antes del mantenimiento programado. Probablemente conoce bien el mantenimiento preventivo: después de una serie de horas establecidas de funcionamiento (o de cualquier otra métrica), se deja de usar la máquina y se inspecciona. Se reemplazan todas las piezas que deban ser reemplazadas.
+El mantenimiento preventivo requiere que el usuario realice el mantenimiento del recurso a intervalos predeterminados. El intervalo se basa normalmente en el historial de frecuencia de errores experimentados para el recurso. Estos intervalos se basan en el rendimiento histórico, las simulaciones, el modelado estadístico, etc. La ventaja de esta estrategia es que aumenta el tiempo de actividad, genera menos errores y se puede planear el mantenimiento. La desventaja en muchos casos es que es posible que el componente reemplazado en el recurso pudiera haber durado más. Esto da como resultado un exceso de mantenimiento y desperdicio. Por otro lado, algunas piezas pueden seguir dando un error antes del mantenimiento programado. Probablemente conoce bien el mantenimiento preventivo: después de una serie de horas establecidas de funcionamiento (o de cualquier otra métrica), se deja de usar la máquina y se inspecciona. Se reemplazan todas las piezas que deban ser reemplazadas.
 
 El mantenimiento predictivo supervisa el uso de los recursos mediante el uso de modelos para predecir cuándo es probable que un recurso experimente un error en un componente. Ese componente tiene entonces su mantenimiento programado para &quot;el mantenimiento Just-In-Time&quot;. El mantenimiento predictivo mejora las estrategias anteriores al maximizar tanto el tiempo de actividad como la duración de los recursos. Dado que el mantenimiento de los equipos se realiza cerca de la duración máxima de los componentes, se gasta menos dinero en la sustitución de las piezas en funcionamiento. La desventaja es que la naturaleza just-in-time del mantenimiento predictivo es más difícil de ejecutar ya que requiere una organización de servicios más receptiva y flexible. Volviendo al motor de mecanizado CNC de 5 ejes, se podría programar el mantenimiento &quot;fácilmente&quot; (es decir, de forma planeada, sin interrumpir la producción) si un modelo predictivo predice que el motor tiene, por ejemplo, un 75 % de probabilidad de error en las próximas 24 horas (basándose en la información procedente de los sensores de la máquina).
 
@@ -48,16 +48,16 @@ Un fabricante puede utilizar directamente la solución de mantenimiento predicti
 
 ## <a name="building-a-predictive-maintenance-solution"></a>Creación de una solución de mantenimiento predictivo
 
-Para crear una solución de mantenimiento predictivo, partimos de datos; idealmente datos que muestren el funcionamiento normal, así como datos que muestren cómo era el equipo antes, durante y después de un error. Los datos proceden de sensores, notas mantenidas por los operadores de los equipos, información de funcionamiento, datos ambientales, especificaciones de la máquina, etc. Los sistemas de registro pueden incluir historiadores, sistemas de ejecución de fabricación o ERP, entre otros. Los datos están disponibles para el análisis en una variedad de formas. [El proceso de ciencia de datos del equipo](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/), que se ilustra a continuación y que está personalizado para la fabricación, hace un excelente trabajo al explicar las diversas preocupaciones que se tienen cuando se crean y ejecutan modelos de aprendizaje automático.
+Para crear una solución de mantenimiento predictivo, partimos de datos; idealmente datos que muestren el funcionamiento normal, así como datos que muestren cómo era el equipo antes, durante y después de un error. Los datos proceden de sensores, notas mantenidas por operadores de equipos, información de ejecución, datos de entorno, especificaciones de máquinas, etc. Los sistemas de registro pueden incluir Historians, sistemas de ejecución de fabricación, ERP, etc. Los datos se ponen a disposición de los análisis de varias maneras. [El proceso de ciencia de datos del equipo](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/), que se ilustra a continuación y que está personalizado para la fabricación, hace un excelente trabajo al explicar las diversas preocupaciones que se tienen cuando se crean y ejecutan modelos de aprendizaje automático.
 
  ![](./assets/pdm-assets/DataScienceDiagram.png)
 
 
 La primera tarea será identificar los tipos de errores que desea predecir. Con esto en mente, identificará entonces los orígenes de datos que tienen datos interesantes sobre ese tipo de error. La canalización lleva los datos al sistema desde el entorno. Los científicos de datos utilizarán sus herramientas favoritas de aprendizaje automático para preparar los datos. En este punto, están listos para crear y entrenar modelos que puedan identificar diversos tipos de problemas. Los modelos responden a preguntas como:
 
-- _Para el recurso, ¿cuál es la probabilidad de que ocurra un error en las próximas X horas?_ Respuesta: 0-100 %
+- _Para el recurso, ¿cuál es la probabilidad de que ocurra un error en las próximas X horas?_ Respuesta: 0-100%
 - _¿Cuál es la vida útil restante del recurso?_ Respuesta: X horas
-- _¿Se comporta este recurso de manera inusual?_ Respuesta: Sí o no
+- _¿Se comporta este recurso de manera inusual?_ Respuesta: Sí o No
 - _¿Qué recurso requiere un mantenimiento más urgente?_ Respuesta: Recurso X
 
 Una vez desarrollados, los modelos pueden colocarse en el propio equipo para autodiagnóstico, en un dispositivo de borde en algún lugar del entorno de fabricación o en Azure. También continuará enviando los datos de los orígenes principales a un almacén central para que pueda seguir con la creación y mantenimiento de la solución de mantenimiento predictivo.
