@@ -8,11 +8,11 @@ ms.service: industry
 ms.topic: article
 ms.date: 11/28/2019
 ms.openlocfilehash: 8ca31501d976e0b162735b7f55e2db7fae850776
-ms.sourcegitcommit: a6eefa2a605c9e1c5015ae107c9847b18d415746
-ms.translationtype: HT
+ms.sourcegitcommit: 3b175d73a82160c4cacec1ce00c6d804a93c765d
+ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74540416"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77052372"
 ---
 # <a name="extracting-actionable-insights-from-iot-data"></a>Extracción de información útil de los datos de IoT
 

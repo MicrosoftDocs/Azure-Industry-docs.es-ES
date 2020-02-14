@@ -7,11 +7,11 @@ ms.topic: article
 ms.service: industry
 description: Esta información general presenta cómo un desarrollador actuarial puede trasladar su solución existente más la infraestructura auxiliar a Azure.
 ms.openlocfilehash: cb571d996ab34da9157e9e211f354d7ce3d5f720
-ms.sourcegitcommit: b8f9ccc4e4453d6912b05cdd6cf04276e13d7244
-ms.translationtype: HT
+ms.sourcegitcommit: 3b175d73a82160c4cacec1ce00c6d804a93c765d
+ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74263385"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77052355"
 ---
 # <a name="actuarial-risk-analysis-and-financial-modeling"></a>Análisis de riesgos actuariales y modelado financiero
 

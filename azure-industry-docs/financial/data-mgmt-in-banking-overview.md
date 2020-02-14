@@ -7,11 +7,11 @@ ms.topic: article
 ms.service: industry
 description: Describe las técnicas de administración de datos en un entorno bancario regulado mediante Microsoft Azure.
 ms.openlocfilehash: cfafd5242b6da994def2fe1470db9fd86b2675e7
-ms.sourcegitcommit: f030566b177715794d2ad857b150317e72d04d64
-ms.translationtype: HT
+ms.sourcegitcommit: 3b175d73a82160c4cacec1ce00c6d804a93c765d
+ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74234634"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77052933"
 ---
 # <a name="data-management-in-banking-overview"></a>Introducción a la administración de datos en la banca
 
@@ -141,7 +141,7 @@ Los datos también se pueden enviar a servicios de proceso descendentes como [Az
 
 ![Un modelo de ingesta de Data Lake](./assets/data-mgmt-in-banking-overview/data-mgmt-02.png)
 
-Ilustración 2
+Figura 2
 
 Las canalizaciones de Data Factory constan de actividades, que toman conjuntos de datos de entrada y de salida. Las actividades se pueden ensamblar en una canalización que define de dónde quiere obtener los datos, cómo quiere procesarlos y dónde quiere almacenar los resultados. La compilación de canalizaciones con actividades es el centro de Data Factory y componer un flujo de trabajo visual justo en Azure Portal facilita la creación de las canalizaciones. [Consulte aquí para ver una lista completa](/azure/data-factory/concepts-pipelines-activities?WT.mc_id=bankdm-docs-dastarr) de las actividades.
 
@@ -203,10 +203,10 @@ Una vez que los datos estén hospedados en Azure, cree un plan de purga de datos
 
 Con el cambio rápido del panorama digital del sector bancario y financiero, los clientes buscan cada vez más soluciones y asociados que puedan usar de inmediato sin ningún tiempo de inicialización que los retrase. Dado que la ingesta de datos aumenta de manera exponencial, los bancos necesitan formas rápidas, innovadoras y seguras para almacenar, analizar y usar los datos importantes.
 
-Azure puede ayudar con los requisitos de ingesta de datos, procesamiento, archivado y eliminación mediante el uso de varias tecnologías y estrategias. La ingesta de datos en Azure es simple y hay varios almacenes de datos disponibles para almacenar datos en función de su tipo, estructura, etc. Hay soluciones de datos disponibles más allá de SQL Server y SQL Azure para incluir bases de datos de terceros.
+Azure puede ayudar con los requisitos de ingesta de datos, procesamiento, archivado y eliminación mediante el uso de varias tecnologías y estrategias. La ingesta de datos en Azure es sencilla y existen varios almacenes de datos disponibles para almacenar los datos en función de su tipo, estructura, etc. Las soluciones de datos están disponibles más allá SQL Server y SQL Azure incluir bases de datos de terceros.
 
 Operar y actuar en función de esos datos puede ser algo sencillo con servicios de Azure como Databricks y Data Factory. El almacenamiento de archivo está disponible para el almacenamiento a largo plazo de datos a los que rara vez se accede y se puede eliminar según un ciclo continuo cuando sea necesario.
 
 Visite la biblioteca de soluciones de Azure para información sobre la [copia de seguridad y el almacenamiento de archivo](https://azure.microsoft.com/solutions/architecture/?solution=backup-archive?WT.mc_id=bankdm-docs-dastarr) con el fin de empezar a diseñar el plan de administración de datos.
 
-**Artículo de**: Howard Bush y David Starr
+**Artículo de** Howard Bush y David Starr

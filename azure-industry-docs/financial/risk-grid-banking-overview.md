@@ -7,11 +7,11 @@ ms.topic: article
 ms.service: industry
 description: Presenta las consideraciones de negocio de la implementación de la computación en malla de riesgos de la banca en Azure.
 ms.openlocfilehash: 746b93e545aa8ff61a8fab4a021b6c5caa1889bb
-ms.sourcegitcommit: f030566b177715794d2ad857b150317e72d04d64
-ms.translationtype: HT
+ms.sourcegitcommit: 3b175d73a82160c4cacec1ce00c6d804a93c765d
+ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74234659"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77053103"
 ---
 # <a name="risk-grid-computing-in-banking-overview"></a>Introducción a la computación en malla de riesgos en la banca
 
@@ -47,7 +47,7 @@ Al conectarse a la nube, la seguridad es una consideración fundamental. Explica
 
 ### <a name="hybrid-network-solution"></a>Solución de red híbrida
 
-Una red híbrida une a Azure directamente a la red local del cliente. Azure ofrece dos modelos para conectar de manera segura y confiable los sistemas actuales locales con Azure, [Microsoft Azure ExpressRoute](/azure/expressroute/expressroute-introduction?WT.mc_id=gridbank-docs-dastarr) y [VPN Gateway](/azure/vpn-gateway/?WT.mc_id=gridbank-docs-dastarr). Ambas son soluciones de conectividad de confianza, aunque existen diferencias en la implementación, el rendimiento, el costo y otros atributos.
+Una red híbrida une a Azure directamente a la red local del cliente. Azure ofrece dos modelos para conectar de manera segura y confiable los sistemas actuales locales con Azure: [Microsoft Azure ExpressRoute](/azure/expressroute/expressroute-introduction?WT.mc_id=gridbank-docs-dastarr) y [VPN Gateway](/azure/vpn-gateway/?WT.mc_id=gridbank-docs-dastarr). Ambas son soluciones de conectividad de confianza, aunque existen diferencias en la implementación, el rendimiento, el costo y otros atributos.
 
 ![Conectividad de Azure](./assets/risk-grid-compute-assets/02-connectivity.png)
 

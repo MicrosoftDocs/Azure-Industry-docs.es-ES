@@ -7,11 +7,11 @@ ms.topic: article
 ms.service: industry
 description: En este artículo se explican las fases de migración de la infraestructura de comercio electrónico del entorno local a Azure.
 ms.openlocfilehash: b43ea305e11ac32da58e4d0521d79f90d5c23d85
-ms.sourcegitcommit: 2714a77488c413f01beb169a18acab45663bcfd7
-ms.translationtype: HT
+ms.sourcegitcommit: 3b175d73a82160c4cacec1ce00c6d804a93c765d
+ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74308482"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77053154"
 ---
 # <a name="visual-search-overview"></a>Introducción a Visual Search
 
@@ -100,7 +100,7 @@ También puede necesitar un número mínimo de puntos de datos útiles (por ejem
 
  ![](./assets/visual-search-use-case-overview/cosmosdb-data-model.png)
 
-*Figura 3: Modelo jerárquico de recursos de CosmosDB*
+*Figura 3: Modelo jerárquico de recursos de Cosmos DB*
 
 Si tiene previsto aprovechar las ventajas de la distribución global de Cosmos DB, tenga en cuenta que se replicarán los documentos y datos adjuntos, pero no los archivos vinculados. Para ello, puede considerar una red de distribución de contenido.
 
@@ -122,7 +122,7 @@ Como es posible que quiera modificarlas y volverlas a entrenar de modo que gener
 
  ![](./assets/visual-search-use-case-overview/resnet-modifications.png)
 
-*Ilustración 4: Modificaciones de ResNet para Visual Search (F. Yang et al, 2017)*
+*Figura 4: Modificaciones de ResNet para Visual Search (F. Yang et al, 2017)*
 
 Si elige modelos previamente entrenados o prefiere desarrollar los suyos propios, también deberá decidir dónde ejecutar la caracterización o el entrenamiento del modelo propiamente dicho.
 
@@ -154,16 +154,16 @@ La implementación de la búsqueda visual no tiene que ser compleja. Puede usar 
 
 - Pruebe la [consola de prueba de Visual Search API](https://dev.cognitive.microsoft.com/docs/services/878c38e705b84442845e22c7bff8c9ac).
 
-### <a name="develop"></a>Desarrollo
+### <a name="develop"></a>Desarrollar
 
 - Para empezar a crear un servicio personalizado, consulte [Introducción a Bing Visual Search API](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/overview/?WT.mc_id=vsearchgio-article-gmarchet).
-- Para crear su primera solicitud, consulte las guías de inicio rápido: [C#](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/quickstarts/csharp) | [Java](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/quickstarts/java) | [node.js](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/quickstarts/nodejs) | [Python](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/quickstarts/python).
+- Para crear su primera solicitud, consulte las guías de inicio rápido: [C#](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/quickstarts/csharp) | [Java](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/quickstarts/java) | [node.js](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/quickstarts/nodejs) | [Python](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/quickstarts/python)
 - Familiarícese con la [referencia de Visual Search API](https://aka.ms/bingvisualsearchreferencedoc).
 
-### <a name="background"></a>Fondo
+### <a name="background"></a>Información previa
 
-- [Segmentación de imágenes de aprendizaje profundo](https://www.microsoft.com/developerblog/2018/04/18/deep-learning-image-segmentation-for-ecommerce-catalogue-visual-search/?WT.mc_id=vsearchgio-article-gmarchet): documento de Microsoft que describe el proceso de separar las imágenes de los fondos.
-- [Visual Search en eBay](https://arxiv.org/abs/1706.03154): investigación de la Universidad de Cornell
+- [Deep Learning Image Segmentation](https://www.microsoft.com/developerblog/2018/04/18/deep-learning-image-segmentation-for-ecommerce-catalogue-visual-search/?WT.mc_id=vsearchgio-article-gmarchet) (Segmentación de imágenes de aprendizaje profundo): documento de Microsoft que describe el proceso de separar las imágenes de los fondos.
+- [Visual Search at Ebay](https://arxiv.org/abs/1706.03154) (Búsqueda visual en Ebay): investigación de la Universidad de Cornell.
 - [Visual Discovery at Pinterest](https://arxiv.org/abs/1702.04680) (Detección visual en Pinterest): investigación de la Universidad de Cornell.
 - [Semantic Hashing](https://www.cs.utoronto.ca/~rsalakhu/papers/semantic_final.pdf) (Hash semántico): investigación de la Universidad de Toronto.
 

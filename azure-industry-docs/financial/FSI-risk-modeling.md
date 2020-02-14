@@ -7,11 +7,11 @@ ms.service: industry
 ms.topic: overview
 ms.date: 11/19/2019
 ms.openlocfilehash: 03fea3996b62782c2b65e6d2edf841b5adaebcd2
-ms.sourcegitcommit: f030566b177715794d2ad857b150317e72d04d64
-ms.translationtype: HT
+ms.sourcegitcommit: 3b175d73a82160c4cacec1ce00c6d804a93c765d
+ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74234544"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77052508"
 ---
 # <a name="enabling-the-financial-services-risk-lifecycle-with-azure-and-r"></a>Habilitación del ciclo de vida de riesgos de los servicios financieros con Azure y R
 
@@ -435,12 +435,12 @@ El acceso flexible a la nube a través de una infraestructura de proceso y los s
 
 ### <a name="tutorials"></a>Tutoriales
 
-- Desarrolladores de R: [Ejecución de una simulación de R paralela con Azure Batch](https://docs.microsoft.com/azure/batch/tutorial-r-doazureparallel?WT.mc_id=fsiriskmodelr-docs-scseely)
+- Desarrolladores de r: [ejecute una simulación de r paralela con Azure batch](https://docs.microsoft.com/azure/batch/tutorial-r-doazureparallel?WT.mc_id=fsiriskmodelr-docs-scseely)
 
-- [Comandos básicos de R y funciones de RevoScaleR: 25 ejemplos comunes](https://docs.microsoft.com/machine-learning-server/r/tutorial-r-to-revoscaler?WT.mc_id=fsiriskmodelr-docs-scseely)
+- [Funciones de R y comandos de RevoScaleR básicos: 25 ejemplos comunes](https://docs.microsoft.com/machine-learning-server/r/tutorial-r-to-revoscaler?WT.mc_id=fsiriskmodelr-docs-scseely)
 
 - [Visualización y análisis de datos mediante RevoScaleR](https://docs.microsoft.com/machine-learning-server/r/tutorial-revoscaler-data-model-analysis?WT.mc_id=fsiriskmodelr-docs-scseely)
 
 - [Introducción a las funcionalidades de ML Services y R de código abierto en HDInsight](https://docs.microsoft.com/azure/hdinsight/r-server/r-server-overview?WT.mc_id=fsiriskmodelr-docs-scseely)
 
-_Artículo escrito por el Dr. Darko Mocelj y Rupert Nicolay._
+_Este artículo lo creó Dr. Darko Mocelj y Rupert Nicolay._
