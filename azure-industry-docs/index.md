@@ -8,11 +8,11 @@ ms.topic: article
 ms.service: industry
 description: Página de inicio del equipo Industry Experiences
 ms.openlocfilehash: 48baa300803273dcb78f2bc46cf111f29a125ba6
-ms.sourcegitcommit: 2714a77488c413f01beb169a18acab45663bcfd7
-ms.translationtype: HT
+ms.sourcegitcommit: 3b175d73a82160c4cacec1ce00c6d804a93c765d
+ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74308483"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77053256"
 ---
 # <a name="azure-for-industry"></a>Azure para la industria
 
